@@ -7,7 +7,6 @@ import SettingCard from "../../assets/Profile/Setting/SettingCard";
 import Balance from "../../assets/Profile/Wallet/Balance";
 import Card from "../../assets/Profile/Wallet/Card";
 import Deposite from "../../assets/Profile/Wallet/Deposite";
-import Transactions from "../../assets/Profile/Wallet/Transactions";
 
 const Profile = () => {
   return (
@@ -174,7 +173,6 @@ const Profile = () => {
                           >
                             <Balance />
                             <Deposite />
-                            <Transactions />
                           </div>
                         </div>
                       </div>

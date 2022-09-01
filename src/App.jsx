@@ -3,6 +3,7 @@ import Credentials from "./components/credentials/Credentials";
 import Exchange from "./components/Exchange/Exchange";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
+import Transaction from "./components/Transaction/Transaction";
 function App() {
   return (
     <Routes>
@@ -10,6 +11,7 @@ function App() {
       <Route exact path="/profile" element={<Profile />} />
       <Route exact path="/exchange" element={<Exchange />} />
       <Route exact path="/credential" element={<Credentials />} />
+      <Route exact path="/transaction" element={<Transaction />} />
     </Routes>
   );
 }
