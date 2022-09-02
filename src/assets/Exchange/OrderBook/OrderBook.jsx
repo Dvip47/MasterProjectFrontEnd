@@ -1,17 +1,22 @@
 import React from "react";
 
 const OrderBook = () => {
+  const header1 = ["Price(BTC)", "Amount(ETH)", "Total(ETH)"];
+  const body1 = [{ price: "", amount: "", total: "" }];
+  const header2 = [];
+  const body2 = [{ lastPrice: "", usd: "", change: "" }];
   return (
     <div className="order-book">
       <h2 className="heading">Order Book</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Price(BTC)</th>
-            <th>Amount(ETH)</th>
-            <th>Total(ETH)</th>
+            {header1?.map((data, index) => {
+              return <th key={index}>{data}</th>;
+            })}
           </tr>
         </thead>
+        {/* loop */}
         <tbody>
           <tr className="red-bg-80">
             <td className="red">0.022572</td>
@@ -54,7 +59,8 @@ const OrderBook = () => {
             <td>15.26448</td>
           </tr>
         </tbody>
-        <tbody className="ob-heading">
+        {/* loop */}
+        <thead className="ob-heading">
           <tr>
             <td>
               <span>Last Price</span>
@@ -69,7 +75,8 @@ const OrderBook = () => {
               -0.51%
             </td>
           </tr>
-        </tbody>
+        </thead>
+        {/* loop */}
         <tbody>
           <tr className="green-bg">
             <td className="green">0.158373</td>
@@ -112,6 +119,7 @@ const OrderBook = () => {
             <td>15.25648</td>
           </tr>
         </tbody>
+        {/* loop */}
       </table>
     </div>
   );
