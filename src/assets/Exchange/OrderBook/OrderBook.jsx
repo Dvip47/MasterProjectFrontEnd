@@ -2,9 +2,20 @@ import React from "react";
 
 const OrderBook = () => {
   const header1 = ["Price(BTC)", "Amount(ETH)", "Total(ETH)"];
-  const body1 = [{ price: "", amount: "", total: "" }];
+  const body1 = [
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+  ];
   const header2 = [];
-  const body2 = [{ lastPrice: "", usd: "", change: "" }];
+  const body2 = [{ lastPrice: "", usd: "", change: "1.253415" }];
   return (
     <div className="order-book">
       <h2 className="heading">Order Book</h2>
@@ -19,11 +30,22 @@ const OrderBook = () => {
         {/* loop */}
         <tbody>
           <tr className="red-bg-80">
-            <td className="red">0.022572</td>
+            {body1?.map((data, index) => {
+              return (
+                <tr key={index}>
+                  <td>
+                    <i className="red"></i> {data.price}
+                  </td>
+                  <td>{data.amount}</td>
+                  <td>{data.total}</td>
+                </tr>
+              );
+            })}
+            {/* <td className="red">0.022572</td>
             <td>1.253415</td>
-            <td>15.27648</td>
+            <td>1.253415</td> */}
           </tr>
-          <tr className="red-bg-60">
+          {/* <tr className="red-bg-60">
             <td className="red">0.020371</td>
             <td>1.205415</td>
             <td>15.25648</td>
@@ -57,7 +79,7 @@ const OrderBook = () => {
             <td className="red">0.028576</td>
             <td>1.291415</td>
             <td>15.26448</td>
-          </tr>
+          </tr> */}
         </tbody>
         {/* loop */}
         <thead className="ob-heading">
