@@ -2,9 +2,9 @@ import React from "react";
 
 const MarketNew = () => {
   return (
-    <div class="col-md-3">
-      <div class="market-news">
-        <h2 class="heading">Market News</h2>
+    <div className="col-md-3">
+      <div className="market-news">
+        <h2 className="heading">Market News</h2>
         <ul>
           <li>
             <a href="#!">

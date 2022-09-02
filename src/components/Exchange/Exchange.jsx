@@ -12,16 +12,16 @@ const Exchange = () => {
   return (
     <>
       <Header />
-      <div class="container-fluid p-0">
-        <div class="row no-gutters">
-          <div class="col-md-3">
+      <div className="container-fluid p-0">
+        <div className="row no-gutters">
+          <div className="col-md-3">
             <Market />
           </div>
-          <div class="col-md-6">
+          <div className="col-md-6">
             <MainChart />
             <MarketTrade />
           </div>
-          <div class="col-md-3">
+          <div className="col-md-3">
             <OrderBook />
             <MarketHistory />
           </div>

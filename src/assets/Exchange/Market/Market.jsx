@@ -2,35 +2,35 @@ import React from "react";
 
 const Market = () => {
   return (
-    <div class="market-pairs">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">
-            <i class="icon ion-md-search"></i>
+    <div className="market-pairs">
+      <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            <i className="icon ion-md-search"></i>
           </span>
         </div>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           placeholder="Search"
           aria-describedby="inputGroup-sizing-sm"
         />
       </div>
-      <ul class="nav nav-pills" role="tablist">
-        <li class="nav-item">
+      <ul className="nav nav-pills" role="tablist">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="pill"
             href="#STAR"
             role="tab"
             aria-selected="true"
           >
-            <i class="icon ion-md-star"></i>
+            <i className="icon ion-md-star"></i>
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link active"
+            className="nav-link active"
             data-toggle="pill"
             href="#BTC"
             role="tab"
@@ -39,9 +39,9 @@ const Market = () => {
             BTC
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="pill"
             href="#ETH"
             role="tab"
@@ -50,9 +50,9 @@ const Market = () => {
             ETH
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="pill"
             href="#NEO"
             role="tab"
@@ -61,9 +61,9 @@ const Market = () => {
             NEO
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="pill"
             href="#USDT"
             role="tab"
@@ -72,9 +72,9 @@ const Market = () => {
             USDT
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="pill"
             href="#DAI"
             role="tab"
@@ -83,9 +83,9 @@ const Market = () => {
             DAI
           </a>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="pill"
             href="#PAX"
             role="tab"
@@ -95,9 +95,9 @@ const Market = () => {
           </a>
         </li>
       </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show" id="STAR" role="tabpanel">
-          <table class="table">
+      <div className="tab-content">
+        <div className="tab-pane fade show" id="STAR" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -108,37 +108,37 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ETH/BTC
+                  <i className="icon ion-md-star"></i> ETH/BTC
                 </td>
                 <td>0.00020255</td>
-                <td class="red">-2.58%</td>
+                <td className="red">-2.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/BTC
+                  <i className="icon ion-md-star"></i> KCS/BTC
                 </td>
                 <td>0.00013192</td>
-                <td class="green">+5.6%</td>
+                <td className="green">+5.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/BTC
+                  <i className="icon ion-md-star"></i> XRP/BTC
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-1.55%</td>
+                <td className="red">-1.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/BTC
+                  <i className="icon ion-md-star"></i> VET/BTC
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade show active" id="BTC" role="tabpanel">
-          <table class="table">
+        <div className="tab-pane fade show active" id="BTC" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -149,184 +149,184 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ETH/BTC
+                  <i className="icon ion-md-star"></i> ETH/BTC
                 </td>
                 <td>0.00020255</td>
-                <td class="red">-2.58%</td>
+                <td className="red">-2.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/BTC
+                  <i className="icon ion-md-star"></i> KCS/BTC
                 </td>
                 <td>0.00013192</td>
-                <td class="green">+5.6%</td>
+                <td className="green">+5.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/BTC
+                  <i className="icon ion-md-star"></i> XRP/BTC
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-1.55%</td>
+                <td className="red">-1.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/BTC
+                  <i className="icon ion-md-star"></i> VET/BTC
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> EOS/BTC
+                  <i className="icon ion-md-star"></i> EOS/BTC
                 </td>
                 <td>0.00000103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTT/BTC
+                  <i className="icon ion-md-star"></i> BTT/BTC
                 </td>
                 <td>0.00002303</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> LTC/BTC
+                  <i className="icon ion-md-star"></i> LTC/BTC
                 </td>
                 <td>0.03520103</td>
-                <td class="green">+1.5%</td>
+                <td className="green">+1.5%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRX/BTC
+                  <i className="icon ion-md-star"></i> TRX/BTC
                 </td>
                 <td>0.00330103</td>
-                <td class="red">-3.05%</td>
+                <td className="red">-3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BSV/BTC
+                  <i className="icon ion-md-star"></i> BSV/BTC
                 </td>
                 <td>0.00300103</td>
-                <td class="green">+2.05%</td>
+                <td className="green">+2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> COTI/BTC
+                  <i className="icon ion-md-star"></i> COTI/BTC
                 </td>
                 <td>0.003500103</td>
-                <td class="green">+2.85%</td>
+                <td className="green">+2.85%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XYT/BTC
+                  <i className="icon ion-md-star"></i> XYT/BTC
                 </td>
                 <td>0.00003103</td>
-                <td class="green">+3.55%</td>
+                <td className="green">+3.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BNB/BTC
+                  <i className="icon ion-md-star"></i> BNB/BTC
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XMR/BTC
+                  <i className="icon ion-md-star"></i> XMR/BTC
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRY/BTC
+                  <i className="icon ion-md-star"></i> TRY/BTC
                 </td>
                 <td>0.00000123</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ADA/BTC
+                  <i className="icon ion-md-star"></i> ADA/BTC
                 </td>
                 <td>0.00050103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> NEO/BTC
+                  <i className="icon ion-md-star"></i> NEO/BTC
                 </td>
                 <td>0.00340103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XLM/BTC
+                  <i className="icon ion-md-star"></i> XLM/BTC
                 </td>
                 <td>0.00035103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ENQ/BTC
+                  <i className="icon ion-md-star"></i> ENQ/BTC
                 </td>
                 <td>0.00354103</td>
-                <td class="green">+2.02%</td>
+                <td className="green">+2.02%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AVA/BTC
+                  <i className="icon ion-md-star"></i> AVA/BTC
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+3.05%</td>
+                <td className="green">+3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AMB/BTC
+                  <i className="icon ion-md-star"></i> AMB/BTC
                 </td>
                 <td>0.05335103</td>
-                <td class="green">+1.0%</td>
+                <td className="green">+1.0%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> MAP/BTC
+                  <i className="icon ion-md-star"></i> MAP/BTC
                 </td>
                 <td>0.00234103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GO/BTC
+                  <i className="icon ion-md-star"></i> GO/BTC
                 </td>
                 <td>0.00354103</td>
-                <td class="red">-6.50%</td>
+                <td className="red">-6.50%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KICK/BTC
+                  <i className="icon ion-md-star"></i> KICK/BTC
                 </td>
                 <td>0.02053103</td>
-                <td class="red">-6.05%</td>
+                <td className="red">-6.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DBC/BTC
+                  <i className="icon ion-md-star"></i> DBC/BTC
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+7.05%</td>
+                <td className="green">+7.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GGC/BTC
+                  <i className="icon ion-md-star"></i> GGC/BTC
                 </td>
                 <td>0.00353103</td>
-                <td class="red">-4.05%</td>
+                <td className="red">-4.05%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade show" id="ETH" role="tabpanel">
-          <table class="table">
+        <div className="tab-pane fade show" id="ETH" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -337,184 +337,184 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTC/ETH
+                  <i className="icon ion-md-star"></i> BTC/ETH
                 </td>
                 <td>0.00020255</td>
-                <td class="green">+1.58%</td>
+                <td className="green">+1.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/ETH
+                  <i className="icon ion-md-star"></i> KCS/ETH
                 </td>
                 <td>0.00013192</td>
-                <td class="red">-0.6%</td>
+                <td className="red">-0.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/ETH
+                  <i className="icon ion-md-star"></i> XRP/ETH
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-0.55%</td>
+                <td className="red">-0.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/ETH
+                  <i className="icon ion-md-star"></i> VET/ETH
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> EOS/ETH
+                  <i className="icon ion-md-star"></i> EOS/ETH
                 </td>
                 <td>0.00000103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTT/ETH
+                  <i className="icon ion-md-star"></i> BTT/ETH
                 </td>
                 <td>0.00002303</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> LTC/ETH
+                  <i className="icon ion-md-star"></i> LTC/ETH
                 </td>
                 <td>0.03520103</td>
-                <td class="green">+1.5%</td>
+                <td className="green">+1.5%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRX/ETH
+                  <i className="icon ion-md-star"></i> TRX/ETH
                 </td>
                 <td>0.00330103</td>
-                <td class="red">-3.05%</td>
+                <td className="red">-3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BSV/ETH
+                  <i className="icon ion-md-star"></i> BSV/ETH
                 </td>
                 <td>0.00300103</td>
-                <td class="green">+2.05%</td>
+                <td className="green">+2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> COTI/ETH
+                  <i className="icon ion-md-star"></i> COTI/ETH
                 </td>
                 <td>0.003500103</td>
-                <td class="green">+2.85%</td>
+                <td className="green">+2.85%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XYT/ETH
+                  <i className="icon ion-md-star"></i> XYT/ETH
                 </td>
                 <td>0.00003103</td>
-                <td class="green">+3.55%</td>
+                <td className="green">+3.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BNB/ETH
+                  <i className="icon ion-md-star"></i> BNB/ETH
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XMR/ETH
+                  <i className="icon ion-md-star"></i> XMR/ETH
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRY/ETH
+                  <i className="icon ion-md-star"></i> TRY/ETH
                 </td>
                 <td>0.00000123</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ADA/ETH
+                  <i className="icon ion-md-star"></i> ADA/ETH
                 </td>
                 <td>0.00050103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> NEO/ETH
+                  <i className="icon ion-md-star"></i> NEO/ETH
                 </td>
                 <td>0.00340103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XLM/ETH
+                  <i className="icon ion-md-star"></i> XLM/ETH
                 </td>
                 <td>0.00035103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ENQ/ETH
+                  <i className="icon ion-md-star"></i> ENQ/ETH
                 </td>
                 <td>0.00354103</td>
-                <td class="green">+2.02%</td>
+                <td className="green">+2.02%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AVA/ETH
+                  <i className="icon ion-md-star"></i> AVA/ETH
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+3.05%</td>
+                <td className="green">+3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AMB/ETH
+                  <i className="icon ion-md-star"></i> AMB/ETH
                 </td>
                 <td>0.05335103</td>
-                <td class="green">+1.0%</td>
+                <td className="green">+1.0%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> MAP/ETH
+                  <i className="icon ion-md-star"></i> MAP/ETH
                 </td>
                 <td>0.00234103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GO/ETH
+                  <i className="icon ion-md-star"></i> GO/ETH
                 </td>
                 <td>0.00354103</td>
-                <td class="red">-6.50%</td>
+                <td className="red">-6.50%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KICK/ETH
+                  <i className="icon ion-md-star"></i> KICK/ETH
                 </td>
                 <td>0.02053103</td>
-                <td class="red">-6.05%</td>
+                <td className="red">-6.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DBC/ETH
+                  <i className="icon ion-md-star"></i> DBC/ETH
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+7.05%</td>
+                <td className="green">+7.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GGC/ETH
+                  <i className="icon ion-md-star"></i> GGC/ETH
                 </td>
                 <td>0.00353103</td>
-                <td class="red">-4.05%</td>
+                <td className="red">-4.05%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade show" id="NEO" role="tabpanel">
-          <table class="table">
+        <div className="tab-pane fade show" id="NEO" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -525,184 +525,184 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ETH/NEO
+                  <i className="icon ion-md-star"></i> ETH/NEO
                 </td>
                 <td>0.00350255</td>
-                <td class="red">-6.58%</td>
+                <td className="red">-6.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/NEO
+                  <i className="icon ion-md-star"></i> KCS/NEO
                 </td>
                 <td>0.00013192</td>
-                <td class="green">+0.6%</td>
+                <td className="green">+0.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/NEO
+                  <i className="icon ion-md-star"></i> XRP/NEO
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-0.55%</td>
+                <td className="red">-0.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/NEO
+                  <i className="icon ion-md-star"></i> VET/NEO
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> EOS/NEO
+                  <i className="icon ion-md-star"></i> EOS/NEO
                 </td>
                 <td>0.00000103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTT/NEO
+                  <i className="icon ion-md-star"></i> BTT/NEO
                 </td>
                 <td>0.00002303</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> LTC/NEO
+                  <i className="icon ion-md-star"></i> LTC/NEO
                 </td>
                 <td>0.03520103</td>
-                <td class="green">+1.5%</td>
+                <td className="green">+1.5%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRX/NEO
+                  <i className="icon ion-md-star"></i> TRX/NEO
                 </td>
                 <td>0.00330103</td>
-                <td class="red">-3.05%</td>
+                <td className="red">-3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BSV/NEO
+                  <i className="icon ion-md-star"></i> BSV/NEO
                 </td>
                 <td>0.00300103</td>
-                <td class="green">+2.05%</td>
+                <td className="green">+2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> COTI/NEO
+                  <i className="icon ion-md-star"></i> COTI/NEO
                 </td>
                 <td>0.003500103</td>
-                <td class="green">+2.85%</td>
+                <td className="green">+2.85%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XYT/NEO
+                  <i className="icon ion-md-star"></i> XYT/NEO
                 </td>
                 <td>0.00003103</td>
-                <td class="green">+3.55%</td>
+                <td className="green">+3.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BNB/NEO
+                  <i className="icon ion-md-star"></i> BNB/NEO
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XMR/NEO
+                  <i className="icon ion-md-star"></i> XMR/NEO
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRY/NEO
+                  <i className="icon ion-md-star"></i> TRY/NEO
                 </td>
                 <td>0.00000123</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ADA/NEO
+                  <i className="icon ion-md-star"></i> ADA/NEO
                 </td>
                 <td>0.00050103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> NEO/NEO
+                  <i className="icon ion-md-star"></i> NEO/NEO
                 </td>
                 <td>0.00340103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XLM/NEO
+                  <i className="icon ion-md-star"></i> XLM/NEO
                 </td>
                 <td>0.00035103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ENQ/NEO
+                  <i className="icon ion-md-star"></i> ENQ/NEO
                 </td>
                 <td>0.00354103</td>
-                <td class="green">+2.02%</td>
+                <td className="green">+2.02%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AVA/NEO
+                  <i className="icon ion-md-star"></i> AVA/NEO
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+3.05%</td>
+                <td className="green">+3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AMB/NEO
+                  <i className="icon ion-md-star"></i> AMB/NEO
                 </td>
                 <td>0.05335103</td>
-                <td class="green">+1.0%</td>
+                <td className="green">+1.0%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> MAP/NEO
+                  <i className="icon ion-md-star"></i> MAP/NEO
                 </td>
                 <td>0.00234103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GO/NEO
+                  <i className="icon ion-md-star"></i> GO/NEO
                 </td>
                 <td>0.00354103</td>
-                <td class="red">-6.50%</td>
+                <td className="red">-6.50%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KICK/NEO
+                  <i className="icon ion-md-star"></i> KICK/NEO
                 </td>
                 <td>0.02053103</td>
-                <td class="red">-6.05%</td>
+                <td className="red">-6.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DBC/NEO
+                  <i className="icon ion-md-star"></i> DBC/NEO
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+7.05%</td>
+                <td className="green">+7.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GGC/NEO
+                  <i className="icon ion-md-star"></i> GGC/NEO
                 </td>
                 <td>0.00353103</td>
-                <td class="red">-4.05%</td>
+                <td className="red">-4.05%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade show" id="USDT" role="tabpanel">
-          <table class="table">
+        <div className="tab-pane fade show" id="USDT" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -713,184 +713,184 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ETH/USDT
+                  <i className="icon ion-md-star"></i> ETH/USDT
                 </td>
                 <td>0.00350255</td>
-                <td class="red">-2.58%</td>
+                <td className="red">-2.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/USDT
+                  <i className="icon ion-md-star"></i> KCS/USDT
                 </td>
                 <td>0.00013192</td>
-                <td class="green">+6.6%</td>
+                <td className="green">+6.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/USDT
+                  <i className="icon ion-md-star"></i> XRP/USDT
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-0.55%</td>
+                <td className="red">-0.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/USDT
+                  <i className="icon ion-md-star"></i> VET/USDT
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> EOS/USDT
+                  <i className="icon ion-md-star"></i> EOS/USDT
                 </td>
                 <td>0.00000103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTT/USDT
+                  <i className="icon ion-md-star"></i> BTT/USDT
                 </td>
                 <td>0.00002303</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> LTC/USDT
+                  <i className="icon ion-md-star"></i> LTC/USDT
                 </td>
                 <td>0.03520103</td>
-                <td class="green">+1.5%</td>
+                <td className="green">+1.5%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRX/USDT
+                  <i className="icon ion-md-star"></i> TRX/USDT
                 </td>
                 <td>0.00330103</td>
-                <td class="red">-3.05%</td>
+                <td className="red">-3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BSV/USDT
+                  <i className="icon ion-md-star"></i> BSV/USDT
                 </td>
                 <td>0.00300103</td>
-                <td class="green">+2.05%</td>
+                <td className="green">+2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> COTI/USDT
+                  <i className="icon ion-md-star"></i> COTI/USDT
                 </td>
                 <td>0.003500103</td>
-                <td class="green">+2.85%</td>
+                <td className="green">+2.85%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XYT/USDT
+                  <i className="icon ion-md-star"></i> XYT/USDT
                 </td>
                 <td>0.00003103</td>
-                <td class="green">+3.55%</td>
+                <td className="green">+3.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BNB/USDT
+                  <i className="icon ion-md-star"></i> BNB/USDT
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XMR/USDT
+                  <i className="icon ion-md-star"></i> XMR/USDT
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRY/USDT
+                  <i className="icon ion-md-star"></i> TRY/USDT
                 </td>
                 <td>0.00000123</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ADA/USDT
+                  <i className="icon ion-md-star"></i> ADA/USDT
                 </td>
                 <td>0.00050103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> USDT/USDT
+                  <i className="icon ion-md-star"></i> USDT/USDT
                 </td>
                 <td>0.00340103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XLM/USDT
+                  <i className="icon ion-md-star"></i> XLM/USDT
                 </td>
                 <td>0.00035103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ENQ/USDT
+                  <i className="icon ion-md-star"></i> ENQ/USDT
                 </td>
                 <td>0.00354103</td>
-                <td class="green">+2.02%</td>
+                <td className="green">+2.02%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AVA/USDT
+                  <i className="icon ion-md-star"></i> AVA/USDT
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+3.05%</td>
+                <td className="green">+3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AMB/USDT
+                  <i className="icon ion-md-star"></i> AMB/USDT
                 </td>
                 <td>0.05335103</td>
-                <td class="green">+1.0%</td>
+                <td className="green">+1.0%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> MAP/USDT
+                  <i className="icon ion-md-star"></i> MAP/USDT
                 </td>
                 <td>0.00234103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GO/USDT
+                  <i className="icon ion-md-star"></i> GO/USDT
                 </td>
                 <td>0.00354103</td>
-                <td class="red">-6.50%</td>
+                <td className="red">-6.50%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KICK/USDT
+                  <i className="icon ion-md-star"></i> KICK/USDT
                 </td>
                 <td>0.02053103</td>
-                <td class="red">-6.05%</td>
+                <td className="red">-6.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DBC/USDT
+                  <i className="icon ion-md-star"></i> DBC/USDT
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+7.05%</td>
+                <td className="green">+7.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GGC/USDT
+                  <i className="icon ion-md-star"></i> GGC/USDT
                 </td>
                 <td>0.00353103</td>
-                <td class="red">-4.05%</td>
+                <td className="red">-4.05%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade show" id="DAI" role="tabpanel">
-          <table class="table">
+        <div className="tab-pane fade show" id="DAI" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -901,184 +901,184 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ETH/DAI
+                  <i className="icon ion-md-star"></i> ETH/DAI
                 </td>
                 <td>0.05320255</td>
-                <td class="green">+6.58%</td>
+                <td className="green">+6.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/DAI
+                  <i className="icon ion-md-star"></i> KCS/DAI
                 </td>
                 <td>0.00013192</td>
-                <td class="green">+0.6%</td>
+                <td className="green">+0.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/DAI
+                  <i className="icon ion-md-star"></i> XRP/DAI
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-0.55%</td>
+                <td className="red">-0.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/DAI
+                  <i className="icon ion-md-star"></i> VET/DAI
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> EOS/DAI
+                  <i className="icon ion-md-star"></i> EOS/DAI
                 </td>
                 <td>0.00000103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTT/DAI
+                  <i className="icon ion-md-star"></i> BTT/DAI
                 </td>
                 <td>0.00002303</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> LTC/DAI
+                  <i className="icon ion-md-star"></i> LTC/DAI
                 </td>
                 <td>0.03520103</td>
-                <td class="green">+1.5%</td>
+                <td className="green">+1.5%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRX/DAI
+                  <i className="icon ion-md-star"></i> TRX/DAI
                 </td>
                 <td>0.00330103</td>
-                <td class="red">-3.05%</td>
+                <td className="red">-3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BSV/DAI
+                  <i className="icon ion-md-star"></i> BSV/DAI
                 </td>
                 <td>0.00300103</td>
-                <td class="green">+2.05%</td>
+                <td className="green">+2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> COTI/DAI
+                  <i className="icon ion-md-star"></i> COTI/DAI
                 </td>
                 <td>0.003500103</td>
-                <td class="green">+2.85%</td>
+                <td className="green">+2.85%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XYT/DAI
+                  <i className="icon ion-md-star"></i> XYT/DAI
                 </td>
                 <td>0.00003103</td>
-                <td class="green">+3.55%</td>
+                <td className="green">+3.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BNB/DAI
+                  <i className="icon ion-md-star"></i> BNB/DAI
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XMR/DAI
+                  <i className="icon ion-md-star"></i> XMR/DAI
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRY/DAI
+                  <i className="icon ion-md-star"></i> TRY/DAI
                 </td>
                 <td>0.00000123</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ADA/DAI
+                  <i className="icon ion-md-star"></i> ADA/DAI
                 </td>
                 <td>0.00050103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DAI/DAI
+                  <i className="icon ion-md-star"></i> DAI/DAI
                 </td>
                 <td>0.00340103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XLM/DAI
+                  <i className="icon ion-md-star"></i> XLM/DAI
                 </td>
                 <td>0.00035103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ENQ/DAI
+                  <i className="icon ion-md-star"></i> ENQ/DAI
                 </td>
                 <td>0.00354103</td>
-                <td class="green">+2.02%</td>
+                <td className="green">+2.02%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AVA/DAI
+                  <i className="icon ion-md-star"></i> AVA/DAI
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+3.05%</td>
+                <td className="green">+3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AMB/DAI
+                  <i className="icon ion-md-star"></i> AMB/DAI
                 </td>
                 <td>0.05335103</td>
-                <td class="green">+1.0%</td>
+                <td className="green">+1.0%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> MAP/DAI
+                  <i className="icon ion-md-star"></i> MAP/DAI
                 </td>
                 <td>0.00234103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GO/DAI
+                  <i className="icon ion-md-star"></i> GO/DAI
                 </td>
                 <td>0.00354103</td>
-                <td class="red">-6.50%</td>
+                <td className="red">-6.50%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KICK/DAI
+                  <i className="icon ion-md-star"></i> KICK/DAI
                 </td>
                 <td>0.02053103</td>
-                <td class="red">-6.05%</td>
+                <td className="red">-6.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DBC/DAI
+                  <i className="icon ion-md-star"></i> DBC/DAI
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+7.05%</td>
+                <td className="green">+7.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GGC/DAI
+                  <i className="icon ion-md-star"></i> GGC/DAI
                 </td>
                 <td>0.00353103</td>
-                <td class="red">-4.05%</td>
+                <td className="red">-4.05%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade show" id="PAX" role="tabpanel">
-          <table class="table">
+        <div className="tab-pane fade show" id="PAX" role="tabpanel">
+          <table className="table">
             <thead>
               <tr>
                 <th>Pairs</th>
@@ -1089,178 +1089,178 @@ const Market = () => {
             <tbody>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ETH/PAX
+                  <i className="icon ion-md-star"></i> ETH/PAX
                 </td>
                 <td>0.00330255</td>
-                <td class="red">-9.58%</td>
+                <td className="red">-9.58%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KCS/PAX
+                  <i className="icon ion-md-star"></i> KCS/PAX
                 </td>
                 <td>0.00055192</td>
-                <td class="red">-0.6%</td>
+                <td className="red">-0.6%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XRP/PAX
+                  <i className="icon ion-md-star"></i> XRP/PAX
                 </td>
                 <td>0.00002996</td>
-                <td class="red">-0.55%</td>
+                <td className="red">-0.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> VET/PAX
+                  <i className="icon ion-md-star"></i> VET/PAX
                 </td>
                 <td>0.00000103</td>
-                <td class="green">+1.8%</td>
+                <td className="green">+1.8%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> EOS/PAX
+                  <i className="icon ion-md-star"></i> EOS/PAX
                 </td>
                 <td>0.00000103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BTT/PAX
+                  <i className="icon ion-md-star"></i> BTT/PAX
                 </td>
                 <td>0.00002303</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> LTC/PAX
+                  <i className="icon ion-md-star"></i> LTC/PAX
                 </td>
                 <td>0.03520103</td>
-                <td class="green">+1.5%</td>
+                <td className="green">+1.5%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRX/PAX
+                  <i className="icon ion-md-star"></i> TRX/PAX
                 </td>
                 <td>0.00330103</td>
-                <td class="red">-3.05%</td>
+                <td className="red">-3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BSV/PAX
+                  <i className="icon ion-md-star"></i> BSV/PAX
                 </td>
                 <td>0.00300103</td>
-                <td class="green">+2.05%</td>
+                <td className="green">+2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> COTI/PAX
+                  <i className="icon ion-md-star"></i> COTI/PAX
                 </td>
                 <td>0.003500103</td>
-                <td class="green">+2.85%</td>
+                <td className="green">+2.85%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XYT/PAX
+                  <i className="icon ion-md-star"></i> XYT/PAX
                 </td>
                 <td>0.00003103</td>
-                <td class="green">+3.55%</td>
+                <td className="green">+3.55%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> BNB/PAX
+                  <i className="icon ion-md-star"></i> BNB/PAX
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XMR/PAX
+                  <i className="icon ion-md-star"></i> XMR/PAX
                 </td>
                 <td>0.003500103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> TRY/PAX
+                  <i className="icon ion-md-star"></i> TRY/PAX
                 </td>
                 <td>0.00000123</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ADA/PAX
+                  <i className="icon ion-md-star"></i> ADA/PAX
                 </td>
                 <td>0.00050103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> PAX/PAX
+                  <i className="icon ion-md-star"></i> PAX/PAX
                 </td>
                 <td>0.00340103</td>
-                <td class="red">-1.05%</td>
+                <td className="red">-1.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> XLM/PAX
+                  <i className="icon ion-md-star"></i> XLM/PAX
                 </td>
                 <td>0.00035103</td>
-                <td class="green">+5.05%</td>
+                <td className="green">+5.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> ENQ/PAX
+                  <i className="icon ion-md-star"></i> ENQ/PAX
                 </td>
                 <td>0.00354103</td>
-                <td class="green">+2.02%</td>
+                <td className="green">+2.02%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AVA/PAX
+                  <i className="icon ion-md-star"></i> AVA/PAX
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+3.05%</td>
+                <td className="green">+3.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> AMB/PAX
+                  <i className="icon ion-md-star"></i> AMB/PAX
                 </td>
                 <td>0.05335103</td>
-                <td class="green">+1.0%</td>
+                <td className="green">+1.0%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> MAP/PAX
+                  <i className="icon ion-md-star"></i> MAP/PAX
                 </td>
                 <td>0.00234103</td>
-                <td class="red">-2.05%</td>
+                <td className="red">-2.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GO/PAX
+                  <i className="icon ion-md-star"></i> GO/PAX
                 </td>
                 <td>0.00354103</td>
-                <td class="red">-6.50%</td>
+                <td className="red">-6.50%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> KICK/PAX
+                  <i className="icon ion-md-star"></i> KICK/PAX
                 </td>
                 <td>0.02053103</td>
-                <td class="red">-6.05%</td>
+                <td className="red">-6.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> DBC/PAX
+                  <i className="icon ion-md-star"></i> DBC/PAX
                 </td>
                 <td>0.02535103</td>
-                <td class="green">+7.05%</td>
+                <td className="green">+7.05%</td>
               </tr>
               <tr>
                 <td>
-                  <i class="icon ion-md-star"></i> GGC/PAX
+                  <i className="icon ion-md-star"></i> GGC/PAX
                 </td>
                 <td>0.00353103</td>
-                <td class="red">-4.05%</td>
+                <td className="red">-4.05%</td>
               </tr>
             </tbody>
           </table>

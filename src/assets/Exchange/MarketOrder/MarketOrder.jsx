@@ -2,12 +2,12 @@ import React from "react";
 
 const MarketOrder = () => {
   return (
-    <div class="col-md-9">
-      <div class="market-history market-order">
-        <ul class="nav nav-pills" role="tablist">
-          <li class="nav-item">
+    <div className="col-md-9">
+      <div className="market-history market-order">
+        <ul className="nav nav-pills" role="tablist">
+          <li className="nav-item">
             <a
-              class="nav-link active"
+              className="nav-link active"
               data-toggle="pill"
               href="#open-orders"
               role="tab"
@@ -16,9 +16,9 @@ const MarketOrder = () => {
               Open Orders
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
-              class="nav-link"
+              className="nav-link"
               data-toggle="pill"
               href="#stop-orders"
               role="tab"
@@ -27,9 +27,9 @@ const MarketOrder = () => {
               Closed Orders
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
-              class="nav-link"
+              className="nav-link"
               data-toggle="pill"
               href="#order-history"
               role="tab"
@@ -38,9 +38,9 @@ const MarketOrder = () => {
               Order history
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
-              class="nav-link"
+              className="nav-link"
               data-toggle="pill"
               href="#trade-history"
               role="tab"
@@ -50,13 +50,13 @@ const MarketOrder = () => {
             </a>
           </li>
         </ul>
-        <div class="tab-content">
+        <div className="tab-content">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="open-orders"
             role="tabpanel"
           >
-            <ul class="d-flex justify-content-between market-order-item">
+            <ul className="d-flex justify-content-between market-order-item">
               <li>Time</li>
               <li>All pairs</li>
               <li>All Types</li>
@@ -66,13 +66,13 @@ const MarketOrder = () => {
               <li>Executed</li>
               <li>Unexecuted</li>
             </ul>
-            <span class="no-data">
-              <i class="icon ion-md-document"></i>
+            <span className="no-data">
+              <i className="icon ion-md-document"></i>
               No data
             </span>
           </div>
-          <div class="tab-pane fade" id="stop-orders" role="tabpanel">
-            <ul class="d-flex justify-content-between market-order-item">
+          <div className="tab-pane fade" id="stop-orders" role="tabpanel">
+            <ul className="d-flex justify-content-between market-order-item">
               <li>Time</li>
               <li>All pairs</li>
               <li>All Types</li>
@@ -82,13 +82,13 @@ const MarketOrder = () => {
               <li>Executed</li>
               <li>Unexecuted</li>
             </ul>
-            <span class="no-data">
-              <i class="icon ion-md-document"></i>
+            <span className="no-data">
+              <i className="icon ion-md-document"></i>
               No data
             </span>
           </div>
-          <div class="tab-pane fade" id="order-history" role="tabpanel">
-            <ul class="d-flex justify-content-between market-order-item">
+          <div className="tab-pane fade" id="order-history" role="tabpanel">
+            <ul className="d-flex justify-content-between market-order-item">
               <li>Time</li>
               <li>All pairs</li>
               <li>All Types</li>
@@ -98,13 +98,13 @@ const MarketOrder = () => {
               <li>Executed</li>
               <li>Unexecuted</li>
             </ul>
-            <span class="no-data">
-              <i class="icon ion-md-document"></i>
+            <span className="no-data">
+              <i className="icon ion-md-document"></i>
               No data
             </span>
           </div>
-          <div class="tab-pane fade" id="trade-history" role="tabpanel">
-            <ul class="d-flex justify-content-between market-order-item">
+          <div className="tab-pane fade" id="trade-history" role="tabpanel">
+            <ul className="d-flex justify-content-between market-order-item">
               <li>Time</li>
               <li>All pairs</li>
               <li>All Types</li>
@@ -114,8 +114,8 @@ const MarketOrder = () => {
               <li>Executed</li>
               <li>Unexecuted</li>
             </ul>
-            <span class="no-data">
-              <i class="icon ion-md-document"></i>
+            <span className="no-data">
+              <i className="icon ion-md-document"></i>
               No data
             </span>
           </div>
