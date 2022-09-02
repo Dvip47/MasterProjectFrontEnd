@@ -1,12 +1,17 @@
 import React from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/Auth";
 
 const Market = () => {
+  // /history?symbol=GASBTC&resolution=1D&from=1650931200&to=1662163200&countback=130&currencyCode=BTC
   const { crypto } = useContext(AuthContext);
+  useEffect(() => {
+    console.log(crypto);
+  }, []);
   const compare = function (a, b) {
-    if (a.s > b.s) return 1;
-    if (a.s < b.s) return -1;
+    if (a.c < b.c) return 1;
+    if (a.c > b.c) return -1;
     return 0;
   };
   return (

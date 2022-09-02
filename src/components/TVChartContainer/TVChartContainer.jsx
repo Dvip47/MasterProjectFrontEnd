@@ -12,10 +12,10 @@ const TVChartContainer = () => {
   const ref = React.useRef();
   React.useEffect(() => {
     const widgetOptions = {
-      symbol: "AAPL",
+      symbol: "BTCUSDT",
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: new window.Datafeeds.UDFCompatibleDatafeed(
-        "http://localhost/symbols"
+        "http://localhost:80"
       ),
       interval: "D",
       container: ref.current,
