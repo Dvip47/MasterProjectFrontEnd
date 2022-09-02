@@ -3,10 +3,10 @@ import TVChartContainer from "../../../components/TVChartContainer/TVChartContai
 
 const MainChart = () => {
   return (
-    <div className="main-chart">
+    <div className="main-chart mb15">
       <div className="tradingview-widget-container">
         <div id="tradingview_e8053"></div>
-        <TVChartContainer />
+        {/* <TVChartContainer /> */}
       </div>
     </div>
   );

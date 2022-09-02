@@ -12,7 +12,7 @@ const Exchange = () => {
   return (
     <>
       <Header />
-      <div className="container-fluid p-0">
+      <div className="container-fluid mtb15 no-fluid">
         <div className="row no-gutters">
           <div className="col-md-3">
             <Market />

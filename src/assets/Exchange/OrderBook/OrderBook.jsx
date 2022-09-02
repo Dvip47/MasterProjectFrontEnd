@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 const OrderBook = () => {
   const header1 = ["Price(BTC)", "Amount(ETH)", "Total(ETH)"];
@@ -16,6 +17,7 @@ const OrderBook = () => {
   ];
   const header2 = [];
   const body2 = [{ lastPrice: "", usd: "", change: "1.253415" }];
+  const [color, setColor] = useState(100);
   return (
     <div className="order-book">
       <h2 className="heading">Order Book</h2>
@@ -29,57 +31,19 @@ const OrderBook = () => {
         </thead>
         {/* loop */}
         <tbody>
-          <tr className="red-bg-80">
-            {body1?.map((data, index) => {
-              return (
-                <tr key={index}>
+          {body1?.map((data, index) => {
+            return (
+              <tr key={index} className={`red-bg-${80 - index * 20}`}>
+                <tr>
                   <td>
                     <i className="red"></i> {data.price}
                   </td>
                   <td>{data.amount}</td>
                   <td>{data.total}</td>
                 </tr>
-              );
-            })}
-            {/* <td className="red">0.022572</td>
-            <td>1.253415</td>
-            <td>1.253415</td> */}
-          </tr>
-          {/* <tr className="red-bg-60">
-            <td className="red">0.020371</td>
-            <td>1.205415</td>
-            <td>15.25648</td>
-          </tr>
-          <tr className="red-bg-40">
-            <td className="red">0.023572</td>
-            <td>1.645415</td>
-            <td>15.23648</td>
-          </tr>
-          <tr className="red-bg-20">
-            <td className="red">0.032378</td>
-            <td>1.206715</td>
-            <td>15.25348</td>
-          </tr>
-          <tr className="red-bg-10">
-            <td className="red">0.022573</td>
-            <td>1.262415</td>
-            <td>15.19648</td>
-          </tr>
-          <tr className="red-bg-8">
-            <td className="red">0.154377</td>
-            <td>1.225415</td>
-            <td>15.35648</td>
-          </tr>
-          <tr className="red-bg-5">
-            <td className="red">0.120373</td>
-            <td>1.285415</td>
-            <td>15.25648</td>
-          </tr>
-          <tr className="red-bg">
-            <td className="red">0.028576</td>
-            <td>1.291415</td>
-            <td>15.26448</td>
-          </tr> */}
+              </tr>
+            );
+          })}
         </tbody>
         {/* loop */}
         <thead className="ob-heading">
