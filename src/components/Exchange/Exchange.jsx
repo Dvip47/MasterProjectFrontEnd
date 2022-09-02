@@ -13,7 +13,7 @@ const Exchange = () => {
     <>
       <Header />
       <div className="container-fluid mtb15 no-fluid">
-        <div className="row no-gutters">
+        <div className="row">
           <div className="col-md-3">
             <Market />
           </div>

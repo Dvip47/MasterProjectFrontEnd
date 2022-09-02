@@ -15,7 +15,7 @@ const TVChartContainer = () => {
       symbol: "AAPL",
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: new window.Datafeeds.UDFCompatibleDatafeed(
-        "https://demo_feed.tradingview.com"
+        "http://localhost/symbols"
       ),
       interval: "D",
       container: ref.current,
@@ -33,7 +33,6 @@ const TVChartContainer = () => {
     };
     const tvWidget = new widget(widgetOptions);
     tvWidgett = tvWidget;
-
     tvWidgett.onChartReady(() => {
       tvWidgett.headerReady().then(() => {
         const button = tvWidgett.createButton();

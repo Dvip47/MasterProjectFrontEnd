@@ -1,6 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { getFetch } from "../../api/api";
 import About from "../../assets/Home/About/About";
 import Blog from "../../assets/Home/Blog/Blog";
 import Fact from "../../assets/Home/Fact/Fact";
@@ -12,10 +10,7 @@ import Newsletter from "../../assets/Home/Newsletter/Newsletter";
 import Process from "../../assets/Home/Process/Process";
 import Review from "../../assets/Home/Review/Review";
 import Team from "../../assets/Home/Team/Team";
-
 const Home = () => {
-  const navigate = useNavigate();
-
   return (
     <div>
       <Header />

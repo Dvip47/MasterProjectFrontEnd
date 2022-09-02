@@ -1,133 +1,14 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/Auth";
 
 const Market = () => {
-  let rawData = [
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-    {
-      symbol: "BTC",
-      lastPrice: "0.22342",
-      change: "+2%",
-    },
-  ];
+  const { crypto } = useContext(AuthContext);
+  const compare = function (a, b) {
+    if (a.s > b.s) return 1;
+    if (a.s < b.s) return -1;
+    return 0;
+  };
   return (
     <div className="market-pairs">
       <div className="input-group">
@@ -233,14 +114,16 @@ const Market = () => {
               </tr>
             </thead>
             <tbody>
-              {rawData?.map((data, index) => {
+              {crypto?.sort(compare)?.map((data, index) => {
                 return (
                   <tr key={index}>
                     <td>
-                      <i className="icon ion-md-star"></i> {data.symbol}
+                      <i className="icon ion-md-star"></i> {data.s}
                     </td>
-                    <td>{data.lastPrice}</td>
-                    <td className="red">{data.change}</td>
+                    <td>{Number(data?.c)?.toFixed(3)}</td>
+                    <td className="red">
+                      {(((data?.o - data?.c) * 100) / data?.c).toFixed(2)}%
+                    </td>
                   </tr>
                 );
               })}

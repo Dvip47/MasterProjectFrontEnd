@@ -1838,6 +1838,12 @@ ol {
 }
 /* chart */
 .TVChartContainer {
-  height: 100vh;
-  width: 100%;
+  height: calc(100vh - 100px);
+  border: 1px solid #e0e3eb;
+  border-radius: 2px;
+}
+
+.tradingview-widget-container {
+  height: calc(100vh - 100px);
+  border-right: 1px solid #e0e3eb;
 }
