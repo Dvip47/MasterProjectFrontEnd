@@ -4,16 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/Auth";
 
 const Market = () => {
-  // /history?symbol=GASBTC&resolution=1D&from=1650931200&to=1662163200&countback=130&currencyCode=BTC
-  const { crypto } = useContext(AuthContext);
-  useEffect(() => {
-    console.log(crypto);
-  }, []);
-  const compare = function (a, b) {
-    if (a.c < b.c) return 1;
-    if (a.c > b.c) return -1;
-    return 0;
-  };
+  const { crypto, setChartSymbol } = useContext(AuthContext);
+
   return (
     <div className="market-pairs">
       <div className="input-group">
@@ -119,15 +111,19 @@ const Market = () => {
               </tr>
             </thead>
             <tbody>
-              {crypto?.sort(compare)?.map((data, index) => {
+              {crypto?.map((data, index) => {
                 return (
-                  <tr key={index}>
+                  <tr key={index} onClick={() => setChartSymbol(data.symbol)}>
                     <td>
-                      <i className="icon ion-md-star"></i> {data.s}
+                      <i className="icon ion-md-star"></i> {data.symbol}
                     </td>
-                    <td>{Number(data?.c)?.toFixed(3)}</td>
+                    <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
                     <td className="red">
-                      {(((data?.o - data?.c) * 100) / data?.c).toFixed(2)}%
+                      {(
+                        ((data?.openPrice - data?.lastPrice) * 100) /
+                        data?.lastPrice
+                      ).toFixed(2)}
+                      %
                     </td>
                   </tr>
                 );

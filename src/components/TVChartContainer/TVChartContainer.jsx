@@ -1,5 +1,7 @@
 import * as React from "react";
+import { useContext } from "react";
 import { widget } from "../../charting_library";
+import { AuthContext } from "../../context/Auth";
 
 const getLanguageFromURL = () => {
   const regex = new RegExp("[\\?&]lang=([^&#]*)");
@@ -10,12 +12,13 @@ const getLanguageFromURL = () => {
 };
 const TVChartContainer = () => {
   const ref = React.useRef();
+  const { chartSymbol } = useContext(AuthContext);
   React.useEffect(() => {
     const widgetOptions = {
-      symbol: "BTCUSDT",
+      symbol: chartSymbol,
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: new window.Datafeeds.UDFCompatibleDatafeed(
-        "http://localhost:80"
+        "https://ws.torentx.in:3006"
       ),
       interval: "D",
       container: ref.current,
@@ -57,7 +60,7 @@ const TVChartContainer = () => {
         tvWidgett = null;
       }
     };
-  }, []);
+  }, [chartSymbol]);
   let tvWidgett = null;
   return <div ref={ref} className={"TVChartContainer"} />;
 };

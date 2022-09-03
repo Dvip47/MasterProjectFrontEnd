@@ -1,23 +1,29 @@
-import React, { createContext } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { w3cwebsocket as W3CWebSocket } from "websocket";
-
+import React, { createContext, useEffect, useState } from "react";
+import axios from "axios";
 export const AuthContext = createContext({
   crypto: [],
+  chartSymbol: "",
+  setChartSymbol: () => {},
 });
 const Auth = ({ children }) => {
+  const [crypto, setCrypto] = useState([]);
   useEffect(() => {
-    const client = new W3CWebSocket(
-      "wss://stream.binance.com:9443/ws/!ticker@arr"
-    );
-    client.onmessage = (event) => {
-      setCrypto(JSON.parse(event?.data));
+    let time = setInterval(() => {
+      call();
+    }, 2000);
+    return () => {
+      clearInterval(time);
     };
   }, []);
-  const [crypto, setCrypto] = useState([]);
+  const call = async () => {
+    const res = await axios("https://api.binance.com/api/v3/ticker/24hr");
+    setCrypto(res?.data);
+  };
+  const [chartSymbol, setChartSymbol] = useState("BTCUSDT");
   return (
-    <AuthContext.Provider value={{ crypto }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ crypto, chartSymbol, setChartSymbol }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
