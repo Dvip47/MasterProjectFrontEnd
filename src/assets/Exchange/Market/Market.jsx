@@ -1,11 +1,10 @@
-import React from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/Auth";
 
 const Market = () => {
   const { crypto, setChartSymbol } = useContext(AuthContext);
-
+  const header = ["BTC", "ETH", "NEO", "USDT", "DAI", "PAX"];
+  const [currentSymbol, setCurrentSybmol] = useState("BTC");
   return (
     <div className="market-pairs">
       <div className="input-group">
@@ -33,72 +32,25 @@ const Market = () => {
             <i className="icon ion-md-star"></i>
           </a>
         </li>
-        <li className="nav-item">
-          <a
-            className="nav-link active"
-            data-toggle="pill"
-            href="#BTC"
-            role="tab"
-            aria-selected="true"
-          >
-            BTC
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#ETH"
-            role="tab"
-            aria-selected="false"
-          >
-            ETH
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#NEO"
-            role="tab"
-            aria-selected="false"
-          >
-            NEO
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#USDT"
-            role="tab"
-            aria-selected="false"
-          >
-            USDT
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#DAI"
-            role="tab"
-            aria-selected="false"
-          >
-            DAI
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#PAX"
-            role="tab"
-            aria-selected="false"
-          >
-            PAX
-          </a>
-        </li>
+        {header?.map((data, index) => {
+          return (
+            <li
+              key={index}
+              className="nav-item"
+              onClick={() => setCurrentSybmol(data)}
+            >
+              <a
+                className="nav-link active"
+                data-toggle="pill"
+                href="#"
+                role="tab"
+                aria-selected="true"
+              >
+                {data}
+              </a>
+            </li>
+          );
+        })}
       </ul>
       <div className="tab-content">
         <div className="tab-pane fade show active" id="BTC" role="tabpanel">
@@ -112,21 +64,28 @@ const Market = () => {
             </thead>
             <tbody>
               {crypto?.map((data, index) => {
-                return (
-                  <tr key={index} onClick={() => setChartSymbol(data.symbol)}>
-                    <td>
-                      <i className="icon ion-md-star"></i> {data.symbol}
-                    </td>
-                    <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
-                    <td className="red">
-                      {(
-                        ((data?.openPrice - data?.lastPrice) * 100) /
-                        data?.lastPrice
-                      ).toFixed(2)}
-                      %
-                    </td>
-                  </tr>
-                );
+                if (data?.symbol?.includes(currentSymbol)) {
+                  return (
+                    <tr key={index} onClick={() => setChartSymbol(data.symbol)}>
+                      <td>
+                        <i className="icon ion-md-star"></i>{" "}
+                        {data.symbol?.replace(currentSymbol, "")}
+                      </td>
+                      <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
+                      {Number(data?.priceChangePercent) > 0 ? (
+                        <td style={{ color: "green" }}>
+                          {Number(data?.lastPrice)?.toFixed(3)}
+                        </td>
+                      ) : Number(data?.priceChangePercent) == 0 ? (
+                        <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
+                      ) : (
+                        <td style={{ color: "red" }}>
+                          {Number(data?.lastPrice)?.toFixed(5)}
+                        </td>
+                      )}
+                    </tr>
+                  );
+                }
               })}
             </tbody>
           </table>
