@@ -4,9 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
+import { signup, signupValidation } from "../Logic";
 const Signup = () => {
   const navigate = useNavigate();
-  const [input, setInput] = useState({});
+  const [input, setInput] = useState({
+    mobile: "",
+    name: "",
+    email: "",
+    passward: "",
+    code: "",
+  });
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((prev) => {
@@ -18,11 +25,17 @@ const Signup = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(input);
-    if (true) {
-      return navigate("/");
+    const validate = signupValidation(input);
+    if (validate.result) {
+      const res = await signup(input);
+      if (res?.success) {
+        toast.success("Signed up successfully", config);
+        return navigate("/");
+      } else {
+        toast.error("Mobile number already exists", config);
+      }
     } else {
-      toast.error("Invalid credentials", config);
+      toast.error(validate.message, config);
     }
   };
   const title = "Welcome to the TravelRx";
@@ -61,5 +74,4 @@ const Signup = () => {
     </>
   );
 };
-
 export default Signup;

@@ -56,24 +56,22 @@ const Card = ({
                   );
                 })}
                 {type == "signup" && (
-                  <div className="row px-3 ">
+                  <div className="row px-3 mob-text-input">
                     <label className="mb-1">
                       <h6 className="mb-0 text-sm">Enter Mobile Number</h6>
                     </label>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
+                    <div className="mob-textbox">
                       <PhoneInput
-                        inputStyle={{ width: "60%" }}
+                        inputStyle={{
+                          pointerEvents: "none",
+                          borderTopRightRadius: "0px",
+                          borderBottomRightRadius: "0px",
+                        }}
                         enableSearch={true}
                         country="in"
                         onChange={(data) =>
                           setInput((prev) => {
-                            return { ...prev, countryCode: data };
+                            return { ...prev, code: data };
                           })
                         }
                         countryCodeEditable={false}
@@ -84,7 +82,7 @@ const Card = ({
                         placeholder="Enter mobile number"
                         onChange={handleChange}
                         maxLength={10}
-                        max={10}
+                        className="react-tel-inputbox"
                       />
                     </div>
                   </div>

@@ -1,9 +1,10 @@
 import axios from "axios";
+import { BASEURL } from "../constants/constants";
 export const getFetch = async (url) => {
   const bearerToken = localStorage.getItem("token");
   try {
     const response = await axios({
-      url,
+      url: `${BASEURL}${url}`,
       headers: {
         Authorization: `Bearer ${bearerToken}`,
       },
@@ -25,7 +26,7 @@ export const getOneFetch = async (url, id) => {
   try {
     const bearerToken = localStorage.getItem("token");
     const response = await axios({
-      url: `${url}/${id}`,
+      url: `${BASEURL}${url}/${id}`,
       headers: {
         Authorization: `Bearer ${bearerToken}`,
       },
@@ -47,7 +48,7 @@ export const postFetch = async (url, data) => {
     const bearerToken = localStorage.getItem("token");
     const response = await axios({
       method: "post",
-      url: url,
+      url: `${BASEURL}${url}`,
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${bearerToken}`,
@@ -56,7 +57,7 @@ export const postFetch = async (url, data) => {
       withCredentials: true,
     });
     if (response.status === 200) {
-      return response;
+      return response.data;
     }
   } catch (error) {
     if (error.response.status === 401) {
@@ -71,7 +72,7 @@ export const postFetchById = async (url, id = "", data) => {
     const bearerToken = localStorage.getItem("token");
     const response = await axios({
       method: "post",
-      url: `${url}${id}`,
+      url: `${BASEURL}${url}/${id}`,
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${bearerToken}`,
@@ -80,7 +81,7 @@ export const postFetchById = async (url, id = "", data) => {
       withCredentials: true,
     });
     if (response.status === 200) {
-      return response;
+      return response.data;
     }
   } catch (error) {
     if (error.response.status === 401) {
@@ -103,7 +104,7 @@ export const patchFetch = async (url, data) => {
       withCredentials: true,
     });
     if (response.status === 200) {
-      return await response;
+      return await response.data;
     }
   } catch (error) {
     if (error.response.status === 401) {
@@ -125,7 +126,7 @@ export const deleteFetch = async (url, id) => {
       withCredentials: true,
     });
     if (response.status === 200) {
-      return response;
+      return response.data;
     }
   } catch (error) {
     if (error.response.status === 401) {

@@ -1,8 +1,6 @@
-export const LOGIN = "api/v1/users/Admin";
-export const GAMELIST = "api/v1/game/gameList";
-export const BID = "api/v1/game/bid";
-export const WINNER = "api/v1/game/winner";
-export const UPDATE = "api/v1/game/insertDmmy";
+export const BASEURL = "http://localhost:5000/";
+export const LOGIN = "user/v1/login";
+export const SIGNUP = "user/v1/signup";
 export const config = {
   position: "top-right",
   autoClose: 1000,
