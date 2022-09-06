@@ -42,7 +42,6 @@ export const forgetValidation = (input) => {
 export const resetValidation = (input) => {
   let message = "";
   let result = true;
-  console.log(input);
   if (input.passward?.trim()?.length < 5) {
     return { message: "Invalid passward", result: false };
   }
