@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
 import { signup, signupValidation } from "../Logic";
+import Popup from "../../../assets/Credentials/Popup";
 const Signup = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -12,8 +13,9 @@ const Signup = () => {
     name: "",
     email: "",
     passward: "",
-    code: "",
+    code: 91,
   });
+  const [pop, setPop] = useState(false);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((prev) => {
@@ -30,7 +32,7 @@ const Signup = () => {
       const res = await signup(input);
       if (res?.success) {
         toast.success("Signed up successfully", config);
-        return navigate("/");
+        setPop(true);
       } else {
         toast.error("Mobile number already exists", config);
       }
@@ -62,6 +64,7 @@ const Signup = () => {
   return (
     <>
       <ToastContainer />
+      {pop && <Popup navigate={navigate} setPop={setPop} />}
       <Card
         handleChange={handleChange}
         handleSubmit={handleSubmit}

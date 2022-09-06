@@ -8,7 +8,7 @@ export const getFetch = async (url) => {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
       },
-      // withCredentials: true,
+      withCredentials: true,
     });
     if (response.status === 200) {
       return await response.data;

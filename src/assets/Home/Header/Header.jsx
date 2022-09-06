@@ -16,17 +16,25 @@ const Header = () => {
         <div className="loader"></div>
       </div> */}
       <div className="container-fluid">
-        <a href="#" className="site-logo" onClick={() => navigate("/")}>
+        <a
+          href="javascript:void(0)"
+          className="site-logo"
+          onClick={() => navigate("/")}
+        >
           <img src="img/logo.png" alt="" />
         </a>
         <div className="responsive-bar" onClick={() => navigate("/")}>
           <i className="fa fa-bars"></i>
         </div>
-        <a href="#" className="user" onClick={() => navigate("/")}>
+        <a
+          href="javascript:void(0)"
+          className="user"
+          onClick={() => navigate("/")}
+        >
           <i className="fa fa-user"></i>
         </a>
         <a
-          href="#"
+          href="javascript:void(0)"
           className="site-btn"
           onClick={() => navigate(`/credential`, { state: "signup" })}
         >
@@ -38,7 +46,7 @@ const Header = () => {
               return (
                 <li key={index}>
                   <a
-                    href="#"
+                    href="javascript:void(0)"
                     onClick={() =>
                       navigate(`${data.location}`, { state: data.state })
                     }

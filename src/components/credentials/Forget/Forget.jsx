@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { config, LOGIN } from "../../../constants/constants";
+import { config } from "../../../constants/constants";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/Auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
+import { forget, forgetValidation } from "../Logic";
 const Forget = () => {
   const { setToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -20,12 +21,18 @@ const Forget = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(input);
-    if (true) {
-      setToken();
-      return navigate("/");
+    const validate = forgetValidation(input);
+    if (validate.result) {
+      const res = await forget(input);
+      if (res?.success) {
+        toast.success(res.message, config);
+        localStorage.setItem("token", res.token);
+        return navigate("/");
+      } else {
+        toast.error(res?.message, config);
+      }
     } else {
-      toast.error("Invalid credentials", config);
+      toast.error(validate.message, config);
     }
   };
   const title = "Welcome Back to TravelRx";

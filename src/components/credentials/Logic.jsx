@@ -1,5 +1,5 @@
 import { postFetch } from "../../api/api";
-import { SIGNUP } from "../../constants/constants";
+import { FORGET, LOGIN, SIGNUP } from "../../constants/constants";
 export const signupValidation = (input) => {
   let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
   let message = "";
@@ -10,7 +10,7 @@ export const signupValidation = (input) => {
   if (!regex.test(input?.email)) {
     return { message: "Invalid email", result: false };
   }
-  if (!input.passward?.trim()?.length > 5) {
+  if (input.passward?.trim()?.length < 5) {
     return { message: "Invalid passward", result: false };
   }
   if (!input.mobile?.trim()?.length < 11 && !input.mobile?.trim()?.length > 0) {
@@ -18,9 +18,47 @@ export const signupValidation = (input) => {
   }
   return { message, result };
 };
+export const loginValidation = (input) => {
+  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  let message = "";
+  let result = true;
+  if (!regex.test(input?.email)) {
+    return { message: "Invalid email", result: false };
+  }
+  if (input.passward?.trim()?.length < 5) {
+    return { message: "Invalid passward", result: false };
+  }
+  return { message, result };
+};
+export const forgetValidation = (input) => {
+  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  let message = "";
+  let result = true;
+  if (!regex.test(input?.email)) {
+    return { message: "Invalid email", result: false };
+  }
+  return { message, result };
+};
 export const signup = async (data) => {
   try {
     const res = await postFetch(SIGNUP, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const login = async (data) => {
+  try {
+    const res = await postFetch(LOGIN, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const forget = async (data) => {
+  try {
+    const res = await postFetch(FORGET, data);
+    console.log(res);
     return res;
   } catch (error) {
     return error;

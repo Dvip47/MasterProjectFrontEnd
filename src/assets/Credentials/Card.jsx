@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/bootstrap.css";
 import "./card.css";

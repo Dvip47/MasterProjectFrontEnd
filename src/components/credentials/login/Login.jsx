@@ -1,14 +1,16 @@
-import React, { useContext, useState } from "react";
-import { config, LOGIN } from "../../../constants/constants";
+import React, { useState } from "react";
+import { config } from "../../../constants/constants";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/Auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
+import { login, loginValidation } from "../Logic";
 const Login = () => {
-  const { setToken } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState({
+    email: "",
+    passward: "",
+  });
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((prev) => {
@@ -20,12 +22,18 @@ const Login = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(input);
-    if (true) {
-      setToken();
-      return navigate("/");
+    const validate = loginValidation(input);
+    if (validate.result) {
+      const res = await login(input);
+      if (res?.success) {
+        toast.success("Logged in successfully", config);
+        localStorage.setItem("token", res.token);
+        return navigate("/");
+      } else {
+        toast.error(res?.message, config);
+      }
     } else {
-      toast.error("Invalid credentials", config);
+      toast.error(validate.message, config);
     }
   };
   const title = "Welcome Back to TravelRx";

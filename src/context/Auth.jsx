@@ -11,7 +11,6 @@ const Auth = ({ children }) => {
     let time = setInterval(() => {
       call();
     }, 2000);
-
     return () => {
       clearInterval(time);
     };

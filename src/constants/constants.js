@@ -1,6 +1,7 @@
 export const BASEURL = "http://localhost:5000/";
 export const LOGIN = "user/v1/login";
 export const SIGNUP = "user/v1/signup";
+export const FORGET = "user/v1/forget";
 export const config = {
   position: "top-right",
   autoClose: 1000,
