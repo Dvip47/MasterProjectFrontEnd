@@ -119,7 +119,9 @@ const Card = ({
                       ? "Send"
                       : type == "login"
                       ? "Login"
-                      : "Sign up"}{" "}
+                      : type == "reset"
+                      ? "Reset"
+                      : "Sign up"}
                   </button>
                 </div>
               </form>

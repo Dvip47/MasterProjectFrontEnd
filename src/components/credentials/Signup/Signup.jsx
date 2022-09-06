@@ -31,7 +31,7 @@ const Signup = () => {
     if (validate.result) {
       const res = await signup(input);
       if (res?.success) {
-        toast.success("Signed up successfully", config);
+        // toast.success("Signed up successfully", config);
         setPop(true);
       } else {
         toast.error("Mobile number already exists", config);

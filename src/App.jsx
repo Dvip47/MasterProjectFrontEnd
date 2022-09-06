@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Credentials from "./components/credentials/Credentials";
+import Reset from "./components/credentials/Reset/Reset";
 import Exchange from "./components/Exchange/Exchange";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
@@ -12,6 +13,7 @@ function App() {
       <Route exact path="/exchange" element={<Exchange />} />
       <Route exact path="/credential" element={<Credentials />} />
       <Route exact path="/transaction" element={<Transaction />} />
+      <Route exact path="/travelRxReset:token" element={<Reset />} />
     </Routes>
   );
 }
