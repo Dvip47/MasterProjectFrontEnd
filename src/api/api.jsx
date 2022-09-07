@@ -67,6 +67,30 @@ export const postFetch = async (url, data) => {
     }
   }
 };
+export const postFetchbByImg = async (url, data) => {
+  try {
+    const bearerToken = localStorage.getItem("token");
+    const response = await axios({
+      method: "post",
+      url: `${BASEURL}${url}`,
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: `Bearer ${bearerToken}`,
+      },
+      data: data,
+      withCredentials: true,
+    });
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      return 401;
+    } else {
+      return error.response;
+    }
+  }
+};
 export const postFetchById = async (url, id = "", data) => {
   try {
     const bearerToken = localStorage.getItem("token");

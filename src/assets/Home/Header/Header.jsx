@@ -12,9 +12,6 @@ const Header = () => {
   ];
   return (
     <header className="header-section clearfix">
-      {/* <div id="preloder">
-        <div className="loader"></div>
-      </div> */}
       <div className="container-fluid">
         <a
           href="javascript:void(0)"

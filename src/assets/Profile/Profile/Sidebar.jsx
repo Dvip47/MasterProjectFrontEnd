@@ -33,6 +33,28 @@ const Sidebar = () => {
         </a>
         <a
           className="nav-link"
+          id="settings-kyc-tab"
+          data-toggle="pill"
+          href="#settings-kyc"
+          role="tab"
+          aria-controls="kyc-wallet"
+          aria-selected="false"
+        >
+          <i className="icon ion-md-wallet"></i> KYC
+        </a>
+        <a
+          className="nav-link"
+          id="settings-wallet-tab"
+          data-toggle="pill"
+          href="#settings-bank"
+          role="tab"
+          aria-controls="settings-wallet"
+          aria-selected="false"
+        >
+          <i className="icon ion-md-wallet"></i> Bank
+        </a>
+        <a
+          className="nav-link"
           id="settings-tab"
           data-toggle="pill"
           href="#settings"

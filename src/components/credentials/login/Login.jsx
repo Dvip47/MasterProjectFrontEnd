@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { config } from "../../../constants/constants";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
 import { login, loginValidation } from "../Logic";
+import jwt from "jwt-decode";
+import { AuthContext } from "../../../context/Auth";
 const Login = () => {
+  const { setUserData, setLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [input, setInput] = useState({
     email: "",
@@ -27,7 +30,9 @@ const Login = () => {
       const res = await login(input);
       if (res?.success) {
         toast.success("Logged in successfully", config);
+        setUserData(jwt(res.token)?.data);
         localStorage.setItem("token", res.token);
+        setLogin(true);
         return navigate("/");
       } else {
         toast.error(res?.message, config);

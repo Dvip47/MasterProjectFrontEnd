@@ -4,7 +4,7 @@ import TVChartContainer from "../../../components/TVChartContainer/TVChartContai
 const MainChart = () => {
   return (
     <div className="main-chart mb15">
-      <div class="tradingview-widget-container">
+      <div className="tradingview-widget-container">
         <div id="tradingview_e8053">
           <TVChartContainer />
         </div>

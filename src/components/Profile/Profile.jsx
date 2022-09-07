@@ -1,8 +1,11 @@
 import React from "react";
 import Header from "../../assets/Exchange/Header/Header";
+import Bank from "../../assets/Profile/Bank/Bank";
 import Footer from "../../assets/Profile/Footer/Footer";
+import Kyc from "../../assets/Profile/Kyc/Kyc";
 import ProfileCard from "../../assets/Profile/Profile/ProfileCard";
 import Sidebar from "../../assets/Profile/Profile/Sidebar";
+import ResetPassward from "../../assets/Profile/Resetpassward/ResetPassward";
 import SettingCard from "../../assets/Profile/Setting/SettingCard";
 import Balance from "../../assets/Profile/Wallet/Balance";
 import Card from "../../assets/Profile/Wallet/Card";
@@ -25,135 +28,7 @@ const Profile = () => {
                   aria-labelledby="settings-profile-tab"
                 >
                   <ProfileCard />
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">Security Information</h5>
-                      <div className="settings-profile">
-                        <form>
-                          <div className="form-row">
-                            <div className="col-md-6">
-                              <label htmlFor="currentPass">
-                                Current password
-                              </label>
-                              <input
-                                id="currentPass"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your password"
-                              />
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="newPass">New password</label>
-                              <input
-                                id="newPass"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter new password"
-                              />
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="securityOne">
-                                Security questions #1
-                              </label>
-                              <select
-                                id="securityOne"
-                                className="custom-select"
-                              >
-                                <option defaultValue="vashu">
-                                  What was the name of your first pet?
-                                </option>
-                                <option>
-                                  What's your Mother's middle name?
-                                </option>
-                                <option>
-                                  What was the name of your first school?
-                                </option>
-                                <option>
-                                  Where did you travel for the first time?
-                                </option>
-                              </select>
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="securityAnsOne">Answer</label>
-                              <input
-                                id="securityAnsOne"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your answer"
-                              />
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="securityTwo">
-                                Security questions #2
-                              </label>
-                              <select
-                                id="securityTwo"
-                                className="custom-select"
-                              >
-                                <option defaultValue="vashu">Choose...</option>
-                                <option>
-                                  What was the name of your first pet?
-                                </option>
-                                <option>
-                                  What's your Mother's middle name?
-                                </option>
-                                <option>
-                                  What was the name of your first school?
-                                </option>
-                                <option>
-                                  Where did you travel for the first time?
-                                </option>
-                              </select>
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="securityAnsTwo">Answer</label>
-                              <input
-                                id="securityAnsTwo"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your answer"
-                              />
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="securityThree">
-                                Security questions #3
-                              </label>
-                              <select
-                                id="securityThree"
-                                className="custom-select"
-                              >
-                                <option defaultValue="vashu">Choose...</option>
-                                <option>
-                                  What was the name of your first pet?
-                                </option>
-                                <option>
-                                  What's your Mother's middle name?
-                                </option>
-                                <option>
-                                  What was the name of your first school?
-                                </option>
-                                <option>
-                                  Where did you travel for the first time?
-                                </option>
-                              </select>
-                            </div>
-                            <div className="col-md-6">
-                              <label htmlFor="securityFore">Answer</label>
-                              <input
-                                id="securityFore"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your answer"
-                              />
-                            </div>
-                            <div className="col-md-12">
-                              <input type="submit" defaultValue="Update" />
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                  <ResetPassward />
                 </div>
                 <div
                   className="tab-pane fade"
@@ -180,6 +55,8 @@ const Profile = () => {
                   </div>
                 </div>
                 <SettingCard />
+                <Kyc />
+                <Bank />
               </div>
             </div>
           </div>
