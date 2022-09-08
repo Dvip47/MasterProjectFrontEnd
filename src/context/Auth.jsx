@@ -11,12 +11,14 @@ export const AuthContext = createContext({
   setLogin: () => {},
   setLoader: () => {},
   loader: false,
+  setKycPage: () => {},
+  kycPage: "",
 });
 const Auth = ({ children }) => {
   const [crypto, setCrypto] = useState([]);
   useEffect(() => {
     let time = setInterval(() => {
-      call();
+      // call();
     }, 2000);
     return () => {
       clearInterval(time);
@@ -37,6 +39,7 @@ const Auth = ({ children }) => {
       setLogin(true);
     }
   };
+  const [kycPage, setKycPage] = useState("");
   const [loader, setLoader] = useState(false);
   const [login, setLogin] = useState(false);
   const [userData, setUserData] = useState({});
@@ -53,6 +56,8 @@ const Auth = ({ children }) => {
         setLogin,
         loader,
         setLoader,
+        kycPage,
+        setKycPage,
       }}
     >
       {children}

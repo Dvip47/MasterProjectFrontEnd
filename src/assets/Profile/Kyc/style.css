@@ -1,0 +1,30 @@
+#settings-kyc .settings-profile .custom-file {
+  width: 100%;
+}
+.w-20 {
+  width: 20%;
+}
+.fontW-700 {
+  font-weight: 700;
+}
+.tab-content > .tab-pane {
+  min-height: 450px;
+}
+.message-pop {
+  width: 346px;
+  background: #dfeeff;
+  border-radius: 3px;
+  padding: 20px 0;
+  border: 1px solid #bbdbff;
+}
+.settings-profile input[type="submit"] {
+  width: 20%;
+}
+.btn-blue-light {
+  background: #d3e8ff;
+  border: 1px solid #bdddff;
+  color: #007bff;
+}
+.btn-sm {
+  padding: 6px 0;
+}

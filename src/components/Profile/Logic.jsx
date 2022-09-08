@@ -1,5 +1,5 @@
 import { postFetch } from "../../api/api";
-import { UPDATEPASSWARD, UPDATEPROFILE } from "../../constants/constants";
+import { KYC, UPDATEPASSWARD, UPDATEPROFILE } from "../../constants/constants";
 
 export const updateProfileValidation = (input) => {
   let message = "";
@@ -20,6 +20,67 @@ export const updatePasswardValidation = (input) => {
   }
   return { message, result };
 };
+export const kycValidation = (input) => {
+  let message = "";
+  let result = true;
+  if (input?.pan == undefined || input?.pan == null || input?.pan == "") {
+    return { message: "Please select Pan Card", result: false };
+  }
+  if (
+    input?.adharFront == undefined ||
+    input?.adharFront == null ||
+    input?.adharFront == ""
+  ) {
+    return { message: "Please select Adhar Card Front", result: false };
+  }
+  if (
+    input?.adharBack == undefined ||
+    input?.adharBack == null ||
+    input?.adharBack == ""
+  ) {
+    return { message: "Please select Adhar Card Back", result: false };
+  }
+  if (
+    input?.uniqueNumber == undefined ||
+    input?.uniqueNumber == null ||
+    input?.uniqueNumber == ""
+  ) {
+    return { message: "Please select Selfie Image", result: false };
+  }
+  if (
+    input?.panNumber.trim().length > 12 ||
+    input?.panNumber.trim().length < 12
+  ) {
+    return { message: "Invalid Pan Card Number", result: false };
+  }
+  if (
+    input?.adharNumber.trim().length > 16 ||
+    input?.adharNumber.trim().length < 16
+  ) {
+    return { message: "Invalid Adhar Card Number", result: false };
+  }
+  return { message, result };
+};
+export const bankValidation = (input) => {
+  let message = "";
+  let result = true;
+  let regex = new RegExp("[0-9]");
+  console.log(input);
+  console.log(regex.test(input?.accountNumber));
+  if (input?.bankName?.trim().length < 3) {
+    return { message: "Invalid Bank Name", result: false };
+  }
+  if (input?.accountNumber?.length != 14 || !regex.test(input?.accountNumber)) {
+    return { message: "Invalid Bank Account", result: false };
+  }
+  if (input?.accountNumber !== input?.confirmAccountNumber) {
+    return { message: "Account Number does not matched", result: false };
+  }
+  if (input?.ifscCode?.trim().length < 8) {
+    return { message: "Invalid IFSC code", result: false };
+  }
+  return { message, result };
+};
 export const updateProfile = async (data) => {
   try {
     const res = await postFetch(UPDATEPROFILE, data);
@@ -31,6 +92,14 @@ export const updateProfile = async (data) => {
 export const updatePassward = async (data) => {
   try {
     const res = await postFetch(UPDATEPASSWARD, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const kyc = async (data) => {
+  try {
+    const res = await postFetch(KYC, data);
     return res;
   } catch (error) {
     return error;

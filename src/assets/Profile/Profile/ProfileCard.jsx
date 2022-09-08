@@ -24,7 +24,6 @@ const ProfileCard = () => {
     let user = jwt(token);
     const res = await postFetch(PROFILEDATA, { email: user.data.email });
     if (res.success) {
-      console.log("");
       setInput({
         name: res.message[0].name,
         profileImg: res.message[0].profileImg,
