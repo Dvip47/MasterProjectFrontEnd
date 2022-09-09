@@ -17,9 +17,8 @@ export const AuthContext = createContext({
 const Auth = ({ children }) => {
   const [crypto, setCrypto] = useState([]);
   useEffect(() => {
-    let time = setInterval(() => {
-      // call();
-    }, 2000);
+    call();
+    let time = setInterval(() => {}, 2000000000);
     return () => {
       clearInterval(time);
     };

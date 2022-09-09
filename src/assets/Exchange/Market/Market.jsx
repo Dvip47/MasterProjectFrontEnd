@@ -5,6 +5,25 @@ const Market = () => {
   const { crypto, setChartSymbol } = useContext(AuthContext);
   const header = ["BTC", "ETH", "NEO", "USDT", "DAI", "PAX"];
   const [currentSymbol, setCurrentSybmol] = useState("BTC");
+  const [input, setInput] = useState("");
+  let BodyResult = (data, index) => (
+    <tr key={index} onClick={() => setChartSymbol(data.symbol)}>
+      <td>
+        <i className="icon ion-md-star"></i>{" "}
+        {data.symbol?.replace(currentSymbol, "")}
+      </td>
+      <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
+      {Number(data?.priceChangePercent) > 0 ? (
+        <td style={{ color: "green" }}>
+          {Number(data?.lastPrice)?.toFixed(3)}
+        </td>
+      ) : Number(data?.priceChangePercent) == 0 ? (
+        <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
+      ) : (
+        <td style={{ color: "red" }}>{Number(data?.lastPrice)?.toFixed(5)}</td>
+      )}
+    </tr>
+  );
   return (
     <div className="market-pairs">
       <div className="input-group">
@@ -18,6 +37,7 @@ const Market = () => {
           className="form-control"
           placeholder="Search"
           aria-describedby="inputGroup-sizing-sm"
+          onChange={(e) => setInput(e.target.value.toUpperCase())}
         />
       </div>
       <ul className="nav nav-pills" role="tablist">
@@ -65,26 +85,13 @@ const Market = () => {
             <tbody>
               {crypto?.map((data, index) => {
                 if (data?.symbol?.includes(currentSymbol)) {
-                  return (
-                    <tr key={index} onClick={() => setChartSymbol(data.symbol)}>
-                      <td>
-                        <i className="icon ion-md-star"></i>{" "}
-                        {data.symbol?.replace(currentSymbol, "")}
-                      </td>
-                      <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
-                      {Number(data?.priceChangePercent) > 0 ? (
-                        <td style={{ color: "green" }}>
-                          {Number(data?.lastPrice)?.toFixed(3)}
-                        </td>
-                      ) : Number(data?.priceChangePercent) == 0 ? (
-                        <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
-                      ) : (
-                        <td style={{ color: "red" }}>
-                          {Number(data?.lastPrice)?.toFixed(5)}
-                        </td>
-                      )}
-                    </tr>
-                  );
+                  if (input == "") {
+                    return BodyResult(data, index);
+                  } else if (
+                    data?.symbol?.replace(currentSymbol, "") == input
+                  ) {
+                    return BodyResult(data, index);
+                  }
                 }
               })}
             </tbody>
