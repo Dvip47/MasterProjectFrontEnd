@@ -9,6 +9,8 @@ export const PROFILEDATA = "query/v1/profile";
 export const KYC = "kyc/v1/kyc";
 export const BANKDETAIL = "bank/v1/bank";
 export const UTR = "bank/v1/utr";
+export const VERIFY = "bank/v1/verify";
+export const SECURITY = "user/v1/security";
 export const config = {
   position: "top-right",
   autoClose: 1000,

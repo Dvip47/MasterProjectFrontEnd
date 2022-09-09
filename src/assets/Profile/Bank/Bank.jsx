@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import {
@@ -6,6 +6,7 @@ import {
   bankValidation,
   utrSubmit,
   utrValidation,
+  verify,
 } from "../../../components/Profile/Logic";
 import { config } from "../../../constants/constants";
 import { AuthContext } from "../../../context/Auth";
@@ -48,14 +49,40 @@ const Bank = () => {
       toast.error(validate.message, config);
     }
   };
+  const handleSubmitVerify = async () => {
+    const res = await verify({
+      email: userData.email,
+      mobile: userData.mobile,
+      accountNumber: input.accountNumber,
+    });
+    if (res?.success) {
+      toast.success("2nd step completed", config);
+      setBeneName(res.message.accountHolderName);
+      setProcess({ verify: false, utr: true });
+      setDisable({ submit: false });
+    } else {
+      toast.error(res.message, config);
+    }
+  };
   const handleSubmitUtr = async (e) => {
     e.preventDefault();
     const validate = utrValidation(input);
     if (validate.result) {
-      const res = await utrSubmit(utr);
+      const res = await utrSubmit({
+        utr: utr,
+        email: userData.email,
+        accountNumber: input.accountNumber,
+      });
+      console.log(res);
       if (res?.success) {
         setProcess({ utr: false, verify: false });
         toast.success("Bank Added Successfully", config);
+        setInput({
+          bankName: "",
+          accountNumber: "",
+          confirmAccountNumber: "",
+          ifscCode: "",
+        });
       } else {
         toast.error(res.message, config);
       }
@@ -63,20 +90,11 @@ const Bank = () => {
       toast.error(validate.message, config);
     }
   };
-  const handleSubmitVerify = async () => {
-    // const res = await kyc(formData);
-    // if (res?.success) {
-    //   toast.success("Details uploaded", config);
-    //  setProcess({ verify: false, utr: true });
-    // setDisable({ submit: false });
-    // } else {
-    //   toast.error(res.message, config);
-    // }
-  };
   const [process, setProcess] = useState({
     verify: false,
     utr: false,
   });
+  const [beneName, setBeneName] = useState("");
   const [disable, setDisable] = useState({ submit: false });
   return (
     <div
@@ -101,6 +119,7 @@ const Bank = () => {
                     placeholder="Bank Name"
                     name="bankName"
                     onChange={handleChange}
+                    value={input.bankName}
                   />
                 </div>
                 <div className="col-md-6">
@@ -113,6 +132,7 @@ const Bank = () => {
                     onChange={handleChange}
                     name="accountNumber"
                     maxLength={14}
+                    value={input.accountNumber}
                   />
                 </div>
                 <div className="col-md-6">
@@ -125,6 +145,7 @@ const Bank = () => {
                     name="confirmAccountNumber"
                     maxLength={14}
                     onChange={handleChange}
+                    value={input.confirmAccountNumber}
                   />
                 </div>
                 <div className="col-md-6">
@@ -138,6 +159,7 @@ const Bank = () => {
                     name="ifscCode"
                     maxLength={11}
                     style={{ textTransform: "uppercase" }}
+                    value={input.ifscCode}
                   />
                 </div>
                 <div className="col-md-12">
@@ -153,7 +175,7 @@ const Bank = () => {
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">
-                          vashudev
+                          {beneName}
                         </span>
                       </div>
                       <input

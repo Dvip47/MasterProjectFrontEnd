@@ -2,9 +2,11 @@ import { postFetch } from "../../api/api";
 import {
   BANKDETAIL,
   KYC,
+  SECURITY,
   UPDATEPASSWARD,
   UPDATEPROFILE,
   UTR,
+  VERIFY,
 } from "../../constants/constants";
 
 export const updateProfileValidation = (input) => {
@@ -88,7 +90,7 @@ export const bankValidation = (input) => {
 export const utrValidation = (input) => {
   let message = "";
   let result = true;
-  if (input?.trim().length < 5) {
+  if (input?.length < 5) {
     return { message: "Invalid UTR Number", result: false };
   }
   return { message, result };
@@ -128,6 +130,22 @@ export const bankDeatils = async (data) => {
 export const utrSubmit = async (data) => {
   try {
     const res = await postFetch(UTR, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const verify = async (data) => {
+  try {
+    const res = await postFetch(VERIFY, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const security = async (data) => {
+  try {
+    const res = await postFetch(SECURITY, data);
     return res;
   } catch (error) {
     return error;
