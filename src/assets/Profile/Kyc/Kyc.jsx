@@ -41,7 +41,7 @@ const Kyc = () => {
       formData.append("adharBack", input.adharBack);
       formData.append("uniqueNumber", input.uniqueNumber);
       formData.append("adharNumber", input.adharNumber);
-      formData.append("panNumber", input.panNumber);
+      formData.append("panNumber", input.panNumber.toUpperCase());
       formData.append("email", userData?.email);
       const res = await kyc(formData);
       if (res?.success) {

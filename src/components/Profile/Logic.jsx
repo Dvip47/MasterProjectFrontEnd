@@ -1,5 +1,11 @@
 import { postFetch } from "../../api/api";
-import { KYC, UPDATEPASSWARD, UPDATEPROFILE } from "../../constants/constants";
+import {
+  BANKDETAIL,
+  KYC,
+  UPDATEPASSWARD,
+  UPDATEPROFILE,
+  UTR,
+} from "../../constants/constants";
 
 export const updateProfileValidation = (input) => {
   let message = "";
@@ -65,8 +71,6 @@ export const bankValidation = (input) => {
   let message = "";
   let result = true;
   let regex = new RegExp("[0-9]");
-  console.log(input);
-  console.log(regex.test(input?.accountNumber));
   if (input?.bankName?.trim().length < 3) {
     return { message: "Invalid Bank Name", result: false };
   }
@@ -78,6 +82,14 @@ export const bankValidation = (input) => {
   }
   if (input?.ifscCode?.trim().length < 8) {
     return { message: "Invalid IFSC code", result: false };
+  }
+  return { message, result };
+};
+export const utrValidation = (input) => {
+  let message = "";
+  let result = true;
+  if (input?.trim().length < 5) {
+    return { message: "Invalid UTR Number", result: false };
   }
   return { message, result };
 };
@@ -100,6 +112,22 @@ export const updatePassward = async (data) => {
 export const kyc = async (data) => {
   try {
     const res = await postFetch(KYC, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const bankDeatils = async (data) => {
+  try {
+    const res = await postFetch(BANKDETAIL, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const utrSubmit = async (data) => {
+  try {
+    const res = await postFetch(UTR, data);
     return res;
   } catch (error) {
     return error;
