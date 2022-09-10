@@ -11,6 +11,7 @@ export const BANKDETAIL = "bank/v1/bank";
 export const UTR = "bank/v1/utr";
 export const VERIFY = "bank/v1/verify";
 export const SECURITY = "user/v1/security";
+export const VERIFYSECURITY = "user/v1/verifysecurity";
 export const config = {
   position: "top-right",
   autoClose: 1000,

@@ -7,6 +7,7 @@ import {
   UPDATEPROFILE,
   UTR,
   VERIFY,
+  VERIFYSECURITY,
 } from "../../constants/constants";
 
 export const updateProfileValidation = (input) => {
@@ -146,6 +147,14 @@ export const verify = async (data) => {
 export const security = async (data) => {
   try {
     const res = await postFetch(SECURITY, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const verifySecurity = async (data) => {
+  try {
+    const res = await postFetch(VERIFYSECURITY, data);
     return res;
   } catch (error) {
     return error;
