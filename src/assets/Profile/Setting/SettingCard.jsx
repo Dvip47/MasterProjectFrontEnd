@@ -50,7 +50,7 @@ const SettingCard = () => {
   const callProfile = async () => {
     const res = await postFetch(PROFILEDATA, { email: userData.email });
     if (res.success) {
-      setUserData(res.message[0]);
+      return setUserData(res.message[0]);
     } else {
       toast.error(res.message, config);
     }
