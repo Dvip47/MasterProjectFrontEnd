@@ -1,13 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
 import { ToastContainer } from "react-toastify";
-=======
 import { useContext } from "react";
-<<<<<<< HEAD
-import CardModal from "../../assets/card/CardModal";
-=======
->>>>>>> 3ad73f96e0791cbf2e1707dce704d2fe3341d394
->>>>>>> dbac4058d43c772fd6f3f30cc82b5fcfc20b44a8
 import Header from "../../assets/Exchange/Header/Header";
 import Bank from "../../assets/Profile/Bank/Bank";
 import Footer from "../../assets/Profile/Footer/Footer";
