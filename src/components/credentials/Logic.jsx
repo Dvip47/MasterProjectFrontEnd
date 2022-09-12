@@ -11,10 +11,10 @@ export const signupValidation = (input) => {
     return { message: "Invalid email", result: false };
   }
   if (input.passward?.trim()?.length < 5) {
-    return { message: "Invalid passward", result: false };
+    return { message: "Passward never less than 5 digit", result: false };
   }
   if (!input.mobile?.trim()?.length < 11 && !input.mobile?.trim()?.length > 0) {
-    return { message: "Invalid mobile number", result: false };
+    return { message: "Mobile number Not less then 10 digit", result: false };
   }
   return { message, result };
 };

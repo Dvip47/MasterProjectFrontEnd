@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import Header from "../../assets/Exchange/Header/Header";
 import Bank from "../../assets/Profile/Bank/Bank";
 import Footer from "../../assets/Profile/Footer/Footer";
@@ -15,6 +16,7 @@ const Profile = () => {
   return (
     <>
       <Header />
+      <ToastContainer />
       <div className="settings mtb15">
         <div className="container-fluid">
           <div className="row">
