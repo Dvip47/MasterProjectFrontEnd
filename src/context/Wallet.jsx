@@ -4,7 +4,7 @@ export const WallteContext = createContext({
   deposite: "INR",
 });
 const WalletState = ({ children }) => {
-  const [deposite, setDesposite] = useState("INR");
+  const [deposite, setDesposite] = useState({ symbol: "INR" });
   return (
     <WallteContext.Provider value={{ deposite, setDesposite }}>
       {children}

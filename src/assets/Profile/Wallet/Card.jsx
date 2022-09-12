@@ -1,6 +1,13 @@
 import React from "react";
+import { useContext } from "react";
+import { useEffect } from "react";
+import { WallteContext } from "../../../context/Wallet";
 
 const Card = () => {
+  const { setDesposite } = useContext(WallteContext);
+  useEffect(() => {
+    setDesposite(data[0]);
+  }, []);
   let data = [
     {
       symbol: "INR",
@@ -40,6 +47,7 @@ const Card = () => {
               role="tab"
               aria-selected="true"
               key={index}
+              onClick={() => setDesposite(data)}
             >
               <div className="d-flex">
                 <img src={data.img} alt="btc" />

@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import Header from "../../assets/Exchange/Header/Header";
 import Bank from "../../assets/Profile/Bank/Bank";
 import Footer from "../../assets/Profile/Footer/Footer";
@@ -10,8 +11,10 @@ import SettingCard from "../../assets/Profile/Setting/SettingCard";
 import Balance from "../../assets/Profile/Wallet/Balance";
 import Card from "../../assets/Profile/Wallet/Card";
 import Deposite from "../../assets/Profile/Wallet/Deposite";
+import { WallteContext } from "../../context/Wallet";
 
 const Profile = () => {
+  const { deposite } = useContext(WallteContext);
   return (
     <>
       <Header />
@@ -46,8 +49,11 @@ const Profile = () => {
                             id="coinBTC"
                             role="tabpanel"
                           >
-                            <Balance />
-                            <Deposite />
+                            {deposite.symbol == "INR" ? (
+                              <Balance />
+                            ) : (
+                              <Deposite />
+                            )}
                           </div>
                         </div>
                       </div>
