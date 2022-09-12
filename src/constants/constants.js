@@ -7,6 +7,11 @@ export const UPDATEPROFILE = "user/v1/updateProfile";
 export const UPDATEPASSWARD = "user/v1/updatePassward";
 export const PROFILEDATA = "query/v1/profile";
 export const KYC = "kyc/v1/kyc";
+export const BANKDETAIL = "bank/v1/bank";
+export const UTR = "bank/v1/utr";
+export const VERIFY = "bank/v1/verify";
+export const SECURITY = "user/v1/security";
+export const VERIFYSECURITY = "user/v1/verifysecurity";
 export const config = {
   position: "top-right",
   autoClose: 1000,
