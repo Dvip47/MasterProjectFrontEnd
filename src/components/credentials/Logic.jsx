@@ -1,5 +1,11 @@
 import { postFetch } from "../../api/api";
-import { FORGET, LOGIN, RESET, SIGNUP } from "../../constants/constants";
+import {
+  FORGET,
+  LOGIN,
+  RESET,
+  SIGNUP,
+  VERIFYOTP,
+} from "../../constants/constants";
 export const signupValidation = (input) => {
   let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
   let message = "";
@@ -77,6 +83,14 @@ export const forget = async (data) => {
 export const reset = async (data) => {
   try {
     const res = await postFetch(RESET, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const verifyOtp = async (data) => {
+  try {
+    const res = await postFetch(VERIFYOTP, data);
     return res;
   } catch (error) {
     return error;

@@ -12,6 +12,7 @@ const Card = ({
   inputData = [],
   type,
   setInput,
+  showOtp,
 }) => {
   const navigate = useNavigate();
   useEffect(() => {}, []);
@@ -55,6 +56,20 @@ const Card = ({
                     </div>
                   );
                 })}
+                {type == "login" && showOtp && (
+                  <div className="row px-3">
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">OTP</h6>
+                    </label>
+                    <input
+                      className="mb-4"
+                      type="number"
+                      name="otp"
+                      placeholder="Enter OTP"
+                      onChange={handleChange}
+                    />
+                  </div>
+                )}
                 {type == "signup" && (
                   <div className="row px-3 mob-text-input">
                     <label className="mb-1">

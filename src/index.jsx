@@ -4,12 +4,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import Auth from "./context/Auth";
+import WalletState from "./context/Wallet";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Auth>
-      <App />
-    </Auth>
+    <WalletState>
+      <Auth>
+        <App />
+      </Auth>
+    </WalletState>
   </BrowserRouter>
 );
 reportWebVitals();

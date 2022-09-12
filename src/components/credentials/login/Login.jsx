@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
-import { login, loginValidation } from "../Logic";
+import { login, loginValidation, verifyOtp } from "../Logic";
 import jwt from "jwt-decode";
 import { AuthContext } from "../../../context/Auth";
 const Login = () => {
@@ -13,6 +13,7 @@ const Login = () => {
   const [input, setInput] = useState({
     email: "",
     passward: "",
+    otp: "##",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,9 +26,8 @@ const Login = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validate = loginValidation(input);
-    if (validate.result) {
-      const res = await login(input);
+    if (showOtp) {
+      const res = await verifyOtp(input);
       if (res?.success) {
         toast.success("Logged in successfully", config);
         setUserData(jwt(res.token)?.data);
@@ -38,7 +38,26 @@ const Login = () => {
         toast.error(res?.message, config);
       }
     } else {
-      toast.error(validate.message, config);
+      const validate = loginValidation(input);
+      if (validate.result) {
+        const res = await login(input);
+        if (res?.success) {
+          if (res.message.security == "none") {
+            toast.success("Logged in successfully", config);
+            setUserData(jwt(res.token)?.data);
+            localStorage.setItem("token", res.token);
+            setLogin(true);
+            return navigate("/");
+          } else {
+            toast.success(res?.message, config);
+            setShowOtp(true);
+          }
+        } else {
+          toast.error(res?.message, config);
+        }
+      } else {
+        toast.error(validate.message, config);
+      }
     }
   };
   const title = "Welcome Back to TravelRx";
@@ -56,6 +75,7 @@ const Login = () => {
       label: "Password",
     },
   ];
+  const [showOtp, setShowOtp] = useState(false);
   return (
     <>
       <ToastContainer />
@@ -65,6 +85,7 @@ const Login = () => {
         title={title}
         inputData={inputData}
         type="login"
+        showOtp={showOtp}
       />
     </>
   );

@@ -1,6 +1,9 @@
 import React from "react";
+import { useContext } from "react";
+import { WallteContext } from "../../../context/Wallet";
 
 const Balance = () => {
+  const { deposite } = useContext(WallteContext);
   return (
     <div className="card">
       <div className="card-body">
@@ -9,23 +12,16 @@ const Balance = () => {
           <li className="d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
               <i className="icon ion-md-cash"></i>
-              <h2>Total Equity</h2>
+              <h2>Total Amount</h2>
             </div>
             <div>
-              <h3>5.5894 BTC</h3>
-            </div>
-          </li>
-          <li className="d-flex justify-content-between align-items-center">
-            <div className="d-flex align-items-center">
-              <i className="icon ion-md-checkmark"></i>
-              <h2>Available Margin</h2>
-            </div>
-            <div>
-              <h3>2.480 BTC</h3>
+              <h3>
+                {deposite.amt1} {deposite?.symbol}
+              </h3>
             </div>
           </li>
         </ul>
-        <button className="btn green">Deposit</button>
+        <button className="btn green">Deposite</button>
         <button className="btn red">Withdraw</button>
       </div>
     </div>
