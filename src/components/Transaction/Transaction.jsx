@@ -9,6 +9,7 @@ const Transaction = () => {
     withdraw: true,
     order: true,
   });
+
   const Allheader = [
     "ID",
     "TXN ID",
@@ -67,7 +68,7 @@ const Transaction = () => {
     "Status",
     "Symbol",
     "Type",
-    "Crated",
+    "Created",
     "Action",
   ];
   const OrderHeaderCrypto = [
@@ -84,31 +85,41 @@ const Transaction = () => {
   ];
   return (
     <>
-      {page == "all" && <Table header={Allheader} />}
+      {page == "all" && (
+        <Table header={Allheader} setPage={setPage} page={page} />
+      )}
       {page == "deposite" && (
         <>
           {current.desposite ? (
-            <Table header={depositeHeaderMoney} />
+            <Table header={depositeHeaderMoney} setPage={setPage} page={page} />
           ) : (
-            <Table header={depositeHeaderCrypto} />
+            <Table
+              header={depositeHeaderCrypto}
+              setPage={setPage}
+              page={page}
+            />
           )}
         </>
       )}
       {page == "withdraw" && (
         <>
           {current.withdraw ? (
-            <Table header={WithdrawHeaderMoney} />
+            <Table header={WithdrawHeaderMoney} setPage={setPage} page={page} />
           ) : (
-            <Table header={WithdrawHeaderCrypto} />
+            <Table
+              header={WithdrawHeaderCrypto}
+              setPage={setPage}
+              page={page}
+            />
           )}
         </>
       )}
       {page == "order" && (
         <>
           {current.order ? (
-            <Table header={OrderHeaderMoney} />
+            <Table header={OrderHeaderMoney} setPage={setPage} page={page} />
           ) : (
-            <Table header={OrderHeaderCrypto} />
+            <Table header={OrderHeaderCrypto} setPage={setPage} page={page} />
           )}
         </>
       )}
