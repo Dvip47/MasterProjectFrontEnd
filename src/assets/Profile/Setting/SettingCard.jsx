@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { config, PROFILEDATA } from "../../../constants/constants";
 import { useEffect } from "react";
 import { postFetch } from "../../../api/api";
+import CardModal from "../../card/CardModal";
 const SettingCard = () => {
   const { userData, setUserData } = useContext(AuthContext);
   useEffect(() => {
@@ -100,58 +101,44 @@ const SettingCard = () => {
       aria-labelledby="settings-tab"
     >
       {otpModal.status && (
-        <div
-          style={{
-            position: "absolute",
-            height: "75vh",
-            width: "100%",
-            backgroundColor: "rgba(0,0,0,0.3)",
-            zIndex: 99999,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div className="message text-center">
-            {otpModal.page == "img" && (
-              <div className="message-pop">
-                <img src={otpModal.url} alt="QR code" className="w-20" />
-                <h4 className="fontW-700 mt-2 p-2">
-                  Scan this QR Code with Google Authenticator
-                </h4>
-                <button
-                  onClick={(prev) => setOtpModal({ ...prev, status: false })}
-                >
-                  Close
-                </button>
-              </div>
-            )}
-            {otpModal.page !== "img" && (
-              <div className="message-pop">
-                <h3>Enter OTP To Validate</h3>
-                <form onSubmit={handleSubmitOTP}>
-                  <div className="flex">
-                    <input
-                      id="phoneNumber"
-                      type="text"
-                      className="form-control w-50"
-                      placeholder="Enter OTP"
-                      name="mobile"
-                      maxLength={6}
-                      style={{ margin: "auto" }}
-                      onChange={(e) => setOtp(e.target.value)}
-                    />
-                    <div className="col-md-3 m-auto">
-                      <input type="submit" value="Submit" />
-                    </div>
+        <CardModal closeModal={setOtpModal}>
+          {otpModal.page == "img" && (
+            <div className="message-pop">
+              <img src={otpModal.url} alt="QR code" className="w-20" />
+              <h4 className="fontW-700 mt-2 p-2">
+                Scan this QR Code with Google Authenticator
+              </h4>
+              <button
+                onClick={(prev) => setOtpModal({ ...prev, status: false })}
+              >
+                Close
+              </button>
+            </div>
+          )}
+          {otpModal.page !== "img" && (
+            <div className="message-pop">
+              <h3>Enter OTP To Validate</h3>
+              <form onSubmit={handleSubmitOTP}>
+                <div className="flex">
+                  <input
+                    id="phoneNumber"
+                    type="text"
+                    className="form-control w-50"
+                    placeholder="Enter OTP"
+                    name="mobile"
+                    maxLength={6}
+                    style={{ margin: "auto" }}
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
+                  <div className="col-md-3 m-auto">
+                    <input type="submit" value="Submit" />
                   </div>
-                </form>
-              </div>
-            )}
-          </div>
-        </div>
+                </div>
+              </form>
+            </div>
+          )}
+        </CardModal>
       )}
-      <ToastContainer />
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Notifications</h5>

@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { WallteContext } from "../../../context/Wallet";
 
 const Card = () => {
-  const { setDesposite } = useContext(WallteContext);
+  const { setDespositePage } = useContext(WallteContext);
   useEffect(() => {
-    setDesposite(data[0]);
+    setDespositePage(data[0]);
   }, []);
   let data = [
     {
@@ -47,7 +47,7 @@ const Card = () => {
               role="tab"
               aria-selected="true"
               key={index}
-              onClick={() => setDesposite(data)}
+              onClick={() => setDespositePage(data)}
             >
               <div className="d-flex">
                 <img src={data.img} alt="btc" />

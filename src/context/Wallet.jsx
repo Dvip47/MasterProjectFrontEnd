@@ -1,12 +1,20 @@
+import { useEffect } from "react";
 import { useState, createContext } from "react";
+import { getFetch } from "../api/api";
+import { GETADMINBANKLIST } from "../";
 export const WallteContext = createContext({
-  setDesposite: () => {},
-  deposite: "INR",
+  setDespositePage: () => {},
+  depositePage: "INR",
 });
 const WalletState = ({ children }) => {
-  const [deposite, setDesposite] = useState({ symbol: "INR" });
+  // useEffect(() => {}, []);
+  // const callAdminBankList = async () => {
+  //   const res = await getFetch(GETADMINBANKLIST);
+  // };
+  const [adminbankList, setAdminbankList] = useState([]);
+  const [depositePage, setDespositePage] = useState({ symbol: "INR" });
   return (
-    <WallteContext.Provider value={{ deposite, setDesposite }}>
+    <WallteContext.Provider value={{ depositePage, setDespositePage }}>
       {children}
     </WallteContext.Provider>
   );
