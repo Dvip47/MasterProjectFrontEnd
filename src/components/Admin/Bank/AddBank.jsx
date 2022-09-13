@@ -28,7 +28,7 @@ function AddBank() {
     e.preventDefault();
     try {
       let validate = addBankValidation(input);
-      if (validate) {
+      if (validate.result) {
         const res = await addBank(input);
         if (res.success) {
           toast.success(res.message, config);
@@ -43,7 +43,7 @@ function AddBank() {
           toast.error(res.message, config);
         }
       } else {
-        toast.error("Invalid Details", config);
+        toast.error(validate.message, config);
       }
     } catch (error) {
       console.log(error);
@@ -55,7 +55,7 @@ function AddBank() {
       let validate = true;
       let res = {};
       if (validate) {
-        if (type == "status") {
+        if (type === "status") {
           res = await updateBank({
             bankStatus: !data.bankStatus,
             ACNO: data.accountNumber,
@@ -141,7 +141,7 @@ function AddBank() {
             <form
               id="adddBankForm"
               className="mt-5"
-              onSubmit={mode == "create" ? handleSubmit : false}
+              onSubmit={mode === "create" ? handleSubmit : false}
             >
               <div className="col-md-3">
                 <label htmlFor="formFirst">Bank Name</label>
@@ -153,6 +153,7 @@ function AddBank() {
                   value={input.bankName}
                   name="bankName"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="col-md-3">
@@ -165,6 +166,8 @@ function AddBank() {
                   value={input.accountNumber}
                   name="accountNumber"
                   onChange={handleChange}
+                  required
+                  maxLength={16}
                 />
               </div>
               <div className="col-md-3">
@@ -177,13 +180,17 @@ function AddBank() {
                   value={input.ifscCode}
                   name="ifscCode"
                   onChange={handleChange}
+                  required
+                  maxLength={10}
                 />
               </div>
               <div className="col-md-3">
-                {mode == "create" ? (
+                {mode === "create" ? (
                   <input
                     onClick={
-                      mode != "create" ? () => handleSubmitUpdate("", "") : null
+                      mode !== "create"
+                        ? () => handleSubmitUpdate("", "")
+                        : null
                     }
                     type="submit"
                     value="Submit"
