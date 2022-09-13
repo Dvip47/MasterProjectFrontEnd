@@ -170,15 +170,15 @@ const Bank = () => {
                     />
                   )}
                   {process.utr && (
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">
+                    <div className="input-group mb-3">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="basic-addon1">
                           {beneName}
                         </span>
                       </div>
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         placeholder="UTR Number"
                         aria-label="UTR Number"
                         aria-describedby="basic-addon1"

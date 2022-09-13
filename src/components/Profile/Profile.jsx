@@ -13,9 +13,10 @@ import Balance from "../../assets/Profile/Wallet/Balance";
 import Card from "../../assets/Profile/Wallet/Card";
 import Deposite from "../../assets/Profile/Wallet/Deposite";
 import { WallteContext } from "../../context/Wallet";
+import VerifyWallet from "../../assets/Profile/Wallet/VerifyWallet";
 
 const Profile = () => {
-  const { depositePage } = useContext(WallteContext);
+  const { depositePage, verifyWallet } = useContext(WallteContext);
   return (
     <>
       <Header />
@@ -53,6 +54,9 @@ const Profile = () => {
                           >
                             <Balance />
                             {depositePage.symbol !== "INR" && <Deposite />}
+                            {depositePage.symbol == "INR" && verifyWallet && (
+                              <VerifyWallet />
+                            )}
                           </div>
                         </div>
                       </div>

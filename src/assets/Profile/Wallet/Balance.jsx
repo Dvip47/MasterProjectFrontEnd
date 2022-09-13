@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { WallteContext } from "../../../context/Wallet";
 import CardModal from "../../card/CardModal";
 
 const Balance = () => {
-  const { depositePage } = useContext(WallteContext);
+  const {
+    depositePage,
+    adminbankList,
+    setverifyWallet,
+    setVerifyDepositeReciept,
+  } = useContext(WallteContext);
   const [modal, setModal] = useState(false);
   const [showBankDetails, setShowBankDetails] = useState({
     status: false,
@@ -38,8 +42,11 @@ const Balance = () => {
         <div>
           <button
             type="button"
-            class="btn btn-outline-primary"
+            className="btn btn-outline-primary"
             onClick={() => {
+              setVerifyDepositeReciept((prev) => {
+                return { ...prev, mode: "upi" };
+              });
               setShowBankDetails({ status: true, type: "upi" });
               setModal(false);
             }}
@@ -48,8 +55,11 @@ const Balance = () => {
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary"
+            className="btn btn-outline-primary"
             onClick={() => {
+              setVerifyDepositeReciept((prev) => {
+                return { ...prev, mode: "bank" };
+              });
               setShowBankDetails({ status: true, type: "bank" });
               setModal(false);
             }}
@@ -71,17 +81,37 @@ const Balance = () => {
               <h4 className="fontW-700 mt-2">Bank Details</h4>
               <div className="">
                 <table className="table table-striped">
-                  <tbody>
+                  <thead>
                     <tr>
                       <th>Bank Name</th>
                       <th>A/C Number</th>
                       <th>IFSC Code</th>
+                      <th>Action</th>
                     </tr>
-                    <tr>
-                      <td>trhr</td>
-                      <td>tht</td>
-                      <td>tht</td>
-                    </tr>
+                  </thead>
+                  <tbody>
+                    {adminbankList?.map((data, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{data.bankName}</td>
+                          <td>{data.accountNumber}</td>
+                          <td>{data.ifscCode}</td>
+                          <td
+                            onClick={() => {
+                              setverifyWallet(true);
+                              setVerifyDepositeReciept((prev) => {
+                                return { ...prev, bankName: data.bankName };
+                              });
+                              setShowBankDetails((prev) => {
+                                return { ...prev, status: false };
+                              });
+                            }}
+                          >
+                            Verify
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

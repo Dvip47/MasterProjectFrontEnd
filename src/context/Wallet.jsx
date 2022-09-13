@@ -7,6 +7,10 @@ export const WallteContext = createContext({
   depositePage: "INR",
   callAdminBankList: () => {},
   adminbankList: [],
+  setverifyWallet: () => {},
+  verifyWallet: false,
+  verifyDepositeReciept: {},
+  setVerifyDepositeReciept: () => {},
 });
 const WalletState = ({ children }) => {
   useEffect(() => {
@@ -18,6 +22,8 @@ const WalletState = ({ children }) => {
   };
   const [adminbankList, setAdminbankList] = useState([]);
   const [depositePage, setDespositePage] = useState({ symbol: "INR" });
+  const [verifyWallet, setverifyWallet] = useState(false);
+  const [verifyDepositeReciept, setVerifyDepositeReciept] = useState({});
   return (
     <WallteContext.Provider
       value={{
@@ -25,6 +31,10 @@ const WalletState = ({ children }) => {
         setDespositePage,
         callAdminBankList,
         adminbankList,
+        verifyWallet,
+        setverifyWallet,
+        verifyDepositeReciept,
+        setVerifyDepositeReciept,
       }}
     >
       {children}

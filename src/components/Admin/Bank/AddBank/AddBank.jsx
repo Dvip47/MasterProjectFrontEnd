@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import Header from "../../../assets/Exchange/Header/Header";
-import Footer from "../../../assets/Profile/Footer/Footer";
-import { config } from "../../../constants/constants";
-import { WallteContext } from "../../../context/Wallet";
+import Header from "../../../../assets/Exchange/Header/Header";
+import Footer from "../../../../assets/Profile/Footer/Footer";
+import { config } from "../../../../constants/constants";
+import { WallteContext } from "../../../../context/Wallet";
 import "./addBank.css";
-import { addBank, addBankValidation, updateBank } from "./Logic";
+import { addBank, addBankValidation, updateBank } from "../Logic";
 
 function AddBank() {
   const { adminbankList, callAdminBankList } = useContext(WallteContext);
