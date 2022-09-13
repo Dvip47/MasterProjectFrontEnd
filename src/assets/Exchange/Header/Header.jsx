@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <header>
+    <header className="border-bottom">
       <nav className="navbar navbar-expand-lg">
         <a className="navbar-brand" href="exchange-light.html">
           <img src="assets/img/logo-dark.svg" alt="logo" />

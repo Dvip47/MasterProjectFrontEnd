@@ -620,7 +620,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1270px;
   }
 }
 
@@ -10020,3 +10020,8 @@ a.text-dark:hover {
   }
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
+.footer-section {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

@@ -14,6 +14,8 @@ export const VERIFY = "bank/v1/verify";
 export const SECURITY = "user/v1/security";
 export const VERIFYSECURITY = "user/v1/verifysecurity";
 export const GETADMINBANKLIST = "query/v1/getbanklist/";
+export const ADDADMINBANK = "bank/v1/addAdminBank/";
+export const UPDATEADMINBANK = "bank/v1/updateAdminBank/";
 export const config = {
   position: "top-right",
   autoClose: 1000,

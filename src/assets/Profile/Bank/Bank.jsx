@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   bankDeatils,
   bankValidation,
@@ -104,7 +103,6 @@ const Bank = () => {
       aria-labelledby="kyc-tab"
     >
       <div className="card">
-        <ToastContainer />
         <div className="card-body">
           <h5 className="card-title">General Information</h5>
           <div className="settings-profile">

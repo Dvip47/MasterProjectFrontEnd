@@ -8,22 +8,25 @@ import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import Transaction from "./components/Transaction/Transaction";
 import { AuthContext } from "./context/Auth";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 function App() {
   const { loader } = useContext(AuthContext);
   return (
     <>
+      <ToastContainer />
       <div id="preloder" style={{ display: loader ? "block" : "none" }}>
         <div className="loader"></div>
       </div>
-      <Routes>
+      {/* <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/exchange" element={<Exchange />} />
         <Route exact path="/credential" element={<Credentials />} />
         <Route exact path="/transaction" element={<Transaction />} />
         <Route exact path="/travelRxReset:token" element={<Reset />} />
-      </Routes>
-      {/* <AddBank /> */}
+      </Routes> */}
+      <AddBank />
     </>
   );
 }
