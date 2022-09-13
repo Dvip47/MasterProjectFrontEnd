@@ -7,6 +7,7 @@ import {
   UPDATEPROFILE,
   UTR,
   VERIFY,
+  VERIFYDEPOSITERECIEPT,
   VERIFYSECURITY,
 } from "../../constants/constants";
 
@@ -155,6 +156,14 @@ export const security = async (data) => {
 export const verifySecurity = async (data) => {
   try {
     const res = await postFetch(VERIFYSECURITY, data);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const submitDepositeReciept = async (data) => {
+  try {
+    const res = await postFetch(VERIFYDEPOSITERECIEPT, data);
     return res;
   } catch (error) {
     return error;

@@ -16,6 +16,7 @@ export const VERIFYSECURITY = "user/v1/verifysecurity";
 export const GETADMINBANKLIST = "query/v1/getbanklist/";
 export const ADDADMINBANK = "bank/v1/addAdminBank/";
 export const UPDATEADMINBANK = "bank/v1/updateAdminBank/";
+export const VERIFYDEPOSITERECIEPT = "bank/v1/verifyDepositeReciept/";
 export const config = {
   position: "top-right",
   autoClose: 1000,
