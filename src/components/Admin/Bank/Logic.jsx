@@ -2,13 +2,17 @@ import { postFetch } from "../../../api/api";
 import { ADDADMINBANK, UPDATEADMINBANK } from "../../../constants/constants";
 
 export const addBankValidation = (input) => {
+  let regex = new RegExp("^[A-Z]{4}0[A-Z0-9]{6}$");
   let message = "";
   let result = true;
-  if (!input?.name?.trim()?.length) {
-    return { message: "Invalid name", result: false };
+  if (input?.bankName?.trim()?.length < 3) {
+    return { message: "Invalid Bank Name", result: false };
   }
-  if (input?.mobile?.length < 10 && input?.mobile?.length < 10) {
-    return { message: "Invalid mobile number", result: false };
+  if (input?.accountNumber?.length < 16) {
+    return { message: "Invalid Account number", result: false };
+  }
+  if (input?.ifscCode?.length < 9 && !regex.test(input.ifscCode)) {
+    return { message: "Invalid IFSC code", result: false };
   }
   return { message, result };
 };
