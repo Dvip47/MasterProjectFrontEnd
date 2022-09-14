@@ -13,6 +13,8 @@ export const AuthContext = createContext({
   loader: false,
   setKycPage: () => {},
   kycPage: "",
+  findUser: "",
+  setFindUser: () => {},
 });
 const Auth = ({ children }) => {
   const [crypto, setCrypto] = useState([]);
@@ -43,6 +45,7 @@ const Auth = ({ children }) => {
   const [login, setLogin] = useState(false);
   const [userData, setUserData] = useState({});
   const [chartSymbol, setChartSymbol] = useState("BTCUSDT");
+  const [findUser, setFindUser] = useState(localStorage.getItem("findUser"));
   return (
     <AuthContext.Provider
       value={{
@@ -57,6 +60,8 @@ const Auth = ({ children }) => {
         setLoader,
         kycPage,
         setKycPage,
+        findUser,
+        setFindUser,
       }}
     >
       {children}

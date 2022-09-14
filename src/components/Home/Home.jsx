@@ -23,7 +23,7 @@ const Home = () => {
       <Review />
       <Newsletter />
       <Blog />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

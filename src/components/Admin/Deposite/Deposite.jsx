@@ -19,7 +19,6 @@ const Deposite = () => {
   };
   return (
     <>
-      <Header />
       <div className="container">
         <div className="row">
           <div className="col-md-12">
@@ -54,7 +53,6 @@ const Deposite = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

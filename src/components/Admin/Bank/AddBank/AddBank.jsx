@@ -81,7 +81,6 @@ function AddBank() {
   const [mode, setMode] = useState("create");
   return (
     <>
-      <Header />
       <div className="container">
         <div className="row">
           <div className="col-md-12">
@@ -227,7 +226,7 @@ function AddBank() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

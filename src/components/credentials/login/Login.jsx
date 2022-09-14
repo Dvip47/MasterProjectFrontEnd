@@ -8,7 +8,7 @@ import { login, loginValidation, verifyOtp } from "../Logic";
 import jwt from "jwt-decode";
 import { AuthContext } from "../../../context/Auth";
 const Login = () => {
-  const { setUserData, setLogin } = useContext(AuthContext);
+  const { setUserData, setLogin, setFindUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [input, setInput] = useState({
     email: "",
@@ -33,7 +33,13 @@ const Login = () => {
         setUserData(jwt(res.token)?.data);
         localStorage.setItem("token", res.token);
         setLogin(true);
-        return navigate("/");
+        setFindUser(res.message.role);
+        localStorage.setItem("findUser", res.message.role);
+        if (res.message.role == "user") {
+          return navigate("/");
+        } else {
+          return navigate("/admin");
+        }
       } else {
         toast.error(res?.message, config);
       }
@@ -47,7 +53,13 @@ const Login = () => {
             setUserData(jwt(res.token)?.data);
             localStorage.setItem("token", res.token);
             setLogin(true);
-            return navigate("/");
+            setFindUser(res.message.role);
+            localStorage.setItem("findUser", res.message.role);
+            if (res.message.role == "user") {
+              return navigate("/");
+            } else {
+              return navigate("/admin");
+            }
           } else {
             toast.success(res?.message, config);
             setShowOtp(true);

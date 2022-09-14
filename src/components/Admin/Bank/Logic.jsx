@@ -8,7 +8,7 @@ export const addBankValidation = (input) => {
   if (input?.bankName?.trim()?.length < 3) {
     return { message: "Invalid Bank Name", result: false };
   }
-  if (input?.accountNumber?.length < 16) {
+  if (input?.accountNumber?.length < 10) {
     return { message: "Invalid Account number", result: false };
   }
   if (input?.ifscCode?.length < 9 && !regex.test(input.ifscCode)) {

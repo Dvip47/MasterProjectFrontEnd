@@ -7,6 +7,8 @@ export const VERIFYOTP = "user/v1/verifyloginotp";
 export const UPDATEPROFILE = "user/v1/updateProfile";
 export const UPDATEPASSWARD = "user/v1/updatePassward";
 export const PROFILEDATA = "query/v1/profile";
+export const ADMINDEPOSITEDATA = "query/v1/getDepositeData";
+export const GETALLUSER = "query/v1/getAllUser";
 export const KYC = "kyc/v1/kyc";
 export const BANKDETAIL = "bank/v1/bank";
 export const UTR = "bank/v1/utr";
@@ -17,6 +19,7 @@ export const GETADMINBANKLIST = "query/v1/getbanklist/";
 export const ADDADMINBANK = "bank/v1/addAdminBank/";
 export const UPDATEADMINBANK = "bank/v1/updateAdminBank/";
 export const VERIFYDEPOSITERECIEPT = "bank/v1/verifyDepositeReciept/";
+export const UPDATEDEPOSITERECIEPT = "bank/v1/updateDepositeReciept/";
 export const config = {
   position: "top-right",
   autoClose: 1000,

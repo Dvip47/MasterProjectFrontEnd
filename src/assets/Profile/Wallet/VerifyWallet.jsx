@@ -43,8 +43,8 @@ const VerifyWallet = () => {
       formData.append("mobile", input.mobile);
       formData.append("email", input.email);
       formData.append("reciept", file);
+      formData.append("status", "pending");
       const res = await submitDepositeReciept(formData);
-      console.log(res);
       if (res.success) {
         toast.success(res.message, config);
         setverifyWallet(true);
