@@ -118,11 +118,11 @@ const VerifyWallet = () => {
           <div className="col-md-6">
             <input type="submit" value="Update" />
           </div>
-          <div className="col-md-3">
-            <input type="submit" value="Cancle" />
-          </div>
         </div>
       </form>
+      <div className="col-md-3" onClick={() => setverifyWallet(false)}>
+        <button className="btn btn-primary">Cancel</button>
+      </div>
     </div>
   );
 };
