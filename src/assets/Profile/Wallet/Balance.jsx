@@ -33,94 +33,65 @@ const Balance = () => {
             </div>
           </li>
         </ul>
-        <button className="btn green" onClick={() => setModal(true)}>
+        <button
+          className="btn green"
+          onClick={() => {
+            setShowBankDetails((prev) => {
+              return { ...prev, status: true };
+            });
+
+            setVerifyDepositeReciept((prev) => {
+              return { ...prev, status: true };
+            });
+          }}
+        >
           Deposite
         </button>
         <button className="btn red">Withdraw</button>
       </div>
-      {modal && (
-        <div>
-          <button
-            type="button"
-            className="btn btn-outline-primary"
-            onClick={() => {
-              setVerifyDepositeReciept((prev) => {
-                return { ...prev, mode: "upi" };
-              });
-              setShowBankDetails({ status: true, type: "upi" });
-              setModal(false);
-            }}
-          >
-            UPI
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-primary"
-            onClick={() => {
-              setVerifyDepositeReciept((prev) => {
-                return { ...prev, mode: "bank" };
-              });
-              setShowBankDetails({ status: true, type: "bank" });
-              setModal(false);
-            }}
-          >
-            Bank Transffer
-          </button>
-        </div>
-      )}
+
       {showBankDetails.status && (
-        <CardModal closeModal={setShowBankDetails}>
-          {showBankDetails.type == "upi" ? (
-            <div className="message text-center">
-              <div className="message-pop">
-                <img src="img/success.png" alt="" className="w-20" />
-              </div>
-            </div>
-          ) : (
-            <>
-              <h4 className="fontW-700 mt-2">Bank Details</h4>
-              <div className="">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Bank Name</th>
-                      <th>A/C Number</th>
-                      <th>IFSC Code</th>
-                      <th>Action</th>
+        <>
+          <h4 className="fontW-700 mt-2">Bank Details</h4>
+          <div className="">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Bank Name</th>
+                  <th>A/C Number</th>
+                  <th>IFSC Code</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {adminbankList?.map((data, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{data.bankName}</td>
+                      <td>{data.accountNumber}</td>
+                      <td>{data.ifscCode}</td>
+                      <td
+                        onClick={() => {
+                          setverifyWallet(true);
+                          setVerifyDepositeReciept((prev) => {
+                            return { ...prev, bankName: data.bankName };
+                          });
+                          setShowBankDetails((prev) => {
+                            return { ...prev, status: false };
+                          });
+                        }}
+                      >
+                        Verify
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {adminbankList?.map((data, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{data.bankName}</td>
-                          <td>{data.accountNumber}</td>
-                          <td>{data.ifscCode}</td>
-                          <td
-                            onClick={() => {
-                              setverifyWallet(true);
-                              setVerifyDepositeReciept((prev) => {
-                                return { ...prev, bankName: data.bankName };
-                              });
-                              setShowBankDetails((prev) => {
-                                return { ...prev, status: false };
-                              });
-                            }}
-                          >
-                            Verify
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          )}
-        </CardModal>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </div>
   );
 };
-
 export default Balance;
