@@ -102,6 +102,7 @@ const VerifyWallet = () => {
             />
           </div>
           <div className="col-md-6">
+            <label htmlFor="phoneNumber">Upload Reciepts</label>
             <div className="custom-file ">
               <input
                 type="file"
@@ -110,12 +111,15 @@ const VerifyWallet = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
               <label className="custom-file-label" htmlFor="fileUpload">
-                Upload Reciepts
+                Choose Reciept's Pic
               </label>
             </div>
           </div>
           <div className="col-md-6">
             <input type="submit" value="Update" />
+          </div>
+          <div className="col-md-3">
+            <input type="submit" value="Cancle" />
           </div>
         </div>
       </form>

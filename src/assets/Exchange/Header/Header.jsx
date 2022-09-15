@@ -86,7 +86,7 @@ const Header = () => {
                 </a>
               </div>
             </li>
-            {userData?.email && (
+            {!userData?.email && (
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"

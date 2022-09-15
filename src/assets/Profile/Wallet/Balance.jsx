@@ -49,7 +49,7 @@ const Balance = () => {
         </button>
         <button className="btn red">Withdraw</button>
       </div>
-
+      )}
       {showBankDetails.status && (
         <>
           <h4 className="fontW-700 mt-2">Bank Details</h4>
