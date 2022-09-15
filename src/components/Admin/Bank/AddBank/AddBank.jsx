@@ -159,7 +159,7 @@ function AddBank() {
                 <label htmlFor="formFirst">Account Number</label>
                 <input
                   id="formFirst"
-                  type="text"
+                  type="number"
                   className="form-control"
                   placeholder="Account Number"
                   value={input.accountNumber}

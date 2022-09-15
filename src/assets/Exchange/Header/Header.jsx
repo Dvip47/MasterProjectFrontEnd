@@ -6,7 +6,6 @@ import { AuthContext } from "../../../context/Auth";
 const Header = () => {
   const navigate = useNavigate();
   const { userData } = useContext(AuthContext);
-  console.log(userData);
   return (
     <header className="border-bottom">
       <nav className="navbar navbar-expand-lg">
@@ -87,7 +86,7 @@ const Header = () => {
                 </a>
               </div>
             </li>
-            {userData?.email && (
+            {!userData?.email && (
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"

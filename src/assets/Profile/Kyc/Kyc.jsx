@@ -147,7 +147,7 @@ const Kyc = () => {
                       }
                     />
                     <label className="custom-file-label" htmlFor="fileUpload">
-                      Andhar Card Front
+                      Aadhaar Card Front
                     </label>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ const Kyc = () => {
                       }
                     />
                     <label className="custom-file-label" htmlFor="fileUpload">
-                      Adhar Card Back
+                      Aadhaar Card Back
                     </label>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ const Kyc = () => {
                     id="formFirst"
                     type="text"
                     className="form-control"
-                    placeholder="First name"
+                    placeholder="Enter PAN Number"
                     name="name"
                     onChange={(e) =>
                       setInput({ ...input, panNumber: e.target.value })
@@ -207,12 +207,12 @@ const Kyc = () => {
                 </div>
 
                 <div className="col-md-6">
-                  <label htmlFor="phoneNumber">Andhar Card Number</label>
+                  <label htmlFor="phoneNumber">Aadhaar Card Number</label>
                   <input
                     id="phoneNumber"
                     type="text"
                     className="form-control"
-                    placeholder="Enter phone number"
+                    placeholder="Enter Aadhaar Card Number"
                     name="mobile"
                     maxLength={16}
                     onChange={(e) =>
@@ -228,7 +228,6 @@ const Kyc = () => {
           </div>
         </div>
       </div>
-      {/* )} */}
     </div>
   );
 };

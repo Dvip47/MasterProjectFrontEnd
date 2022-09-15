@@ -107,7 +107,7 @@ const Balance = () => {
                               });
                             }}
                           >
-                            Verify
+                            <span style={{ color: "blue" }}>Verify Here</span>
                           </td>
                         </tr>
                       );
