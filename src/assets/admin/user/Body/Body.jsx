@@ -1,12 +1,23 @@
 import React from "react";
 import { useState } from "react";
 import Card from "../../Card/Card";
-import updateDeposite from "../../../../components/Admin/Logic";
-const Body = ({ body = [], type, action, actionValue, updateDeposite }) => {
+import { updateDeposite } from "../../../../components/Admin/Logic";
+import { toast } from "react-toastify";
+import { config } from "../../../../constants/constants";
+const Body = ({ body = [], type, action, actionValue }) => {
   const [recieptImg, setRecieptImg] = useState({
     status: false,
     data: "",
   });
+  const handleChangeAndSubmit = async (e) => {
+    action(e.target.value);
+    const res = await updateDeposite({ status: e.target.value });
+    if (res.success) {
+      toast.success(res.message, config);
+    } else {
+      toast.error(res.message, config);
+    }
+  };
   return (
     <tbody>
       {type == "deposite" && (
@@ -46,10 +57,7 @@ const Body = ({ body = [], type, action, actionValue, updateDeposite }) => {
                 <td>
                   <select
                     value={actionValue}
-                    onChange={(e) => {
-                      action(e.target.value);
-                      updateDeposite({ status: e.target.value });
-                    }}
+                    onChange={handleChangeAndSubmit}
                     className="form-group"
                     style={{
                       backgroundColor: "#24a0ed",

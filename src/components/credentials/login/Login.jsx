@@ -57,8 +57,6 @@ const Login = () => {
             localStorage.setItem("findUser", res.message.role);
             if (res.message.role == "user") {
               return navigate("/");
-            } else {
-              return navigate("/admin");
             }
           } else {
             toast.success(res?.message, config);

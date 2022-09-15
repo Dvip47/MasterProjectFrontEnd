@@ -33,8 +33,8 @@ function App() {
         <>
           <AdminHeader />
           <Routes>
-            <Route exact path="/admin" element={<User />} />
-            <Route exact path="/users" element={<User />} />
+            <Route exact path="/" element={<User />} />
+            <Route exact path="/user" element={<User />} />
             <Route exact path="/addbank" element={<AddBank />} />
           </Routes>
         </>
