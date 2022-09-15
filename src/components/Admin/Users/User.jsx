@@ -19,7 +19,7 @@ const User = () => {
   const [depositeStatus, setDespositeStatus] = useState("select");
   const [page, setPage] = useState("deposite");
   const UserDeposite = [
-    "Id",
+    "ID",
     "Wallet",
     "UTR",
     "Email",

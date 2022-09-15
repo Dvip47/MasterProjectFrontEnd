@@ -23,9 +23,8 @@ const AdminHeader = () => {
         <div className="collapse navbar-collapse" id="headerMenu">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item dropdown">
-              <a
+              <p
                 className="nav-link "
-                href="#"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -33,101 +32,43 @@ const AdminHeader = () => {
                 onClick={() => navigate("/")}
               >
                 Home
-              </a>
+              </p>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <p
                 className="nav-link "
-                href="#"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                onClick={() => navigate("/users")}
               >
-                Exchange
-              </a>
+                Users
+              </p>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <p
                 className="nav-link dropdown-toggle"
-                href="#"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                onClick={() => navigate("/")}
               >
-                Markets
-              </a>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="markets-light.html">
-                  Markets
-                </a>
-                <a className="dropdown-item" href="market-capital-light.html">
-                  Markets Line
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="market-capital-bar-light.html"
-                >
-                  Markets Bar
-                </a>
-                <a className="dropdown-item" href="market-overview-light.html">
-                  Market Overview
-                </a>
-                <a className="dropdown-item" href="market-screener-light.html">
-                  Market Screener
-                </a>
-                <a className="dropdown-item" href="market-crypto-light.html">
-                  Market Crypto
-                </a>
-              </div>
-            </li>
-
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dashboard
-              </a>
-              <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
-                  onClick={() => navigate("/profile")}
-                >
-                  Profile
-                </a>
-                <a className="dropdown-item" href="settings-wallet-light.html">
-                  Wallet
-                </a>
-                <a className="dropdown-item" href="settings-light.html">
-                  Settings
-                </a>
-              </div>
+                Transactions
+              </p>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <p
                 className="nav-link dropdown-toggle"
-                href="#"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                onClick={() => navigate("/addbank")}
               >
-                Others
-              </a>
-              <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
-                  onClick={() => navigate("/transaction")}
-                >
-                  Transaction History
-                </a>
-              </div>
+                Bank
+              </p>
             </li>
           </ul>
         </div>

@@ -46,7 +46,6 @@ function AddBank() {
         toast.error(validate.message, config);
       }
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
@@ -73,7 +72,6 @@ function AddBank() {
         toast.error("Invalid Details", config);
       }
     } catch (error) {
-      console.log(error);
       return error;
     }
   };

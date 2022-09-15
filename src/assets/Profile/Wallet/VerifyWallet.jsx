@@ -47,12 +47,18 @@ const VerifyWallet = () => {
       const res = await submitDepositeReciept(formData);
       if (res.success) {
         toast.success(res.message, config);
-        setverifyWallet(true);
+        setverifyWallet(false);
+        setInput((prev) => {
+          return {
+            ...prev,
+            utr: "",
+            deposite: "",
+          };
+        });
       } else {
         toast.error(res.message, config);
       }
     } catch (error) {
-      console.log(error);
       return error;
     }
   };

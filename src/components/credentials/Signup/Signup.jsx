@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { config } from "../../../constants/constants";
+import { config, CREATEWALLET } from "../../../constants/constants";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
 import { signup, signupValidation } from "../Logic";
 import Popup from "../../../assets/Credentials/Popup";
+import { postFetch } from "../../../api/api";
 const Signup = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -31,8 +32,11 @@ const Signup = () => {
     if (validate.result) {
       const res = await signup(input);
       if (res?.success) {
-        // toast.success("Signed up successfully", config);
         setPop(true);
+        const wallet = await postFetch(CREATEWALLET, { email: input.email });
+        if (!wallet.success) {
+          toast.error(wallet.message, config);
+        }
       } else {
         toast.error("Mobile number already exists", config);
       }

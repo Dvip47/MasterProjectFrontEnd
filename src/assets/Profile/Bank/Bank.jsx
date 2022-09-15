@@ -72,7 +72,6 @@ const Bank = () => {
         email: userData.email,
         accountNumber: input.accountNumber,
       });
-      console.log(res);
       if (res?.success) {
         setProcess({ utr: false, verify: false });
         toast.success("Bank Added Successfully", config);
