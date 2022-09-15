@@ -1,12 +1,7 @@
 import React from "react";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/Auth";
-
-const Header = () => {
+const AdminHeader = () => {
   const navigate = useNavigate();
-  const { userData } = useContext(AuthContext);
-  console.log(userData);
   return (
     <header className="border-bottom">
       <nav className="navbar navbar-expand-lg">
@@ -87,37 +82,33 @@ const Header = () => {
                 </a>
               </div>
             </li>
-            {userData?.email && (
-              <li className="nav-item dropdown">
+
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Dashboard
+              </a>
+              <div className="dropdown-menu">
                 <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+                  className="dropdown-item"
+                  onClick={() => navigate("/profile")}
                 >
-                  Dashboard
+                  Profile
                 </a>
-                <div className="dropdown-menu">
-                  <a
-                    className="dropdown-item"
-                    onClick={() => navigate("/profile")}
-                  >
-                    Profile
-                  </a>
-                  <a
-                    className="dropdown-item"
-                    href="settings-wallet-light.html"
-                  >
-                    Wallet
-                  </a>
-                  <a className="dropdown-item" href="settings-light.html">
-                    Settings
-                  </a>
-                </div>
-              </li>
-            )}
+                <a className="dropdown-item" href="settings-wallet-light.html">
+                  Wallet
+                </a>
+                <a className="dropdown-item" href="settings-light.html">
+                  Settings
+                </a>
+              </div>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -145,4 +136,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;

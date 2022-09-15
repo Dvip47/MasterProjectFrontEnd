@@ -1,0 +1,18 @@
+.box1 {
+    display: flex;
+  margin-left: 20px;
+  }
+.box select {
+    background-color: #0563af;
+    color: white;
+    padding: 3px 11px;
+    font-size: smaller;
+    border: none;
+    font-size: 15px;
+    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+    appearance: button;
+    outline: none;
+    margin-left: 6px;
+    width: 110px;
+  }
+  
