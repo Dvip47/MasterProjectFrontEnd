@@ -24,7 +24,6 @@ const Forget = () => {
     const validate = forgetValidation(input);
     if (validate.result) {
       const res = await forget(input);
-      console.log(res);
       if (res?.success) {
         toast.success(res.message, config);
         localStorage.setItem("token", res.token);
