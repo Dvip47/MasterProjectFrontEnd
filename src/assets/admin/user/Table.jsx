@@ -13,6 +13,7 @@ const Table = ({
   type,
   action,
   actionValue,
+  call,
 }) => {
   return (
     <>
@@ -28,6 +29,7 @@ const Table = ({
                 type={type}
                 action={action}
                 actionValue={actionValue}
+                call={call}
               />
             </table>
           </div>

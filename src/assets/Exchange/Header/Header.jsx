@@ -47,6 +47,7 @@ const Header = () => {
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                onClick={() => navigate("/exchange")}
               >
                 Exchange
               </a>
@@ -59,84 +60,58 @@ const Header = () => {
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                onClick={() => navigate("/exchange")}
               >
                 Markets
               </a>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="markets-light.html">
-                  Markets
-                </a>
-                <a className="dropdown-item" href="market-capital-light.html">
-                  Markets Line
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="market-capital-bar-light.html"
-                >
-                  Markets Bar
-                </a>
-                <a className="dropdown-item" href="market-overview-light.html">
-                  Market Overview
-                </a>
-                <a className="dropdown-item" href="market-screener-light.html">
-                  Market Screener
-                </a>
-                <a className="dropdown-item" href="market-crypto-light.html">
-                  Market Crypto
-                </a>
-              </div>
             </li>
-            {!userData?.email && (
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Dashboard
-                </a>
-                <div className="dropdown-menu">
-                  <a
-                    className="dropdown-item"
-                    onClick={() => navigate("/profile")}
-                  >
-                    Profile
-                  </a>
-                  <a
-                    className="dropdown-item"
-                    href="settings-wallet-light.html"
-                  >
-                    Wallet
-                  </a>
-                  <a className="dropdown-item" href="settings-light.html">
-                    Settings
-                  </a>
-                </div>
-              </li>
-            )}
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Others
-              </a>
-              <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
+            {userData?.email && (
+              <>
+                <li
+                  className="nav-item dropdown"
                   onClick={() => navigate("/transaction")}
                 >
-                  Transaction History
-                </a>
-              </div>
-            </li>
+                  <a
+                    className="nav-link "
+                    href="#"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Transactions
+                  </a>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Dashboard
+                  </a>
+                  <div className="dropdown-menu">
+                    <a
+                      className="dropdown-item"
+                      onClick={() => navigate("/profile")}
+                    >
+                      Profile
+                    </a>
+                    <a
+                      className="dropdown-item"
+                      href="settings-wallet-light.html"
+                    >
+                      Wallet
+                    </a>
+                    <a className="dropdown-item" href="settings-light.html">
+                      Settings
+                    </a>
+                  </div>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>

@@ -1,15 +1,24 @@
 import React from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
+import Header from "../../assets/Exchange/Header/Header";
 import Table from "../../assets/Table/Table";
+import { AuthContext } from "../../context/Auth";
+import { TransactionContext } from "../../context/Transaction";
 
 const Transaction = () => {
+  const { callDeposite, deposites } = useContext(TransactionContext);
+  const { userData } = useContext(AuthContext);
   const [page, setPage] = useState("all");
   const [current, setCurrent] = useState({
     desposite: true,
     withdraw: true,
     order: true,
   });
-
+  useEffect(() => {
+    callDeposite(userData);
+  }, []);
   const Allheader = [
     "ID",
     "TXN ID",
@@ -20,24 +29,20 @@ const Transaction = () => {
     "Close Amount",
   ];
   const depositeHeaderMoney = [
-    "ID",
     "Wallet ID",
     "UTR",
     "Amount",
     "Status",
     "Description",
     "Date",
-    "Update Date",
   ];
   const depositeHeaderCrypto = [
-    "ID",
     "Wallet ID",
     "UTR",
     "Amount",
     "Status",
     "Description",
     "Date",
-    "Update Date",
   ];
   const WithdrawHeaderMoney = [
     "ID",
@@ -85,13 +90,19 @@ const Transaction = () => {
   ];
   return (
     <>
+      <Header />
       {page == "all" && (
         <Table header={Allheader} setPage={setPage} page={page} />
       )}
       {page == "deposite" && (
         <>
           {current.desposite ? (
-            <Table header={depositeHeaderMoney} setPage={setPage} page={page} />
+            <Table
+              header={depositeHeaderMoney}
+              setPage={setPage}
+              page={page}
+              body={deposites}
+            />
           ) : (
             <Table
               header={depositeHeaderCrypto}

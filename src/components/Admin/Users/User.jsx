@@ -64,6 +64,7 @@ const User = () => {
           body={AllUserData}
           title="User Details"
           type="user"
+          call={callAllUser}
         />
       )}
     </>

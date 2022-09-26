@@ -6,16 +6,19 @@ import { BrowserRouter } from "react-router-dom";
 import Auth from "./context/Auth";
 import WalletState from "./context/Wallet";
 import AdminState from "./context/AdminC";
+import TrasactionState from "./context/Transaction";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <AdminState>
-      <WalletState>
-        <Auth>
-          <App />
-        </Auth>
-      </WalletState>
-    </AdminState>
+    <TrasactionState>
+      <AdminState>
+        <WalletState>
+          <Auth>
+            <App />
+          </Auth>
+        </WalletState>
+      </AdminState>
+    </TrasactionState>
   </BrowserRouter>
 );
 reportWebVitals();

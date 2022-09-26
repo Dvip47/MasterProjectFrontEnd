@@ -1,11 +1,9 @@
 import React from "react";
-import Header from "../Exchange/Header/Header";
-import Footer from "../Home/Footer/Footer";
 import Body from "./Body/Body";
 import Filter from "./Filter/Filter";
 import TableHeader from "./TableHeader/TableHeader";
 
-const Table = ({ header, setPage, page }) => {
+const Table = ({ header, setPage, page, body }) => {
   return (
     <>
       <div className="card">
@@ -15,7 +13,7 @@ const Table = ({ header, setPage, page }) => {
           <div className="wallet-history">
             <table className="table">
               <TableHeader header={header} />
-              <Body />
+              <Body body={body} />
             </table>
           </div>
         </div>
