@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import {
   bankDeatils,
@@ -9,8 +10,13 @@ import {
 } from "../../../components/Profile/Logic";
 import { config } from "../../../constants/constants";
 import { AuthContext } from "../../../context/Auth";
+import { WallteContext } from "../../../context/Wallet";
 const Bank = () => {
   const { userData } = useContext(AuthContext);
+  const { userBank, callUserBank } = useContext(WallteContext);
+  useEffect(() => {
+    callUserBank(userData);
+  }, [userBank, userData]);
   const [input, setInput] = useState({
     bankName: "",
     accountNumber: "",
@@ -103,7 +109,7 @@ const Bank = () => {
     >
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">General Information</h5>
+          <h5 className="card-title">Bank Information</h5>
           <div className="settings-profile">
             <form onSubmit={process.utr ? handleSubmitUtr : handleSubmit}>
               <div className="form-row mt-4">
@@ -196,6 +202,30 @@ const Bank = () => {
               </div>
             </form>
           </div>
+        </div>
+        <div>
+          <table className="table table-striped">
+            <thead>
+              <th>Bank Name</th>
+              <th>Account Number</th>
+              <th>IFSC CODE</th>
+              <th>Bene Name</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              {userBank?.map((data, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{data.bankName}</td>
+                    <td>{data.accountNumber}</td>
+                    <td>{data.ifscCode}</td>
+                    <td>{data.accountHolderName}</td>
+                    <td>Remove</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useState, createContext } from "react";
 import { getFetch, postFetch } from "../api/api";
-import { ADMINDEPOSITEDATA, GETADMINBANKLIST } from "../constants/constants";
+import {
+  ADMINDEPOSITEDATA,
+  GETADMINBANKLIST,
+  GETUSERBANK,
+} from "../constants/constants";
 export const WallteContext = createContext({
   setDespositePage: () => {},
   depositePage: "INR",
@@ -11,6 +15,8 @@ export const WallteContext = createContext({
   verifyWallet: false,
   verifyDepositeReciept: {},
   setVerifyDepositeReciept: () => {},
+  callUserBank: () => {},
+  userBank: [],
 });
 const WalletState = ({ children }) => {
   useEffect(() => {
@@ -25,6 +31,13 @@ const WalletState = ({ children }) => {
   const [depositePage, setDespositePage] = useState({ symbol: "INR" });
   const [verifyWallet, setverifyWallet] = useState(false);
   const [verifyDepositeReciept, setVerifyDepositeReciept] = useState({});
+  const [userBank, setUserBank] = useState([]);
+  const callUserBank = async (data) => {
+    const res = await postFetch(GETUSERBANK, { email: data.email });
+    if (res.success) {
+      setUserBank(res.message);
+    }
+  };
   return (
     <WallteContext.Provider
       value={{
@@ -36,6 +49,8 @@ const WalletState = ({ children }) => {
         setverifyWallet,
         verifyDepositeReciept,
         setVerifyDepositeReciept,
+        callUserBank,
+        userBank,
       }}
     >
       {children}

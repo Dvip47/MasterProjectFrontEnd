@@ -4,7 +4,10 @@ import { useContext } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { postFetch } from "../../../api/api";
-import { submitDepositeReciept } from "../../../components/Profile/Logic";
+import {
+  recieptValidation,
+  submitDepositeReciept,
+} from "../../../components/Profile/Logic";
 import { config } from "../../../constants/constants";
 import { AuthContext } from "../../../context/Auth";
 import { WallteContext } from "../../../context/Wallet";
@@ -21,7 +24,7 @@ const VerifyWallet = () => {
     mobile: userData?.mobile,
     email: userData?.email,
   });
-  const [file, setFile] = useState({});
+  const [file, setFile] = useState("");
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((prev) => {
@@ -33,33 +36,38 @@ const VerifyWallet = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      let formData = new FormData();
-      formData.append("bankName", input.bankName);
-      formData.append("mode", input.mode);
-      formData.append("deposite", input.deposite);
-      formData.append("utr", input.utr);
-      formData.append("name", input.name);
-      formData.append("mobile", input.mobile);
-      formData.append("email", input.email);
-      formData.append("reciept", file);
-      formData.append("status", "pending");
-      const res = await submitDepositeReciept(formData);
-      if (res.success) {
-        toast.success(res.message, config);
-        setverifyWallet(false);
-        setInput((prev) => {
-          return {
-            ...prev,
-            utr: "",
-            deposite: "",
-          };
-        });
-      } else {
-        toast.error(res.message, config);
+    const validate = recieptValidation(input, file);
+    if (validate.result) {
+      try {
+        let formData = new FormData();
+        formData.append("bankName", input.bankName);
+        formData.append("mode", input.mode);
+        formData.append("deposite", input.deposite);
+        formData.append("utr", input.utr);
+        formData.append("name", input.name);
+        formData.append("mobile", input.mobile);
+        formData.append("email", input.email);
+        formData.append("reciept", file);
+        formData.append("status", "pending");
+        const res = await submitDepositeReciept(formData);
+        if (res.success) {
+          toast.success(res.message, config);
+          setverifyWallet(false);
+          setInput((prev) => {
+            return {
+              ...prev,
+              utr: "",
+              deposite: "",
+            };
+          });
+        } else {
+          toast.error(res.message, config);
+        }
+      } catch (error) {
+        return error;
       }
-    } catch (error) {
-      return error;
+    } else {
+      toast.error(validate.message, config);
     }
   };
   return (

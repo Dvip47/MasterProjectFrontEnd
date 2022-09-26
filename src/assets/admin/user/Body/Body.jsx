@@ -4,8 +4,10 @@ import Card from "../../Card/Card";
 import { updateDeposite } from "../../../../components/Admin/Logic";
 import { toast } from "react-toastify";
 import {
+  ADMINAMOUNTTRANSFFER,
   config,
   GETWALLET,
+  UPDATEKYC,
   UPDATEUSERSTATUS,
 } from "../../../../constants/constants";
 import { postFetch } from "../../../../api/api";
@@ -59,6 +61,22 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
     }
   };
   // user
+  const [inputAmount, setInputAmount] = useState({
+    amount: "",
+    utr: "",
+    action: "debit",
+    description: "",
+  });
+  const [currentUserFormAmount, setCurrentUserForAmount] = useState({});
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputAmount((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
   const handleUserChange = async (e, dataa) => {
     const { name, value } = e.target;
     let data = {
@@ -73,7 +91,36 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
       toast.error(res.message, config);
     }
   };
+  const amountAction = async (e) => {
+    e.preventDefault();
+    const res = await postFetch(ADMINAMOUNTTRANSFFER, {
+      ...inputAmount,
+      email: currentUserFormAmount.email,
+    });
+    if (res.success) {
+      toast.success(res.message, config);
+      setRecieptImg((prev) => {
+        return {
+          ...prev,
+          status: false,
+        };
+      });
+    } else {
+      toast.error(res.message, config);
+    }
+  };
   // user over
+  // kyc
+  const handleKyc = async (type, data) => {
+    const res = await postFetch(UPDATEKYC, { kyc: type, email: data.email });
+    console.log(res);
+    if (res.success) {
+      toast.success(res.message, config);
+    } else {
+      toast.error(res.message, config);
+    }
+  };
+  // kyc over
   return (
     <tbody>
       {type == "deposite" && (
@@ -155,7 +202,6 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                       <table className="table table-striped">
                         <thead>
                           <tr>
-                            <th>ID</th>
                             <th>Currency</th>
                             <th>Balance</th>
                             <th>Freeze Balance</th>
@@ -170,7 +216,6 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                                 (mapData, index) => {
                                   return (
                                     <tr key={index}>
-                                      <td>{mapData?._id}</td>
                                       <td>
                                         {(mapData?.currency).toUpperCase()}
                                       </td>
@@ -198,7 +243,7 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
               <Card closeModal={setRecieptImg}>
                 <div>
                   <h4 className="fontW-700 mt-2">Debit / Credit</h4>
-                  <form>
+                  <form onSubmit={amountAction}>
                     <div className="form-row">
                       <div className="col-md-6">
                         <label htmlFor="currentPass">Amount</label>
@@ -206,7 +251,8 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                           type="number"
                           className="form-control"
                           placeholder="Enter Amount"
-                          name="opassward"
+                          name="amount"
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="col-md-6">
@@ -215,12 +261,18 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                           type="text"
                           className="form-control"
                           placeholder="Enter UTR"
-                          name="passward"
+                          name="utr"
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="col-md-6">
                         <label htmlFor="selectLanguage">Action</label>
-                        <select id="selectLanguage" className="custom-select">
+                        <select
+                          id="selectLanguage"
+                          className="custom-select"
+                          name="action"
+                          onChange={handleChange}
+                        >
                           <option value="debit">Debit</option>
                           <option value="credit">Credit</option>
                         </select>
@@ -231,7 +283,8 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                           type="text"
                           className="form-control"
                           placeholder="Enter Remark"
-                          name="passward"
+                          name="description"
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="col-md-12">
@@ -244,7 +297,7 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
             ))}
           {body?.map((data, index) => {
             return (
-              <tr key={index}>
+              <tr key={index} onClick={() => setCurrentUserForAmount(data)}>
                 <td>{data?.email}</td>
                 <td>{data?.name}</td>
                 <td>{data?.mobile}</td>
@@ -283,10 +336,85 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                     />
                   </div>
                 </td>
-                <td onClick={() => handleClickuser(data, "wallet")}>O</td>
-                <td onClick={() => handleClickuser(data, "action")}>O</td>
+                <td onClick={() => handleClickuser(data, "wallet")}>
+                  <i className="fa fa-wallet"></i>
+                </td>
+                <td onClick={() => handleClickuser(data, "action")}>
+                  <i className="fa fa-teligram"></i>
+                </td>
               </tr>
             );
+          })}
+        </>
+      )}
+      {type == "kyc" && (
+        <>
+          {recieptImg.status && (
+            <Card closeModal={setRecieptImg}>
+              <div>
+                <img
+                  src={recieptImg.data}
+                  alt="pic"
+                  style={{
+                    height: "100px",
+                    width: "100px",
+                  }}
+                />
+              </div>
+            </Card>
+          )}
+          {body?.map((data, index) => {
+            if (data.kyc == "pending") {
+              return (
+                <tr
+                  key={index}
+                  onClick={() => setCurrentDespositeDataForUpdate(data)}
+                >
+                  <td>{data?._id?.slice(-5)}</td>
+                  <td>{data?.email}</td>
+                  <td>{data?.name}</td>
+                  <td>{data?.kyc}</td>
+                  <td
+                    onClick={() =>
+                      setRecieptImg({ status: true, data: data.pan })
+                    }
+                  >
+                    <fa className="fa fa-eye"></fa>
+                  </td>
+                  <td>{data.panNumber}</td>
+                  <td
+                    onClick={() =>
+                      setRecieptImg({ status: true, data: data.adharBack })
+                    }
+                  >
+                    <fa className="fa fa-eye"></fa>
+                  </td>
+                  <td
+                    onClick={() =>
+                      setRecieptImg({ status: true, data: data.adharFront })
+                    }
+                  >
+                    <fa className="fa fa-eye"></fa>
+                  </td>
+                  <td>{data.adharNumber}</td>
+                  <td
+                    onClick={() =>
+                      setRecieptImg({ status: true, data: data.uniqueNumber })
+                    }
+                  >
+                    <fa className="fa fa-eye"></fa>
+                  </td>
+                  <td>
+                    <button onClick={() => handleKyc("approve", data)}>
+                      Accept
+                    </button>
+                    <button onClick={() => handleKyc("reject", data)}>
+                      Reject
+                    </button>
+                  </td>
+                </tr>
+              );
+            }
           })}
         </>
       )}

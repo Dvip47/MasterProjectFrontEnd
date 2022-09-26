@@ -97,6 +97,20 @@ export const utrValidation = (input) => {
   }
   return { message, result };
 };
+export const recieptValidation = (input, file) => {
+  let message = "";
+  let result = true;
+  if (input?.deposite <= 0) {
+    return { message: "Invalid Deposite Amount", result: false };
+  }
+  if (String(input?.utr).length <= 9) {
+    return { message: "Invalid UTR Number", result: false };
+  }
+  if (file == "") {
+    return { message: "Please select file", result: false };
+  }
+  return { message, result };
+};
 export const updateProfile = async (data) => {
   try {
     const res = await postFetch(UPDATEPROFILE, data);

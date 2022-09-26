@@ -42,6 +42,19 @@ const User = () => {
     "Wallet",
     "Action",
   ];
+  const Kyc = [
+    "ID",
+    "Email",
+    "Name",
+    "Status",
+    "Pan",
+    "Pan Num",
+    "Aadh Back",
+    "Aadh Front",
+    "Aad Num",
+    "User Img",
+    "Action",
+  ];
   return (
     <>
       {page == "deposite" && (
@@ -50,7 +63,7 @@ const User = () => {
           setPage={setPage}
           page={page}
           body={depositeAmountData}
-          title="User Details"
+          title="User Deposites"
           type="deposite"
           action={setDespositeStatus}
           actionValue={depositeStatus}
@@ -64,6 +77,17 @@ const User = () => {
           body={AllUserData}
           title="User Details"
           type="user"
+          call={callAllUser}
+        />
+      )}
+      {page == "kyc" && (
+        <Table
+          header={Kyc}
+          setPage={setPage}
+          page={page}
+          body={AllUserData}
+          title="USER KYC"
+          type="kyc"
           call={callAllUser}
         />
       )}

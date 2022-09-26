@@ -80,7 +80,7 @@ const Balance = () => {
                           });
                         }}
                       >
-                        Verify
+                        Submit Reciept
                       </td>
                     </tr>
                   );
