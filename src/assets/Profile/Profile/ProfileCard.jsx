@@ -86,7 +86,6 @@ const ProfileCard = () => {
   };
   return (
     <div className="card">
-      <ToastContainer />
       <div className="card-body">
         <h5 className="card-title">General Information</h5>
         <div className="settings-profile">

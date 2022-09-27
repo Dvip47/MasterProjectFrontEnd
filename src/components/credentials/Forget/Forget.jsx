@@ -46,7 +46,6 @@ const Forget = () => {
   ];
   return (
     <>
-      <ToastContainer />
       <Card
         handleChange={handleChange}
         handleSubmit={handleSubmit}

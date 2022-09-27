@@ -67,7 +67,6 @@ const Signup = () => {
   ];
   return (
     <>
-      <ToastContainer />
       {pop && <Popup navigate={navigate} setPop={setPop} />}
       <Card
         handleChange={handleChange}

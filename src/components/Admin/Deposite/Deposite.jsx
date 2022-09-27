@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import Header from "../../../assets/Exchange/Header/Header";
-import Footer from "../../../assets/Profile/Footer/Footer";
 import { WallteContext } from "../../../context/Wallet";
 
 const Deposite = () => {

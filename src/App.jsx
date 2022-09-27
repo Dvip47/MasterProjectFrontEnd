@@ -32,6 +32,7 @@ function App() {
         </Routes>
       ) : (
         <>
+          <ToastContainer />
           <AdminHeader />
           <Routes>
             <Route exact path="/" element={<Admin />} />

@@ -88,7 +88,6 @@ const Login = () => {
   const [showOtp, setShowOtp] = useState(false);
   return (
     <>
-      <ToastContainer />
       <Card
         handleChange={handleChange}
         handleSubmit={handleSubmit}

@@ -27,7 +27,7 @@ const User = () => {
     "Status",
     "Updated At",
     "Created At",
-    "Image",
+    "Reciept",
     "Action",
   ];
   const User = [

@@ -14,12 +14,13 @@ import { postFetch } from "../../../../api/api";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminC";
 const Body = ({ body = [], type, action, actionValue, call }) => {
-  const { callDepositeAmountData } = useContext(AdminContext);
+  const { callDepositeAmountData, callAllUser } = useContext(AdminContext);
   const [recieptImg, setRecieptImg] = useState({
     status: false,
     data: "",
     type: "",
   });
+  // deposite
   const handleChangeAndSubmit = async (e) => {
     action(e.target.value);
     const res = await updateDeposite({
@@ -32,7 +33,9 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
     });
     if (res.success) {
       toast.success(res.message, config);
-      callDepositeAmountData();
+      setTimeout(() => {
+        callDepositeAmountData();
+      }, 1000);
     } else {
       toast.error(res.message, config);
     }
@@ -60,6 +63,7 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
       });
     }
   };
+  // deposite over
   // user
   const [inputAmount, setInputAmount] = useState({
     amount: "",
@@ -113,9 +117,9 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
   // kyc
   const handleKyc = async (type, data) => {
     const res = await postFetch(UPDATEKYC, { kyc: type, email: data.email });
-    console.log(res);
     if (res.success) {
       toast.success(res.message, config);
+      callAllUser();
     } else {
       toast.error(res.message, config);
     }
@@ -158,12 +162,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                     setRecieptImg({ status: true, data: data.reciept })
                   }
                 >
-                  IMG
+                  <i className="fa fa-eye"></i>
                 </td>
                 {data?.status == "pending" ? (
                   <td>
                     <select
-                      value={actionValue}
                       onChange={handleChangeAndSubmit}
                       className="form-group"
                       style={{
@@ -340,7 +343,7 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                   <i className="fa fa-wallet"></i>
                 </td>
                 <td onClick={() => handleClickuser(data, "action")}>
-                  <i className="fa fa-teligram"></i>
+                  <i className="fa fa-money"></i>
                 </td>
               </tr>
             );

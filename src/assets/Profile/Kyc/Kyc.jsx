@@ -70,7 +70,6 @@ const Kyc = () => {
       aria-labelledby="kyc-tab"
     >
       <div className="card">
-        <ToastContainer />
         {/* new */}
         {kycPage == "pending" && (
           <div

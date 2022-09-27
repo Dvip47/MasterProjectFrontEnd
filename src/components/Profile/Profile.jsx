@@ -20,7 +20,6 @@ const Profile = () => {
   return (
     <>
       <Header />
-      <ToastContainer />
       <div className="settings mtb15">
         <div className="container-fluid">
           <div className="row">

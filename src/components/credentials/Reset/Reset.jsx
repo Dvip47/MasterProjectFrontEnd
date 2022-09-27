@@ -57,7 +57,6 @@ const Reset = () => {
   ];
   return (
     <>
-      <ToastContainer />
       <Card
         handleChange={handleChange}
         handleSubmit={handleSubmit}

@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { getFetch, postFetch } from "../api/api";
-import {
-  ADMINDEPOSITEDATA,
-  GETALLDEPOSITETRANSACTION,
-  GETALLUSER,
-} from "../constants/constants";
+import { GETALLDEPOSITETRANSACTION } from "../constants/constants";
 
 export const TransactionContext = createContext({
   deposites: [],
