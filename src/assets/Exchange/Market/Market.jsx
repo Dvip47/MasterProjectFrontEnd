@@ -3,7 +3,7 @@ import { AuthContext } from "../../../context/Auth";
 
 const Market = () => {
   const { crypto, setChartSymbol } = useContext(AuthContext);
-  const header = ["BTC", "ETH", "NEO", "USDT", "DAI", "PAX"];
+  const header = ["BTC", "ETH", "USDT"];
   const [currentSymbol, setCurrentSybmol] = useState("BTC");
   const [input, setInput] = useState("");
   let BodyResult = (data, index) => (
