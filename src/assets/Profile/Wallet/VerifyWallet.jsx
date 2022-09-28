@@ -1,9 +1,6 @@
-import React from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { postFetch } from "../../../api/api";
 import {
   recieptValidation,
   submitDepositeReciept,
@@ -15,6 +12,7 @@ import { WallteContext } from "../../../context/Wallet";
 const VerifyWallet = () => {
   const { verifyDepositeReciept, setverifyWallet } = useContext(WallteContext);
   const { userData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     bankName: verifyDepositeReciept?.bankName,
     mode: verifyDepositeReciept?.mode,
@@ -50,6 +48,11 @@ const VerifyWallet = () => {
         formData.append("reciept", file);
         formData.append("status", "pending");
         const res = await submitDepositeReciept(formData);
+        if (res == 401) {
+          toast.error("Session Over", config);
+          localStorage.removeItem("token");
+          navigate("/credential", { state: "login" });
+        }
         if (res.success) {
           toast.success(res.message, config);
           setverifyWallet(false);

@@ -24,6 +24,11 @@ const Forget = () => {
     const validate = forgetValidation(input);
     if (validate.result) {
       const res = await forget(input);
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res?.success) {
         toast.success(res.message, config);
         localStorage.setItem("token", res.token);

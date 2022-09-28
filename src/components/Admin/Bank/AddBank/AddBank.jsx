@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import Header from "../../../../assets/Exchange/Header/Header";
-import Footer from "../../../../assets/Profile/Footer/Footer";
 import { config } from "../../../../constants/constants";
 import { WallteContext } from "../../../../context/Wallet";
 import "./addBank.css";
 import { addBank, addBankValidation, updateBank } from "../Logic";
-
+import { useNavigate } from "react-router-dom";
 function AddBank() {
   const { adminbankList, callAdminBankList } = useContext(WallteContext);
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     bankName: "",
     accountNumber: "",
@@ -30,6 +29,11 @@ function AddBank() {
       let validate = addBankValidation(input);
       if (validate.result) {
         const res = await addBank(input);
+        if (res == 401) {
+          toast.error("Session Over", config);
+          localStorage.removeItem("token");
+          navigate("/credential", { state: "login" });
+        }
         if (res.success) {
           toast.success(res.message, config);
           callAdminBankList();

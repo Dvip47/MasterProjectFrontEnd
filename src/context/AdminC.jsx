@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { createContext } from "react";
+import { useState, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { getFetch } from "../api/api";
-import { ADMINDEPOSITEDATA, GETALLUSER } from "../constants/constants";
-
+import { ADMINDEPOSITEDATA, config, GETALLUSER } from "../constants/constants";
+import { toast } from "react-toastify";
 export const AdminContext = createContext({
   depositeAmountData: [],
   callDepositeAmountData: () => {},
@@ -11,15 +11,26 @@ export const AdminContext = createContext({
 });
 
 const AdminState = ({ children }) => {
+  const navigate = useNavigate();
   const [depositeAmountData, setDepositeAmountData] = useState([]);
   const [AllUserData, setAllUserData] = useState([]);
 
   const callDepositeAmountData = async () => {
     const res = await getFetch(ADMINDEPOSITEDATA);
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     setDepositeAmountData(res.message);
   };
   const callAllUser = async () => {
     const res = await getFetch(GETALLUSER);
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     setAllUserData(res.message);
   };
   return (

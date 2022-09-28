@@ -1,5 +1,5 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { postFetch } from "../../../api/api";
 import { config, UPDATECOINPERMISSION } from "../../../constants/constants";
@@ -7,12 +7,18 @@ import { TransactionContext } from "../../../context/Transaction";
 
 const Body = ({ body, pagination }) => {
   const { callCoins } = useContext(TransactionContext);
+  const navigate = useNavigate();
   const updateCoin = async (e, dataa) => {
     const data = {
       [e.target.name]: e.target.checked,
       symbol: dataa.symbol,
     };
     const res = await postFetch(UPDATECOINPERMISSION, data);
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       toast.success(res.message, config);
       callCoins();

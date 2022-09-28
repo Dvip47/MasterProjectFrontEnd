@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Card from "../../Card/Card";
 import { updateDeposite } from "../../../../components/Admin/Logic";
 import { toast } from "react-toastify";
@@ -13,7 +12,9 @@ import {
 import { postFetch } from "../../../../api/api";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminC";
+import { useNavigate } from "react-router-dom";
 const Body = ({ body = [], type, action, actionValue, call }) => {
+  const navigate = useNavigate();
   const { callDepositeAmountData, callAllUser } = useContext(AdminContext);
   const [recieptImg, setRecieptImg] = useState({
     status: false,
@@ -31,6 +32,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
       currency: currentDespositeDataForUpdate.currency,
       type: currentDespositeDataForUpdate.type,
     });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       toast.success(res.message, config);
       setTimeout(() => {
@@ -45,6 +51,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
   const handleClickuser = async (data, type) => {
     if (type == "wallet") {
       const res = await postFetch(GETWALLET, { email: data.email });
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res.success) {
         setRecieptImg({
           status: true,
@@ -56,6 +67,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
       }
     } else {
       const res = await postFetch();
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       setRecieptImg({
         status: true,
         data: "",
@@ -88,6 +104,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
       email: dataa.email,
     };
     const res = await postFetch(UPDATEUSERSTATUS, data);
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       toast.success(res.message, config);
       call();
@@ -101,6 +122,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
       ...inputAmount,
       email: currentUserFormAmount.email,
     });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       toast.success(res.message, config);
       setRecieptImg((prev) => {
@@ -117,6 +143,11 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
   // kyc
   const handleKyc = async (type, data) => {
     const res = await postFetch(UPDATEKYC, { kyc: type, email: data.email });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       toast.success(res.message, config);
       callAllUser();

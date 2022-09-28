@@ -1,16 +1,15 @@
-import React from "react";
-import { useContext } from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   updatePassward,
   updatePasswardValidation,
 } from "../../../components/Profile/Logic";
 import { AuthContext } from "../../../context/Auth";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { config } from "../../../constants/constants";
+import { useNavigate } from "react-router-dom";
 const ResetPassward = () => {
   const { userData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     opassward: "",
     passward: "",
@@ -29,6 +28,11 @@ const ResetPassward = () => {
     const validate = updatePasswardValidation(input);
     if (validate.result) {
       const res = await updatePassward({ ...input, email: userData.email });
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res?.success) {
         setInput({
           opassward: "",
