@@ -149,6 +149,7 @@ const ProfileCard = () => {
                   className="form-control"
                   placeholder="Enter your email"
                   defaultValue={input?.email}
+                  disabled
                 />
               </div>
               <div className="col-md-6">
