@@ -26,27 +26,15 @@ const Header = () => {
 
         <div className="collapse navbar-collapse" id="headerMenu">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link "
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                onClick={() => navigate("/")}
-              >
+            <li className="nav-item ">
+              <a className="nav-link " href="#" onClick={() => navigate("/")}>
                 Home
               </a>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item ">
               <a
                 className="nav-link "
                 href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
                 onClick={() => navigate("/exchange")}
               >
                 Exchange

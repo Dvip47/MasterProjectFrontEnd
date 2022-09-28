@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   config,
   PROFILEDATA,
@@ -14,8 +14,11 @@ import { postFetch, postFetchbByImg } from "../../../api/api";
 import jwt from "jwt-decode";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/Auth";
+import { useNavigate } from "react-router-dom";
 const ProfileCard = () => {
   const { setUserData, setLoader } = useContext(AuthContext);
+
+  const navigate = useNavigate();
   useEffect(() => {
     callProfile();
   }, []);
@@ -23,6 +26,11 @@ const ProfileCard = () => {
     let token = localStorage.getItem("token");
     let user = jwt(token);
     const res = await postFetch(PROFILEDATA, { email: user.data.email });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       setInput({
         name: res.message[0].name,
@@ -64,6 +72,11 @@ const ProfileCard = () => {
         formData.append("mobile", input.mobile);
         formData.append("email", input.email);
         const res = await postFetchbByImg(UPDATEPROFILE, formData);
+        if (res == 401) {
+          toast.error("Session Over", config);
+          localStorage.removeItem("token");
+          navigate("/credential", { state: "login" });
+        }
         if (res?.success) {
           toast.success("Profile updated", config);
           callProfile();
@@ -72,6 +85,11 @@ const ProfileCard = () => {
         }
       } else {
         const res = await updateProfile(input);
+        if (res == 401) {
+          toast.error("Session Over", config);
+          localStorage.removeItem("token");
+          navigate("/credential", { state: "login" });
+        }
         if (res?.success) {
           toast.success("Profile updated", config);
           callProfile();

@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { security, verifySecurity } from "../../../components/Profile/Logic";
 import { AuthContext } from "../../../context/Auth";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { config, PROFILEDATA } from "../../../constants/constants";
-import { useEffect } from "react";
 import { postFetch } from "../../../api/api";
 import CardModal from "../../card/CardModal";
+import { useNavigate } from "react-router-dom";
 const SettingCard = () => {
   const { userData, setUserData } = useContext(AuthContext);
   useEffect(() => {
@@ -29,6 +29,7 @@ const SettingCard = () => {
       data: "Not secure",
     },
   ];
+  const navigate = useNavigate();
   const handleClick = async (data) => {
     setOn(data.security);
     if (userData.security !== data.security) {
@@ -37,6 +38,11 @@ const SettingCard = () => {
         email: userData.email,
         previous: userData.security,
       });
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res.success) {
         toast.success(`Validate OTP to change your Auth setting`, config);
         setOtpModal({
@@ -50,6 +56,11 @@ const SettingCard = () => {
   };
   const callProfile = async () => {
     const res = await postFetch(PROFILEDATA, { email: userData.email });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       return setUserData(res.message[0]);
     } else {
@@ -64,6 +75,11 @@ const SettingCard = () => {
       previous: userData.security,
       otp: otp,
     });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       if (otpModal.data == "2fa") {
         toast.success("Scan QR CODE To Setup OTP", config);

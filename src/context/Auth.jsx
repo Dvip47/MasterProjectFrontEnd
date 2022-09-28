@@ -20,10 +20,6 @@ const Auth = ({ children }) => {
   const [crypto, setCrypto] = useState([]);
   useEffect(() => {
     call();
-    let time = setInterval(() => {}, 2000000000);
-    return () => {
-      clearInterval(time);
-    };
   }, []);
   useEffect(() => {
     getUserDataIFLogin();

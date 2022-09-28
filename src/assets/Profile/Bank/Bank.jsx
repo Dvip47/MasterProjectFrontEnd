@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { postFetch } from "../../../api/api";
 import {
@@ -13,6 +13,7 @@ import { config, REMOVEBANK } from "../../../constants/constants";
 import { AuthContext } from "../../../context/Auth";
 import { WallteContext } from "../../../context/Wallet";
 const Bank = () => {
+  const navigate = useNavigate();
   const { userData } = useContext(AuthContext);
   const { userBank, callUserBank } = useContext(WallteContext);
   useEffect(() => {
@@ -44,6 +45,11 @@ const Bank = () => {
         ifscCode: input.ifscCode.toUpperCase(),
         email: userData.email,
       });
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res?.success) {
         toast.success("Please click on verify button to verify", config);
         setProcess({ utr: false, verify: true });
@@ -61,6 +67,11 @@ const Bank = () => {
       mobile: userData.mobile,
       accountNumber: input.accountNumber,
     });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res?.success) {
       toast.success("2nd step completed", config);
       setBeneName(res.message.accountHolderName);
@@ -79,6 +90,11 @@ const Bank = () => {
         email: userData.email,
         accountNumber: input.accountNumber,
       });
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res?.success) {
         setProcess({ utr: false, verify: false });
         toast.success("Bank Added Successfully", config);
@@ -104,6 +120,11 @@ const Bank = () => {
       email: userData.email,
       accountNumber: data.accountNumber,
     });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       toast.success(res.message, config);
       callUserBank(userData);

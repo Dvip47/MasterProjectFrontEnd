@@ -1,17 +1,19 @@
 import React, { useContext, useLayoutEffect, useState } from "react";
 import { config, PROFILEDATA } from "../../../constants/constants";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/Auth";
 import { kycValidation, kyc } from "../../../components/Profile/Logic";
 import { postFetch } from "../../../api/api";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 const Kyc = () => {
   const { setKycPage, kycPage, userData, setUserData } =
     useContext(AuthContext);
   useLayoutEffect(() => {
     setKycPage(userData?.kyc);
   }, [userData]);
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     pan: "",
     panNumber: "",
@@ -22,6 +24,11 @@ const Kyc = () => {
   });
   const callProfile = async () => {
     const res = await postFetch(PROFILEDATA, { email: userData?.email });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       setUserData(res.message[0]);
       setKycPage(res.message[0].kyc);
@@ -44,6 +51,11 @@ const Kyc = () => {
       formData.append("panNumber", input.panNumber.toUpperCase());
       formData.append("email", userData?.email);
       const res = await kyc(formData);
+      if (res == 401) {
+        toast.error("Session Over", config);
+        localStorage.removeItem("token");
+        navigate("/credential", { state: "login" });
+      }
       if (res?.success) {
         toast.success("Details uploaded", config);
         setInput({
