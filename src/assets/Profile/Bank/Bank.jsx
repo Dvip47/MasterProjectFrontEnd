@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { postFetch } from "../../../api/api";
 import {
   bankDeatils,
   bankValidation,
@@ -8,7 +9,7 @@ import {
   utrValidation,
   verify,
 } from "../../../components/Profile/Logic";
-import { config } from "../../../constants/constants";
+import { config, REMOVEBANK } from "../../../constants/constants";
 import { AuthContext } from "../../../context/Auth";
 import { WallteContext } from "../../../context/Wallet";
 const Bank = () => {
@@ -98,6 +99,18 @@ const Bank = () => {
     verify: false,
     utr: false,
   });
+  const removebank = async (data) => {
+    const res = await postFetch(REMOVEBANK, {
+      email: userData.email,
+      accountNumber: data.accountNumber,
+    });
+    if (res.success) {
+      toast.success(res.message, config);
+      callUserBank(userData);
+    } else {
+      toast.error(res.message, config);
+    }
+  };
   const [beneName, setBeneName] = useState("");
   const [disable, setDisable] = useState({ submit: false });
   return (
@@ -214,15 +227,26 @@ const Bank = () => {
             </thead>
             <tbody>
               {userBank?.map((data, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{data.bankName}</td>
-                    <td>{data.accountNumber}</td>
-                    <td>{data.ifscCode}</td>
-                    <td>{data.accountHolderName}</td>
-                    <td>Remove</td>
-                  </tr>
-                );
+                if (data.bankActive) {
+                  return (
+                    <tr key={index}>
+                      <td>{data.bankName}</td>
+                      <td>{data.accountNumber}</td>
+                      <td>{data.ifscCode}</td>
+                      <td>{data.accountHolderName}</td>
+                      <td onClick={() => removebank(data)}>
+                        <i
+                          className="fa fa-times"
+                          style={{
+                            fontWeight: "900",
+                            color: "red",
+                            fontSize: "22px",
+                          }}
+                        ></i>
+                      </td>
+                    </tr>
+                  );
+                }
               })}
             </tbody>
           </table>

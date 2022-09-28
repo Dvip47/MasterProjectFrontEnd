@@ -1,8 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { WallteContext } from "../../../context/Wallet";
-import CardModal from "../../card/CardModal";
 
 const Balance = () => {
   const {
@@ -11,7 +8,6 @@ const Balance = () => {
     setverifyWallet,
     setVerifyDepositeReciept,
   } = useContext(WallteContext);
-  const [modal, setModal] = useState(false);
   const [showBankDetails, setShowBankDetails] = useState({
     status: false,
     type: "",
@@ -37,11 +33,11 @@ const Balance = () => {
           className="btn green"
           onClick={() => {
             setShowBankDetails((prev) => {
-              return { ...prev, status: true };
+              return { ...prev, status: !prev.status };
             });
 
             setVerifyDepositeReciept((prev) => {
-              return { ...prev, status: true };
+              return { ...prev, status: !prev.status };
             });
           }}
         >
@@ -79,6 +75,7 @@ const Balance = () => {
                             return { ...prev, status: false };
                           });
                         }}
+                        style={{ cursor: "pointer" }}
                       >
                         Submit Reciept
                       </td>

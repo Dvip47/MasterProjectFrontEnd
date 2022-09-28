@@ -13,6 +13,9 @@ import { ToastContainer } from "react-toastify";
 import User from "./components/Admin/Users/User";
 import AdminHeader from "./assets/admin/Header/AdminHeader";
 import Admin from "./components/Admin/Admin";
+import Coins from "./components/Admin/Coins/Coins";
+import Footer from "./assets/Home/Footer/Footer";
+import Assets from "./components/Admin/Assets/Assets";
 function App() {
   const { loader, findUser } = useContext(AuthContext);
   return (
@@ -38,7 +41,10 @@ function App() {
             <Route exact path="/" element={<Admin />} />
             <Route exact path="/users" element={<User />} />
             <Route exact path="/addbank" element={<AddBank />} />
+            <Route exact path="/coins" element={<Coins />} />
+            <Route exact path="/assets" element={<Assets />} />
           </Routes>
+          <Footer />
         </>
       )}
     </>

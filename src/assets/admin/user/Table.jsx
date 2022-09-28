@@ -16,26 +16,24 @@ const Table = ({
   call,
 }) => {
   return (
-    <>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">{title}</h5>
-          <Filter setPage={setPage} page={page} />
-          <div className="wallet-history">
-            <table className="table">
-              <TableHeader header={header} />
-              <Body
-                body={body}
-                type={type}
-                action={action}
-                actionValue={actionValue}
-                call={call}
-              />
-            </table>
-          </div>
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title">{title}</h5>
+        <Filter setPage={setPage} page={page} />
+        <div className="wallet-history">
+          <table className="table">
+            <TableHeader header={header} />
+            <Body
+              body={body}
+              type={type}
+              action={action}
+              actionValue={actionValue}
+              call={call}
+            />
+          </table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

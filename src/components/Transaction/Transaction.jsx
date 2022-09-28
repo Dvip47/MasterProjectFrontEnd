@@ -1,33 +1,23 @@
-import React from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Header from "../../assets/Exchange/Header/Header";
+import Footer from "../../assets/Home/Footer/Footer";
 import Table from "../../assets/Table/Table";
 import { AuthContext } from "../../context/Auth";
 import { TransactionContext } from "../../context/Transaction";
 
 const Transaction = () => {
-  const { callDeposite, deposites } = useContext(TransactionContext);
+  const { callDeposite, deposites, type } = useContext(TransactionContext);
   const { userData } = useContext(AuthContext);
-  const [page, setPage] = useState("all");
+  useEffect(() => {
+    callDeposite(userData);
+  }, [userData]);
+  const [page, setPage] = useState("deposite");
   const [current, setCurrent] = useState({
     desposite: true,
     withdraw: true,
     order: true,
   });
-  useEffect(() => {
-    callDeposite(userData);
-  }, []);
-  const Allheader = [
-    "ID",
-    "TXN ID",
-    "Remark",
-    "Date",
-    "Open Amount",
-    "Amount",
-    "Close Amount",
-  ];
+
   const depositeHeaderMoney = [
     "Wallet ID",
     "UTR",
@@ -91,26 +81,14 @@ const Transaction = () => {
   return (
     <>
       <Header />
-      {page == "all" && (
-        <Table header={Allheader} setPage={setPage} page={page} />
-      )}
       {page == "deposite" && (
-        <>
-          {current.desposite ? (
-            <Table
-              header={depositeHeaderMoney}
-              setPage={setPage}
-              page={page}
-              body={deposites}
-            />
-          ) : (
-            <Table
-              header={depositeHeaderCrypto}
-              setPage={setPage}
-              page={page}
-            />
-          )}
-        </>
+        <Table
+          header={type == "money" ? depositeHeaderMoney : depositeHeaderCrypto}
+          setPage={setPage}
+          page={page}
+          body={deposites}
+          setCurrent={setCurrent}
+        />
       )}
       {page == "withdraw" && (
         <>
@@ -134,6 +112,7 @@ const Transaction = () => {
           )}
         </>
       )}
+      <Footer />
     </>
   );
 };

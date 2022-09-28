@@ -23,51 +23,33 @@ const AdminHeader = () => {
         <div className="collapse navbar-collapse" id="headerMenu">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item dropdown">
-              <p
-                className="nav-link "
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                onClick={() => navigate("/")}
-              >
+              <p className="nav-link " onClick={() => navigate("/")}>
                 Home
               </p>
             </li>
-            <li className="nav-item dropdown">
-              <p
-                className="nav-link "
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                onClick={() => navigate("/users")}
-              >
+            <li className="nav-item ">
+              <p className="nav-link " onClick={() => navigate("/users")}>
                 Users
               </p>
             </li>
-            <li className="nav-item dropdown">
-              <p
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                onClick={() => navigate("/")}
-              >
+            <li className="nav-item ">
+              <p className="nav-link " onClick={() => navigate("/")}>
                 Transactions
               </p>
             </li>
-            <li className="nav-item dropdown">
-              <p
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                onClick={() => navigate("/addbank")}
-              >
+            <li className="nav-item ">
+              <p className="nav-link" onClick={() => navigate("/addbank")}>
                 Bank
+              </p>
+            </li>
+            <li className="nav-item ">
+              <p className="nav-link" onClick={() => navigate("/coins")}>
+                Coins
+              </p>
+            </li>
+            <li className="nav-item ">
+              <p className="nav-link" onClick={() => navigate("/assets")}>
+                Assets
               </p>
             </li>
           </ul>

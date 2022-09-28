@@ -107,6 +107,7 @@ const VerifyWallet = () => {
               value={input?.utr}
               name="utr"
               onChange={handleChange}
+              maxLength={12}
             />
           </div>
           <div className="col-md-6">
@@ -124,13 +125,13 @@ const VerifyWallet = () => {
             </div>
           </div>
           <div className="col-md-6">
-            <input type="submit" value="Update" />
+            <input type="submit" value="Submit" />
+          </div>
+          <div className="col-md-6" onClick={() => setverifyWallet(false)}>
+            <button className="btn btn-primary">Cancel</button>
           </div>
         </div>
       </form>
-      <div className="col-md-3" onClick={() => setverifyWallet(false)}>
-        <button className="btn btn-primary">Cancel</button>
-      </div>
     </div>
   );
 };

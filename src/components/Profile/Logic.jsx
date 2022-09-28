@@ -100,10 +100,17 @@ export const utrValidation = (input) => {
 export const recieptValidation = (input, file) => {
   let message = "";
   let result = true;
+  let regex = new RegExp("[a-zA-Z]");
+  if (regex.test(input?.deposite)) {
+    return { message: "Invalid Deposite Amount", result: false };
+  }
+  if (regex.test(input?.utr)) {
+    return { message: "Invalid UTR Number", result: false };
+  }
   if (input?.deposite <= 0) {
     return { message: "Invalid Deposite Amount", result: false };
   }
-  if (String(input?.utr).length <= 9) {
+  if (String(input?.utr).length <= 11) {
     return { message: "Invalid UTR Number", result: false };
   }
   if (file == "") {
