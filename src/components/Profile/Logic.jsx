@@ -16,10 +16,10 @@ export const updateProfileValidation = (input) => {
   let message = "";
   let result = true;
   if (!input?.name?.trim()?.length) {
-    return { message: "Invalid name", result: false };
+    return { message: "Invalid Name", result: false };
   }
   if (!regex.test(input.name)) {
-    return { message: "Invalid name", result: false };
+    return { message: "Invalid Name", result: false };
   }
   if (input?.mobile?.length < 10 && input?.mobile?.length < 10) {
     return { message: "Invalid mobile number", result: false };
@@ -37,27 +37,27 @@ export const updatePasswardValidation = (input) => {
 export const kycValidation = (input) => {
   let message = "";
   let result = true;
-  if (input?.pan == undefined || input?.pan == null || input?.pan == "") {
+  if (input?.pan === undefined || input?.pan === null || input?.pan === "") {
     return { message: "Please select Pan Card", result: false };
   }
   if (
-    input?.adharFront == undefined ||
-    input?.adharFront == null ||
-    input?.adharFront == ""
+    input?.adharFront === undefined ||
+    input?.adharFront === null ||
+    input?.adharFront === ""
   ) {
     return { message: "Please select Adhar Card Front", result: false };
   }
   if (
-    input?.adharBack == undefined ||
-    input?.adharBack == null ||
-    input?.adharBack == ""
+    input?.adharBack === undefined ||
+    input?.adharBack === null ||
+    input?.adharBack === ""
   ) {
     return { message: "Please select Adhar Card Back", result: false };
   }
   if (
-    input?.uniqueNumber == undefined ||
-    input?.uniqueNumber == null ||
-    input?.uniqueNumber == ""
+    input?.uniqueNumber === undefined ||
+    input?.uniqueNumber === null ||
+    input?.uniqueNumber === ""
   ) {
     return { message: "Please select Selfie Image", result: false };
   }
@@ -82,7 +82,10 @@ export const bankValidation = (input) => {
   if (input?.bankName?.trim().length < 3) {
     return { message: "Invalid Bank Name", result: false };
   }
-  if (input?.accountNumber?.length != 14 || !regex.test(input?.accountNumber)) {
+  if (
+    input?.accountNumber?.length !== 14 ||
+    !regex.test(input?.accountNumber)
+  ) {
     return { message: "Invalid Bank Account", result: false };
   }
   if (input?.accountNumber !== input?.confirmAccountNumber) {
@@ -117,7 +120,7 @@ export const recieptValidation = (input, file) => {
   if (String(input?.utr).length <= 11) {
     return { message: "Invalid UTR Number", result: false };
   }
-  if (file == "") {
+  if (file === "") {
     return { message: "Please select file", result: false };
   }
   return { message, result };

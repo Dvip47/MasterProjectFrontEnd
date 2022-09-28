@@ -5,9 +5,11 @@ const Report = ({ header }) => {
     <div id="report">
       <table className="table">
         <thead>
-          {header?.map((data, index) => (
-            <th key={index}>{data}</th>
-          ))}
+          <tr>
+            {header?.map((data, index) => (
+              <th key={index}>{data}</th>
+            ))}
+          </tr>
         </thead>
       </table>
     </div>

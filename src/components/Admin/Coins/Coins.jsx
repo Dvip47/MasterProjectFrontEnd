@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import TableHeader from "../../../assets/admin/coins/Header";
 import Body from "../../../assets/admin/coins/Body";
-import { useContext } from "react";
 import { TransactionContext } from "../../../context/Transaction";
-import { useEffect } from "react";
-import { useState } from "react";
 import ListCoin from "../../../assets/admin/coins/ListCoin";
 const Coins = () => {
   const { coinList, callCoins } = useContext(TransactionContext);
   useEffect(() => {
     callCoins();
-  }, []);
+  }, [callCoins]);
   useEffect(() => {
     setFilteredCoin(coinList);
   }, [coinList]);
@@ -68,12 +65,12 @@ const Coins = () => {
     <div className="card">
       {modal.status && <ListCoin closeModal={setModal} />}
       <div className="card-body">
-        <div className="d-flex">
+        <div className="d-flex" style={{ justifyContent: "space-between" }}>
           <h5 className="card-title">Coins</h5>
           <div className="d-flex">
             <input type="text" placeholder="Search" onChange={handleChange} />
             <button
-              className="btn btn-primary"
+              className="btn btn-primary ml-5 px-3 py-0"
               onClick={() => setModal({ status: true })}
             >
               List Your Coin
@@ -104,5 +101,18 @@ const Coins = () => {
     </div>
   );
 };
-
 export default Coins;
+
+// ----------------
+
+// Use a for loop to push the values 1 through 5 onto myArray.
+
+// Setup
+const myArray = [];
+
+// Only change code below this line
+
+// case
+
+// You should be using a for loop for this.
+// myArray should equal [1, 2, 3, 4, 5].
