@@ -12,9 +12,13 @@ import {
 } from "../../constants/constants";
 
 export const updateProfileValidation = (input) => {
+  let regex = new RegExp("[A-Za-z]");
   let message = "";
   let result = true;
   if (!input?.name?.trim()?.length) {
+    return { message: "Invalid name", result: false };
+  }
+  if (!regex.test(input.name)) {
     return { message: "Invalid name", result: false };
   }
   if (input?.mobile?.length < 10 && input?.mobile?.length < 10) {
