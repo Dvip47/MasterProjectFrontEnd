@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header = () => {
-  return <div>Transaction Report</div>;
+  return <div className="asset-tr">Transaction Report</div>;
 };
 
 export default Header;

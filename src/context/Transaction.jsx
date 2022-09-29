@@ -4,6 +4,7 @@ import { getFetch, postFetch } from "../api/api";
 import {
   config,
   GETALLDEPOSITETRANSACTION,
+  GETCOINBALANCE,
   GETCOINS,
 } from "../constants/constants";
 import { toast } from "react-toastify";
@@ -16,6 +17,8 @@ export const TransactionContext = createContext({
   setType: () => {},
   status: "all",
   setStatus: () => {},
+  callCoinBalance: () => {},
+  coinBalance: [],
 });
 const TrasactionState = ({ children }) => {
   const navigate = useNavigate();
@@ -23,6 +26,7 @@ const TrasactionState = ({ children }) => {
   const [coinList, setCoinsList] = useState([]);
   const [type, setType] = useState("money");
   const [status, setStatus] = useState("all");
+  const [coinBalance, setCoinBalance] = useState([]);
   const callDeposite = async (data) => {
     const res = await postFetch(GETALLDEPOSITETRANSACTION, {
       email: data.email,
@@ -47,6 +51,15 @@ const TrasactionState = ({ children }) => {
       setCoinsList(res.message);
     }
   };
+  const callCoinBalance = async (data) => {
+    const res = await postFetch(GETCOINBALANCE, { email: data.email });
+    if (res.success) {
+      setCoinBalance(res.message);
+    } else {
+      console.log(res.message);
+      return res.message;
+    }
+  };
   return (
     <TransactionContext.Provider
       value={{
@@ -58,6 +71,8 @@ const TrasactionState = ({ children }) => {
         setType,
         status,
         setStatus,
+        callCoinBalance,
+        coinBalance,
       }}
     >
       {children}

@@ -47,11 +47,6 @@ const AdminHeader = () => {
                 Coins
               </p>
             </li>
-            <li className="nav-item ">
-              <p className="nav-link" onClick={() => navigate("/assets")}>
-                Assets
-              </p>
-            </li>
           </ul>
         </div>
       </nav>

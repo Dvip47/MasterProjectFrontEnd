@@ -246,25 +246,21 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                         <tbody>
                           {recieptImg.type == "wallet" && (
                             <>
-                              {recieptImg?.data?.wallet?.map(
-                                (mapData, index) => {
-                                  return (
-                                    <tr key={index}>
-                                      <td>
-                                        {(mapData?.currency).toUpperCase()}
-                                      </td>
-                                      <td>{mapData?.balance}</td>
-                                      <td>{mapData?.freezeBalance}</td>
-                                      <td>{mapData?.total}</td>
-                                      <td>
-                                        {new Date(
-                                          mapData?.date
-                                        ).toLocaleDateString()}
-                                      </td>
-                                    </tr>
-                                  );
-                                }
-                              )}
+                              {recieptImg?.data?.map((mapData, index) => {
+                                return (
+                                  <tr key={index}>
+                                    <td>{(mapData?.currency).toUpperCase()}</td>
+                                    <td>{mapData?.balance}</td>
+                                    <td>{mapData?.freezeAmount}</td>
+                                    <td>{mapData?.total}</td>
+                                    <td>
+                                      {new Date(
+                                        mapData?.updatedAt
+                                      ).toLocaleDateString()}
+                                    </td>
+                                  </tr>
+                                );
+                              })}
                             </>
                           )}
                         </tbody>

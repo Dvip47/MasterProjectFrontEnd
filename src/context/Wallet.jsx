@@ -14,6 +14,8 @@ export const WallteContext = createContext({
   setVerifyDepositeReciept: () => {},
   callUserBank: () => {},
   userBank: [],
+  walletTransaction: [],
+  setWalletTransaction: () => {},
 });
 const WalletState = ({ children }) => {
   const navigate = useNavigate();
@@ -45,6 +47,7 @@ const WalletState = ({ children }) => {
       setUserBank(res.message);
     }
   };
+  const [walletTransaction, setWalletTransaction] = useState([]);
   return (
     <WallteContext.Provider
       value={{
@@ -58,6 +61,8 @@ const WalletState = ({ children }) => {
         setVerifyDepositeReciept,
         callUserBank,
         userBank,
+        walletTransaction,
+        setWalletTransaction,
       }}
     >
       {children}

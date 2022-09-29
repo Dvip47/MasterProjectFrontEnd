@@ -40,17 +40,18 @@ const Header = () => {
                 Exchange
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link "
-                href="#"
-                onClick={() => navigate("/exchange")}
-              >
-                Markets
-              </a>
-            </li>
+
             {userData?.email && (
               <>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link "
+                    href="#"
+                    onClick={() => navigate("/assets")}
+                  >
+                    Assets
+                  </a>
+                </li>
                 <li
                   className="nav-item dropdown"
                   onClick={() => navigate("/transaction")}
