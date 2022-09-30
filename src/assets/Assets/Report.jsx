@@ -14,15 +14,17 @@ const Report = ({ header }) => {
           </tr>
         </thead>
         <tbody>
-          {walletTransaction?.length
-            ? walletTransaction?.map((data, index) => {
-                return (
-                  <tr key={index}>
-                    <td></td>
-                  </tr>
-                );
-              })
-            : "No Records Found"}
+          {walletTransaction?.length ? (
+            walletTransaction?.map((data, index) => {
+              return (
+                <tr key={index}>
+                  <td></td>
+                </tr>
+              );
+            })
+          ) : (
+            <h3 className="text-center"> No Records Found </h3>
+          )}
         </tbody>
       </table>
     </div>

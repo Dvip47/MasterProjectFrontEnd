@@ -56,8 +56,8 @@ const TrasactionState = ({ children }) => {
     if (res.success) {
       setCoinBalance(res.message);
     } else {
-      console.log(res.message);
-      return res.message;
+      console.log(res);
+      return res;
     }
   };
   return (

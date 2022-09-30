@@ -1,15 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../context/Auth";
 
 const OrderBook = () => {
-  const header1 = ["Price(BTC)", "Amount(ETH)", "Total(ETH)"];
-  const body1 = [
-    { price: "0.022572", amount: "1.253415", total: "1.253648" },
-    { price: "0.022572", amount: "1.253415", total: "1.253648" },
+  const { cryptoOrder, cryptoOrderSubmol } = useContext(AuthContext);
+  const header1 = [
+    `Volume ${cryptoOrderSubmol.symbol}`,
+    `Price ${cryptoOrderSubmol.currency}`,
   ];
-  const header2 = ["Last Price", "USD", "Change"];
-  const body2 = [{ lastPrice: "", usd: "", change: "1.253415" }, {}];
-  const [color, setColor] = useState(100);
   return (
     <div className="order-book">
       <h2 className="heading">Order Book</h2>
@@ -23,37 +20,42 @@ const OrderBook = () => {
         </thead>
         {/* loop */}
         <tbody>
-          {body1?.map((data, index) => {
+          {cryptoOrder.ask?.map((data, index) => {
+            let sorted = data.sort((a, b) => b - a);
             return (
               <tr key={index} className={`red-bg-${80 - index * 20}`}>
                 <td>
-                  <i className="red"></i> {data.price}
+                  <i className="red"></i>
+                  {Number(sorted[1])?.toFixed(3)}
                 </td>
-                <td>{data.amount}</td>
-                <td>{data.total}</td>
+                <td> {sorted[0]}</td>
               </tr>
             );
           })}
         </tbody>
-        {/* loop */}
         <thead className="ob-heading">
           <tr>
-            {header2?.map((data, index) => {
-              return (
-                <td key={index}>
-                  <span>{data}</span>
-                </td>
-              );
-            })}
+            <td>
+              <span> Last Price </span>
+              <span>
+                {Number(cryptoOrderSubmol?.data?.closePrice)?.toFixed(3)}
+              </span>
+            </td>
+            <td>
+              <span> Change </span>
+              <span> {cryptoOrderSubmol?.data?.priceChange} </span>
+            </td>
           </tr>
         </thead>
         <tbody>
-          {body2?.map((data, index) => {
+          {cryptoOrder.bid?.map((data, index) => {
+            let sorted = data.sort((a, b) => b - a);
             return (
-              <tr className="green-bg" key={index}>
-                <td className="green">0.158373</td>
-                <td>1.209515</td>
-                <td>15.23248</td>
+              <tr className={`green-bg-${80 - index * 20}`} key={index}>
+                <td>
+                  <i className="green"></i> {Number(sorted[1])?.toFixed(3)}
+                </td>
+                <td>{sorted[0]}</td>
               </tr>
             );
           })}

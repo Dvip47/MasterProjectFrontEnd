@@ -2,25 +2,36 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/Auth";
 
 const Market = () => {
-  const { crypto, setChartSymbol } = useContext(AuthContext);
-  const header = ["BTC", "ETH", "USDT"];
-  const [currentSymbol, setCurrentSybmol] = useState("BTC");
+  const { crypto, setChartSymbol, callcryptoOrder, setCryptoOrderSymbol } =
+    useContext(AuthContext);
+
+  const header = ["INR", "USDT"];
+  const [currentSymbol, setCurrentSybmol] = useState("INR");
   const [input, setInput] = useState("");
   let BodyResult = (data, index) => (
-    <tr key={index} onClick={() => setChartSymbol(data.symbol)}>
+    <tr
+      key={index}
+      onClick={() => {
+        setChartSymbol(data.symbol.replace(currentSymbol, "BTC"));
+        setCryptoOrderSymbol({
+          symbol: data.symbol.replace(currentSymbol, ""),
+          currency: currentSymbol,
+          data: data,
+        });
+        callcryptoOrder(data.symbol.replace(currentSymbol, "").toLowerCase());
+      }}
+    >
       <td>
-        <i className="icon ion-md-star"></i>{" "}
+        <i className="icon ion-md-star"></i>
         {data.symbol?.replace(currentSymbol, "")}
       </td>
-      <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
-      {Number(data?.priceChangePercent) > 0 ? (
-        <td style={{ color: "green" }}>
-          {Number(data?.lastPrice)?.toFixed(3)}
-        </td>
-      ) : Number(data?.priceChangePercent) == 0 ? (
-        <td>{Number(data?.lastPrice)?.toFixed(5)}</td>
+      <td>{Number(data?.closePrice)?.toFixed(3)}</td>
+      {data?.priceChange > 0 ? (
+        <td style={{ color: "green" }}>+{data?.priceChange || 0}</td>
+      ) : data?.priceChange == 0 || data?.priceChange == undefined ? (
+        <td>{data?.priceChange || 0}</td>
       ) : (
-        <td style={{ color: "red" }}>{Number(data?.lastPrice)?.toFixed(5)}</td>
+        <td style={{ color: "red" }}>{data?.priceChange || 0}</td>
       )}
     </tr>
   );
@@ -87,9 +98,7 @@ const Market = () => {
                 if (data?.symbol?.includes(currentSymbol)) {
                   if (input == "") {
                     return BodyResult(data, index);
-                  } else if (
-                    data?.symbol?.replace(currentSymbol, "") == input
-                  ) {
+                  } else if (data?.symbol.includes(input)) {
                     return BodyResult(data, index);
                   }
                 }
