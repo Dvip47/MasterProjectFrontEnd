@@ -18,7 +18,7 @@ const Transaction = () => {
     order: true,
   });
 
-  const depositeHeaderMoney = [
+  const depositeHeader = [
     "Wallet ID",
     "UTR",
     "Amount",
@@ -26,64 +26,35 @@ const Transaction = () => {
     "Description",
     "Date",
   ];
-  const depositeHeaderCrypto = [
-    "Wallet ID",
-    "UTR",
-    "Amount",
-    "Status",
-    "Description",
-    "Date",
-  ];
-  const WithdrawHeaderMoney = [
+
+  const WithdrawHeader = [
     "ID",
     "Symbol",
     "Amount",
     "Status",
-    "UTR",
-    "Deduction",
-    "Final Amount",
-    "Created At",
-  ];
-  const WithdrawHeaderCrypto = [
-    "ID",
-    "Symbol",
-    "Amount",
-    "Status",
-    "TXN Hash",
+    "UTR/ID",
     "Charge",
     "Final Amount",
     "Created At",
   ];
-  const OrderHeaderMoney = [
+
+  const OrderHeader = [
     "ID",
-    "TXN ID",
+    "Symbol",
     "Price",
     "Quantity",
     "Total Quantity",
     "Status",
-    "Symbol",
-    "Type",
     "Created",
     "Action",
   ];
-  const OrderHeaderCrypto = [
-    "ID",
-    "Order ID",
-    "Match ID",
-    "Match Ladger ID",
-    "Symbol",
-    "Price",
-    "Remain Quantity",
-    "Total Quantity",
-    "Order Price",
-    "Date",
-  ];
+
   return (
     <>
       <Header />
       {page == "deposite" && (
         <Table
-          header={type == "money" ? depositeHeaderMoney : depositeHeaderCrypto}
+          header={depositeHeader}
           setPage={setPage}
           page={page}
           body={deposites}
@@ -91,26 +62,10 @@ const Transaction = () => {
         />
       )}
       {page == "withdraw" && (
-        <>
-          {current.withdraw ? (
-            <Table header={WithdrawHeaderMoney} setPage={setPage} page={page} />
-          ) : (
-            <Table
-              header={WithdrawHeaderCrypto}
-              setPage={setPage}
-              page={page}
-            />
-          )}
-        </>
+        <Table header={WithdrawHeader} setPage={setPage} page={page} />
       )}
       {page == "order" && (
-        <>
-          {current.order ? (
-            <Table header={OrderHeaderMoney} setPage={setPage} page={page} />
-          ) : (
-            <Table header={OrderHeaderCrypto} setPage={setPage} page={page} />
-          )}
-        </>
+        <Table header={OrderHeader} setPage={setPage} page={page} />
       )}
       <Footer />
     </>

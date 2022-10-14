@@ -1,96 +1,86 @@
-import React from "react";
-import { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import Table from "../../../assets/admin/user/Table";
-import { AdminContext } from "../../../context/AdminC";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import UserDetail from "../../../assets/admin/UserDetail";
+import UserKyc from "../../../assets/admin/UserKyc";
+import InnerFooter from "../../../assets/Footer/InnerFooter";
+import InnerHeader from "../../../assets/Header/InnerHeader";
+import AdminSideBar from "../../../assets/Sidebar/AdminSidebar";
+import { AuthContext } from "../../../context/Auth";
 
 const User = () => {
-  const {
-    depositeAmountData,
-    AllUserData,
-    callDepositeAmountData,
-    callAllUser,
-  } = useContext(AdminContext);
-  useEffect(() => {
-    callDepositeAmountData();
-    callAllUser();
-  }, []);
-  const [depositeStatus, setDespositeStatus] = useState("select");
-  const [page, setPage] = useState("deposite");
-  const UserDeposite = [
-    "ID",
-    "Wallet",
-    "UTR",
-    "Email",
-    "Amount",
-    "Status",
-    "Updated At",
-    "Created At",
-    "Reciept",
-    "Action",
-  ];
-  const User = [
-    "Email",
-    "Name",
-    "Phone",
-    "Created At",
-    "Balance",
-    "Active",
-    "Deposit",
-    "Withdrawal",
-    "Wallet",
-    "Action",
-  ];
-  const Kyc = [
-    "ID",
-    "Email",
-    "Name",
-    "Status",
-    "Pan",
-    "Pan Num",
-    "Aadh Back",
-    "Aadh Front",
-    "Aad Num",
-    "User Img",
-    "Action",
+  const { userData } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const subDashboard = [
+    {
+      title: "User",
+      state: "user",
+      icon: "mdi mdi-bullseye",
+    },
+    { title: "KYC", state: "kyc", icon: "mdi mdi-pentagon" },
   ];
   return (
     <>
-      {page == "deposite" && (
-        <Table
-          header={UserDeposite}
-          setPage={setPage}
-          page={page}
-          body={depositeAmountData}
-          title="User Deposites"
-          type="deposite"
-          action={setDespositeStatus}
-          actionValue={depositeStatus}
-        />
-      )}
-      {page == "user" && (
-        <Table
-          header={User}
-          setPage={setPage}
-          page={page}
-          body={AllUserData}
-          title="User Details"
-          type="user"
-          call={callAllUser}
-        />
-      )}
-      {page == "kyc" && (
-        <Table
-          header={Kyc}
-          setPage={setPage}
-          page={page}
-          body={AllUserData}
-          title="USER KYC"
-          type="kyc"
-          call={callAllUser}
-        />
-      )}
+      <InnerHeader />
+      <AdminSideBar />
+      <div style={{ height: "50px" }}></div>
+      <div className="page-title dashboard">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-6">
+              <div className="page-title-content">
+                <p>
+                  Welcome Back,
+                  <span>{userData?.name}</span>
+                </p>
+              </div>
+            </div>
+            <div className="col-6">
+              <ul className="text-right breadcrumbs list-unstyle">
+                <li>
+                  <a href="settings.html">Settings </a>
+                </li>
+                <li className="active">
+                  <a href="#">Security</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="content-body">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="card sub-menu">
+                <div className="card-body">
+                  <ul className="d-flex">
+                    {subDashboard.map((data, index) => {
+                      return (
+                        <li
+                          className="nav-item"
+                          key={index}
+                          onClick={() =>
+                            navigate("/user", { state: data.state })
+                          }
+                        >
+                          <a className="nav-link">
+                            <i class={data.icon}></i>
+                            <span>{data.title}</span>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {location.state == "user" && <UserDetail />}
+            {location.state == "kyc" && <UserKyc />}
+          </div>
+        </div>
+      </div>
+      <InnerFooter />
     </>
   );
 };

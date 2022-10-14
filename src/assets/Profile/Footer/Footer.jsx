@@ -7,29 +7,29 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="row">
             <div className="col-lg-4 store-links text-center text-lg-left pb-3 pb-lg-0">
-              <a href="">
+              <p>
                 <img src="img/appstore.png" alt="" className="mr-2" />
-              </a>
-              <a href="">
+              </p>
+              <p>
                 <img src="img/playstore.png" alt="" />
-              </a>
+              </p>
             </div>
             <div className="col-lg-8 text-center text-lg-right">
               <ul className="footer-nav">
                 <li>
-                  <a href="">DPA</a>
+                  <p>DPA</p>
                 </li>
                 <li>
-                  <a href="">Terms of Use</a>
+                  <p>Terms of Use</p>
                 </li>
                 <li>
-                  <a href="">Privacy Policy </a>
+                  <p>Privacy Policy </p>
                 </li>
                 <li>
-                  <a href="">support@company.com</a>
+                  <p>support@company.com</p>
                 </li>
                 <li>
-                  <a href="">(123) 456-7890</a>
+                  <p>(123) 456-7890</p>
                 </li>
               </ul>
             </div>

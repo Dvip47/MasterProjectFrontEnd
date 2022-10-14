@@ -3,30 +3,35 @@ import { useNavigate } from "react-router-dom";
 import { getFetch, postFetch } from "../api/api";
 import {
   config,
+  GETALLDEPOSITEDATA,
   GETALLDEPOSITETRANSACTION,
+  GETALLLEDGERDATA,
   GETCOINBALANCE,
   GETCOINS,
 } from "../constants/constants";
 import { toast } from "react-toastify";
 export const TransactionContext = createContext({
-  deposites: [],
   callDeposite: () => {},
+  deposites: [],
   callCoins: () => {},
   coinList: [],
-  type: "money",
-  setType: () => {},
-  status: "all",
-  setStatus: () => {},
   callCoinBalance: () => {},
   coinBalance: [],
+  callAllDeposite: () => {},
+  allDeposite: [],
+  callAllLedger: () => {},
+  allLedger: [],
+  setPaginationData: () => {},
+  paginationData: [],
 });
 const TrasactionState = ({ children }) => {
   const navigate = useNavigate();
   const [deposites, setDeposite] = useState([]);
   const [coinList, setCoinsList] = useState([]);
-  const [type, setType] = useState("money");
-  const [status, setStatus] = useState("all");
   const [coinBalance, setCoinBalance] = useState([]);
+  const [allDeposite, setAllDeposite] = useState([]);
+  const [allLedger, setAllLedger] = useState([]);
+  const [paginationData, setPaginationData] = useState(10);
   const callDeposite = async (data) => {
     const res = await postFetch(GETALLDEPOSITETRANSACTION, {
       email: data.email,
@@ -56,23 +61,36 @@ const TrasactionState = ({ children }) => {
     if (res.success) {
       setCoinBalance(res.message);
     } else {
-      console.log(res);
       return res;
+    }
+  };
+  const callAllDeposite = async () => {
+    const res = await getFetch(GETALLDEPOSITEDATA);
+    if (res.success) {
+      setAllDeposite(res.message);
+    }
+  };
+  const callAllLedger = async () => {
+    const res = await getFetch(GETALLLEDGERDATA);
+    if (res.success) {
+      setAllLedger(res.message);
     }
   };
   return (
     <TransactionContext.Provider
       value={{
-        deposites,
         callDeposite,
+        deposites,
         callCoins,
         coinList,
-        type,
-        setType,
-        status,
-        setStatus,
         callCoinBalance,
         coinBalance,
+        callAllDeposite,
+        allDeposite,
+        callAllLedger,
+        allLedger,
+        setPaginationData,
+        paginationData,
       }}
     >
       {children}

@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/Auth";
+import { MarketContext } from "../../../context/MarketContext";
 
 const Market = () => {
   const { crypto, setChartSymbol, callcryptoOrder, setCryptoOrderSymbol } =
     useContext(AuthContext);
-
-  const header = ["INR", "USDT"];
+  const { setCurrentCurrency } = useContext(MarketContext);
+  const header = ["INR"];
   const [currentSymbol, setCurrentSybmol] = useState("INR");
   const [input, setInput] = useState("");
   let BodyResult = (data, index) => (
@@ -18,6 +19,7 @@ const Market = () => {
           currency: currentSymbol,
           data: data,
         });
+        setCurrentCurrency(data);
         callcryptoOrder(data.symbol.replace(currentSymbol, "").toLowerCase());
       }}
     >
@@ -53,15 +55,14 @@ const Market = () => {
       </div>
       <ul className="nav nav-pills" role="tablist">
         <li className="nav-item">
-          <a
+          <p
             className="nav-link"
             data-toggle="pill"
-            href="#STAR"
             role="tab"
             aria-selected="true"
           >
             <i className="icon ion-md-star"></i>
-          </a>
+          </p>
         </li>
         {header?.map((data, index) => {
           return (
@@ -70,15 +71,14 @@ const Market = () => {
               className="nav-item"
               onClick={() => setCurrentSybmol(data)}
             >
-              <a
+              <p
                 className="nav-link active"
                 data-toggle="pill"
-                href="#"
                 role="tab"
                 aria-selected="true"
               >
                 {data}
-              </a>
+              </p>
             </li>
           );
         })}

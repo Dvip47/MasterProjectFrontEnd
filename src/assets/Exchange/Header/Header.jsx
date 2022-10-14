@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="border-bottom">
       <nav className="navbar navbar-expand-lg">
-        <a className="navbar-brand" href="exchange-light.html">
+        <a className="navbar-brand">
           <img src="assets/img/logo-dark.svg" alt="logo" />
         </a>
         <button
@@ -27,16 +27,12 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="headerMenu">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item ">
-              <a className="nav-link " href="#" onClick={() => navigate("/")}>
+              <a className="nav-link " onClick={() => navigate("/")}>
                 Home
               </a>
             </li>
             <li className="nav-item ">
-              <a
-                className="nav-link "
-                href="#"
-                onClick={() => navigate("/exchange")}
-              >
+              <a className="nav-link " onClick={() => navigate("/exchange")}>
                 Exchange
               </a>
             </li>
@@ -44,11 +40,7 @@ const Header = () => {
             {userData?.email && (
               <>
                 <li className="nav-item dropdown">
-                  <a
-                    className="nav-link "
-                    href="#"
-                    onClick={() => navigate("/assets")}
-                  >
+                  <a className="nav-link " onClick={() => navigate("/assets")}>
                     Assets
                   </a>
                 </li>
@@ -58,7 +50,6 @@ const Header = () => {
                 >
                   <a
                     className="nav-link "
-                    href="#"
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -69,7 +60,6 @@ const Header = () => {
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="#"
                     role="button"
                     data-toggle="dropdown"
                     aria-haspopup="true"
@@ -84,15 +74,8 @@ const Header = () => {
                     >
                       Profile
                     </a>
-                    <a
-                      className="dropdown-item"
-                      href="settings-wallet-light.html"
-                    >
-                      Wallet
-                    </a>
-                    <a className="dropdown-item" href="settings-light.html">
-                      Settings
-                    </a>
+                    <a className="dropdown-item">Wallet</a>
+                    <a className="dropdown-item">Settings</a>
                   </div>
                 </li>
               </>

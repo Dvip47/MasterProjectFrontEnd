@@ -9,7 +9,7 @@ const Sidebar = () => {
         role="tablist"
         aria-orientation="vertical"
       >
-        <a
+        <p
           className="nav-link active"
           id="settings-profile-tab"
           data-toggle="pill"
@@ -19,8 +19,8 @@ const Sidebar = () => {
           aria-selected="true"
         >
           <i className="icon ion-md-person"></i> Profile
-        </a>
-        <a
+        </p>
+        <p
           className="nav-link"
           id="settings-wallet-tab"
           data-toggle="pill"
@@ -30,8 +30,8 @@ const Sidebar = () => {
           aria-selected="false"
         >
           <i className="icon ion-md-wallet"></i> Wallet
-        </a>
-        <a
+        </p>
+        <p
           className="nav-link"
           id="settings-kyc-tab"
           data-toggle="pill"
@@ -41,8 +41,8 @@ const Sidebar = () => {
           aria-selected="false"
         >
           <i className="icon ion-md-wallet"></i> KYC
-        </a>
-        <a
+        </p>
+        <p
           className="nav-link"
           id="settings-wallet-tab"
           data-toggle="pill"
@@ -52,8 +52,8 @@ const Sidebar = () => {
           aria-selected="false"
         >
           <i className="icon ion-md-wallet"></i> Bank
-        </a>
-        <a
+        </p>
+        <p
           className="nav-link"
           id="settings-tab"
           data-toggle="pill"
@@ -63,7 +63,7 @@ const Sidebar = () => {
           aria-selected="false"
         >
           <i className="icon ion-md-settings"></i> Settings
-        </a>
+        </p>
       </div>
     </div>
   );

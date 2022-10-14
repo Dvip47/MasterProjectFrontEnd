@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import { config } from "../../../constants/constants";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../../../assets/Credentials/Card";
 import { login, loginValidation, verifyOtp } from "../Logic";
 import jwt from "jwt-decode";
 import { AuthContext } from "../../../context/Auth";
 const Login = () => {
-  const { setUserData, setLogin, setFindUser } = useContext(AuthContext);
+  const { setUserData } = useContext(AuthContext);
   const navigate = useNavigate();
   const [input, setInput] = useState({
     email: "",
@@ -32,13 +32,10 @@ const Login = () => {
         toast.success("Logged in successfully", config);
         setUserData(jwt(res.token)?.data);
         localStorage.setItem("token", res.token);
-        setLogin(true);
-        setFindUser(res.message.role);
-        localStorage.setItem("findUser", res.message.role);
-        if (res.message.role == "user") {
-          return navigate("/");
+        if (res.message.role != "user") {
+          return navigate("/", { state: "admin", replace: true });
         } else {
-          return navigate("/admin");
+          return navigate("/", { replace: true });
         }
       } else {
         toast.error(res?.message, config);
@@ -52,11 +49,10 @@ const Login = () => {
             toast.success("Logged in successfully", config);
             setUserData(jwt(res.token)?.data);
             localStorage.setItem("token", res.token);
-            setLogin(true);
-            setFindUser(res.message.role);
-            localStorage.setItem("findUser", res.message.role);
-            if (res.message.role == "user") {
-              return navigate("/");
+            if (res.message.role !== "user") {
+              return navigate("/", { state: "admin", replace: true });
+            } else {
+              return navigate("/", { replace: true });
             }
           } else {
             toast.success(res?.message, config);

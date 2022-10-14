@@ -13,24 +13,32 @@ import { postFetch } from "../../../../api/api";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminC";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../../context/Auth";
 const Body = ({ body = [], type, action, actionValue, call }) => {
   const navigate = useNavigate();
   const { callDepositeAmountData, callAllUser } = useContext(AdminContext);
+  const { userData } = useContext(AuthContext);
   const [recieptImg, setRecieptImg] = useState({
     status: false,
     data: "",
     type: "",
   });
   // deposite
+  const [depositeHandleChangeState, setDepositeHandleChangeState] = useState({
+    status: "",
+    description: "",
+  });
   const handleChangeAndSubmit = async (e) => {
-    action(e.target.value);
+    e.preventDefault();
     const res = await updateDeposite({
       utr: currentDespositeDataForUpdate.utr,
-      status: e.target.value,
+      status: depositeHandleChangeState.status,
       email: currentDespositeDataForUpdate.email,
       balance: currentDespositeDataForUpdate.deposite,
-      currency: currentDespositeDataForUpdate.currency,
+      currency: currentDespositeDataForUpdate.currency?.toUpperCase(),
       type: currentDespositeDataForUpdate.type,
+      description: depositeHandleChangeState.description,
+      actionTaken: userData?.email,
     });
     if (res == 401) {
       toast.error("Session Over", config);
@@ -45,6 +53,12 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
     } else {
       toast.error(res.message, config);
     }
+    setRecieptImg((prev) => {
+      return {
+        ...prev,
+        status: false,
+      };
+    });
   };
   const [currentDespositeDataForUpdate, setCurrentDespositeDataForUpdate] =
     useState();
@@ -86,6 +100,8 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
     utr: "",
     action: "debit",
     description: "",
+    currency: "INR",
+    actionTaken: userData?.email,
   });
   const [currentUserFormAmount, setCurrentUserForAmount] = useState({});
   const handleChange = (e) => {
@@ -160,20 +176,44 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
     <tbody>
       {type == "deposite" && (
         <>
-          {recieptImg.status && (
-            <Card closeModal={setRecieptImg}>
-              <div>
-                <img
-                  src={recieptImg.data}
-                  alt="pic"
-                  style={{
-                    height: "100px",
-                    width: "100px",
-                  }}
-                />
-              </div>
-            </Card>
-          )}
+          {recieptImg.status &&
+            (recieptImg.type == "desc" ? (
+              <Card closeModal={setRecieptImg}>
+                <form onSubmit={handleChangeAndSubmit}>
+                  <div className="form-row mt-4">
+                    <div className="col-md-12">
+                      <label htmlFor="formFirst">Enter Description</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter Description"
+                        onChange={(e) =>
+                          setDepositeHandleChangeState((prev) => {
+                            return { ...prev, description: e.target.value };
+                          })
+                        }
+                      />
+                    </div>
+                    <div className="col-md-12">
+                      <input type="submit" value="Submit" />
+                    </div>
+                  </div>
+                </form>
+              </Card>
+            ) : (
+              <Card closeModal={setRecieptImg}>
+                <div>
+                  <img
+                    src={recieptImg.data}
+                    alt="pic"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                    }}
+                  />
+                </div>
+              </Card>
+            ))}
           {body?.map((data, index) => {
             return (
               <tr
@@ -185,7 +225,7 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                 <td>{data?.utr}</td>
                 <td>{data?.email}</td>
                 <td>{data?.deposite}</td>
-                <td>{(data?.status).toUpperCase()}</td>
+                <td>{data?.status?.toUpperCase()}</td>
                 <td>{new Date(data?.updatedAt).toLocaleTimeString()}</td>
                 <td>{new Date(data?.updatedAt).toLocaleTimeString()}</td>
                 <td
@@ -198,7 +238,15 @@ const Body = ({ body = [], type, action, actionValue, call }) => {
                 {data?.status == "pending" ? (
                   <td>
                     <select
-                      onChange={handleChangeAndSubmit}
+                      onChange={(e) => {
+                        setRecieptImg({ status: true, data: "", type: "desc" });
+                        setDepositeHandleChangeState((prev) => {
+                          return {
+                            ...prev,
+                            status: e.target.value,
+                          };
+                        });
+                      }}
                       className="form-group"
                       style={{
                         backgroundColor: "#24a0ed",

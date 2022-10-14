@@ -17,7 +17,6 @@ import { AuthContext } from "../../../context/Auth";
 import { useNavigate } from "react-router-dom";
 const ProfileCard = () => {
   const { setUserData, setLoader } = useContext(AuthContext);
-
   const navigate = useNavigate();
   useEffect(() => {
     callProfile();

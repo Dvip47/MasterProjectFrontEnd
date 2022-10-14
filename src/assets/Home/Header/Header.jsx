@@ -13,25 +13,16 @@ const Header = () => {
   return (
     <header className="header-section clearfix">
       <div className="container-fluid">
-        <a
-          href="javascript:void(0)"
-          className="site-logo"
-          onClick={() => navigate("/")}
-        >
+        <a className="site-logo" onClick={() => navigate("/")}>
           <img src="img/logo.png" alt="" />
         </a>
         <div className="responsive-bar" onClick={() => navigate("/")}>
           <i className="fa fa-bars"></i>
         </div>
-        <a
-          href="javascript:void(0)"
-          className="user"
-          onClick={() => navigate("/")}
-        >
+        <a className="user" onClick={() => navigate("/")}>
           <i className="fa fa-user"></i>
         </a>
         <a
-          href="javascript:void(0)"
           className="site-btn"
           onClick={() => navigate(`/credential`, { state: "signup" })}
         >
@@ -43,7 +34,6 @@ const Header = () => {
               return (
                 <li key={index}>
                   <a
-                    href="javascript:void(0)"
                     onClick={() =>
                       navigate(`${data.location}`, { state: data.state })
                     }

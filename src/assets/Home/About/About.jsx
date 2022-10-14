@@ -17,9 +17,7 @@ const About = () => {
               conveniently and without restriction. It’s the dawn of a better,
               more free world.
             </p>
-            <a href="" className="site-btn sb-gradients sbg-line mt-5">
-              Get Started
-            </a>
+            <p className="site-btn sb-gradients sbg-line mt-5">Get Started</p>
           </div>
         </div>
         <div className="about-img">

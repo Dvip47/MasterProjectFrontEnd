@@ -24,9 +24,6 @@ export const WallteContext = createContext({
 });
 const WalletState = ({ children }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    callAdminBankList();
-  }, []);
   const callAdminBankList = async () => {
     const res = await getFetch(GETADMINBANKLIST);
     if (res == 401) {
@@ -34,7 +31,9 @@ const WalletState = ({ children }) => {
       localStorage.removeItem("token");
       navigate("/credential", { state: "login" });
     }
-    setAdminbankList(res.message);
+    if (res.success) {
+      setAdminbankList(res.message);
+    }
   };
   const [adminbankList, setAdminbankList] = useState([]);
   const [depositePage, setDespositePage] = useState({ symbol: "INR" });

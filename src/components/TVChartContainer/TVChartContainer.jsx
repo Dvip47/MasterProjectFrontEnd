@@ -2,6 +2,7 @@ import * as React from "react";
 import { useContext } from "react";
 import { widget } from "../../charting_library";
 import { AuthContext } from "../../context/Auth";
+import { CoinContext } from "../../context/CoinsContext";
 
 const getLanguageFromURL = () => {
   const regex = new RegExp("[\\?&]lang=([^&#]*)");
@@ -12,10 +13,11 @@ const getLanguageFromURL = () => {
 };
 const TVChartContainer = () => {
   const ref = React.useRef();
-  const { chartSymbol } = useContext(AuthContext);
+  // const {theme} = useContext(AuthContext)
+  const { chartSymbol } = useContext(CoinContext);
   React.useEffect(() => {
     const widgetOptions = {
-      symbol: chartSymbol,
+      symbol: chartSymbol.title,
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: new window.Datafeeds.UDFCompatibleDatafeed(
         "https://ws.torentx.in:3006"
@@ -30,6 +32,7 @@ const TVChartContainer = () => {
       charts_storage_api_version: "1.1",
       client_id: "tradingview.com",
       user_id: "public_user_id",
+      theme: localStorage.getItem("theme"),
       fullscreen: false,
       autosize: true,
       studies_overrides: {},

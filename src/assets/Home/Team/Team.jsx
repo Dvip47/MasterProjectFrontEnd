@@ -23,15 +23,15 @@ const Team = () => {
             <span>Business Development</span>
           </div>
           <div className="member-social">
-            <a href="">
+            <p>
               <i className="fa fa-facebook"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-linkedin"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-twitter"></i>
-            </a>
+            </p>
           </div>
           <div className="member-info">
             <div
@@ -60,15 +60,15 @@ const Team = () => {
             <span>Business Development</span>
           </div>
           <div className="member-social">
-            <a href="">
+            <p>
               <i className="fa fa-facebook"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-linkedin"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-twitter"></i>
-            </a>
+            </p>
           </div>
           <div className="member-info">
             <div
@@ -97,15 +97,15 @@ const Team = () => {
             <span>Business Development</span>
           </div>
           <div className="member-social">
-            <a href="">
+            <p>
               <i className="fa fa-facebook"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-linkedin"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-twitter"></i>
-            </a>
+            </p>
           </div>
           <div className="member-info">
             <div
@@ -134,15 +134,15 @@ const Team = () => {
             <span>Product Manager</span>
           </div>
           <div className="member-social">
-            <a href="">
+            <p>
               <i className="fa fa-facebook"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-linkedin"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-twitter"></i>
-            </a>
+            </p>
           </div>
           <div className="member-info">
             <div
@@ -171,15 +171,15 @@ const Team = () => {
             <span>Head of Design</span>
           </div>
           <div className="member-social">
-            <a href="">
+            <p>
               <i className="fa fa-facebook"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-linkedin"></i>
-            </a>
-            <a href="">
+            </p>
+            <p>
               <i className="fa fa-twitter"></i>
-            </a>
+            </p>
           </div>
           <div className="member-info">
             <div

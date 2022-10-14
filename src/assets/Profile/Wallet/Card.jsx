@@ -40,10 +40,9 @@ const Card = () => {
       >
         {data.map((data, index) => {
           return (
-            <a
+            <p
               className="nav-link d-flex justify-content-between align-items-center"
               data-toggle="pill"
-              href="#coinBNB"
               role="tab"
               aria-selected="true"
               key={index}
@@ -62,7 +61,7 @@ const Card = () => {
                   <i className="icon ion-md-lock"></i> {data.amt2}
                 </p>
               </div>
-            </a>
+            </p>
           );
         })}
       </div>

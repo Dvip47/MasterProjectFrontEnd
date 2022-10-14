@@ -22,6 +22,9 @@ export const UPDATECOINPERMISSION = "query/v1/updatePermission/";
 export const GETALLDEPOSITETRANSACTION = "query/v1/getAllDepositeTransaction/";
 export const GETCOINBALANCE = "query/v1/getCoinBalance/";
 export const GETALLCOINTRANSACTION = "query/v1/getAllCoinTransaction/";
+export const GETLEDGER = "query/v1/adminLedger/";
+export const GETALLDEPOSITEDATA = "query/v1/getAllDepositeData/";
+export const GETALLLEDGERDATA = "query/v1/getAllLedgerData/";
 // kyc
 export const KYC = "kyc/v1/kyc";
 export const UPDATEKYC = "kyc/v1/updateKyc";

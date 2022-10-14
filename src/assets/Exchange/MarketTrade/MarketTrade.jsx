@@ -1,52 +1,36 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MarketContext } from "../../../context/MarketContext";
 
 const MarketTrade = () => {
+  const { currentCurrency, callOrders } = useContext(MarketContext);
+  useEffect(() => {
+    console.log(currentCurrency);
+    callOrders();
+  }, [currentCurrency]);
+  const [input, setInput] = useState({
+    amount: 0,
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
   return (
     <div className="market-trade">
       <ul className="nav nav-pills" role="tablist">
         <li className="nav-item">
-          <a
+          <p
             className="nav-link active"
             data-toggle="pill"
-            href="#pills-trade-limit"
             role="tab"
             aria-selected="true"
           >
             Limit
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#pills-market"
-            role="tab"
-            aria-selected="false"
-          >
-            Market
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#pills-stop-limit"
-            role="tab"
-            aria-selected="false"
-          >
-            Stop Limit
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link"
-            data-toggle="pill"
-            href="#pills-stop-market"
-            role="tab"
-            aria-selected="false"
-          >
-            Stop Market
-          </a>
+          </p>
         </li>
       </ul>
       <div className="tab-content">
@@ -62,9 +46,11 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  readOnly
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">INR</span>
                 </div>
               </div>
               <div className="input-group">
@@ -72,37 +58,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn buy">Buy</button>
             </div>
             <div className="market-trade-sell">
@@ -111,9 +97,11 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  readOnly
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">INR</span>
                 </div>
               </div>
               <div className="input-group">
@@ -121,37 +109,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn sell">Sell</button>
             </div>
           </div>
@@ -164,9 +152,11 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  readOnly
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">INR</span>
                 </div>
               </div>
               <div className="input-group">
@@ -174,37 +164,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn buy">Buy</button>
             </div>
             <div className="market-trade-sell">
@@ -213,9 +203,10 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">INR</span>
                 </div>
               </div>
               <div className="input-group">
@@ -223,37 +214,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn sell">Sell</button>
             </div>
           </div>
@@ -266,9 +257,13 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  readOnly
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <div className="input-group">
@@ -276,37 +271,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn buy">Buy</button>
             </div>
             <div className="market-trade-sell">
@@ -315,9 +310,12 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <div className="input-group">
@@ -325,37 +323,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn sell">Sell</button>
             </div>
           </div>
@@ -368,9 +366,11 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  readOnly
+                  value={currentCurrency?.closePrice}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">INR</span>
                 </div>
               </div>
               <div className="input-group">
@@ -378,37 +378,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn buy">Buy</button>
             </div>
             <div className="market-trade-sell">
@@ -417,9 +417,12 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Price"
+                  readOnly
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">BTC</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <div className="input-group">
@@ -427,37 +430,37 @@ const MarketTrade = () => {
                   type="number"
                   className="form-control"
                   placeholder="Amount"
+                  name="amount"
+                  onChange={handleChange}
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text">ETH</span>
+                  <span className="input-group-text">
+                    {currentCurrency.symbol?.replace("INR", "")}
+                  </span>
                 </div>
               </div>
               <ul className="market-trade-list">
                 <li>
-                  <a href="#!">25%</a>
+                  <p>25%</p>
                 </li>
                 <li>
-                  <a href="#!">50%</a>
+                  <p>50%</p>
                 </li>
                 <li>
-                  <a href="#!">75%</a>
+                  <p>75%</p>
                 </li>
                 <li>
-                  <a href="#!">100%</a>
+                  <p>100%</p>
                 </li>
               </ul>
               <p>
-                Available: <span>0 BTC = 0 USD</span>
+                Available: <span>0 INR</span>
               </p>
               <p>
-                Volume: <span>0 BTC = 0 USD</span>
+                Est. Final Amount:
+                <span>{input.amount * currentCurrency.closePrice} INR</span>
               </p>
-              <p>
-                Margin: <span>0 BTC = 0 USD</span>
-              </p>
-              <p>
-                Fee: <span>0 BTC = 0 USD</span>
-              </p>
+
               <button className="btn sell">Sell</button>
             </div>
           </div>

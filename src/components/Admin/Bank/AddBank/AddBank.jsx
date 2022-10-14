@@ -93,7 +93,6 @@ function AddBank() {
                   <th>Account Number</th>
                   <th>IFSC Code</th>
                   <th>Status</th>
-                  <th>Update</th>
                 </tr>
               </thead>
               <tbody>

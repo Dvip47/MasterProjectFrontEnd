@@ -17,20 +17,20 @@ const Blog = () => {
               <div className="blog-text">
                 <div className="post-date">03 jan 2018</div>
                 <h4 className="blog-title">
-                  <a href="">
+                  <p>
                     Coinbase to Reopen the GDAX Bitcoin Cash-Euro Order Book
-                  </a>
+                  </p>
                 </h4>
                 <div className="post-meta">
-                  <a href="">
+                  <p>
                     <span>by</span> Admin
-                  </a>
-                  <a href="">
+                  </p>
+                  <p>
                     <i className="fa fa-heart-o"></i> 234 Likes
-                  </a>
-                  <a href="">
+                  </p>
+                  <p>
                     <i className="fa fa-comments-o"></i> 08 comments
-                  </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -43,21 +43,21 @@ const Blog = () => {
               <div className="blog-text">
                 <div className="post-date">28 dec 2018</div>
                 <h4 className="blog-title">
-                  <a href="">
+                  <p>
                     Blockchain Rolls Out Trading Feature for 22 States in the
                     U.S
-                  </a>
+                  </p>
                 </h4>
                 <div className="post-meta">
-                  <a href="">
+                  <p>
                     <span>by</span> Admin
-                  </a>
-                  <a href="">
+                  </p>
+                  <p>
                     <i className="fa fa-heart-o"></i> 234 Likes
-                  </a>
-                  <a href="">
+                  </p>
+                  <p>
                     <i className="fa fa-comments-o"></i> 08 comments
-                  </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -70,18 +70,18 @@ const Blog = () => {
               <div className="blog-text">
                 <div className="post-date">28 aug 2018</div>
                 <h4 className="blog-title">
-                  <a href="">This Week in Bitcoin: Up, Down and Sideways</a>
+                  <p>This Week in Bitcoin: Up, Down and Sideways</p>
                 </h4>
                 <div className="post-meta">
-                  <a href="">
+                  <p>
                     <span>by</span> Admin
-                  </a>
-                  <a href="">
+                  </p>
+                  <p>
                     <i className="fa fa-heart-o"></i> 234 Likes
-                  </a>
-                  <a href="">
+                  </p>
+                  <p>
                     <i className="fa fa-comments-o"></i> 08 comments
-                  </a>
+                  </p>
                 </div>
               </div>
             </div>

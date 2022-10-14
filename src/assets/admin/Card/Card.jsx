@@ -17,8 +17,7 @@ const Card = ({ children, closeModal, img }) => {
     >
       <div className="message text-center">
         <div className="message-pop detail">
-          <a
-            href="#"
+          <p
             className="close btn-sm"
             onClick={() =>
               closeModal((prev) => {
@@ -27,7 +26,7 @@ const Card = ({ children, closeModal, img }) => {
             }
           >
             <i className="fa fa-close"></i>
-          </a>
+          </p>
           {children}
         </div>
       </div>

@@ -5,9 +5,9 @@ const AdminHeader = () => {
   return (
     <header className="border-bottom">
       <nav className="navbar navbar-expand-lg">
-        <a className="navbar-brand" href="exchange-light.html">
+        <p className="navbar-brand">
           <img src="assets/img/logo-dark.svg" alt="logo" />
-        </a>
+        </p>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,7 +33,7 @@ const AdminHeader = () => {
               </p>
             </li>
             <li className="nav-item ">
-              <p className="nav-link " onClick={() => navigate("/")}>
+              <p className="nav-link " onClick={() => navigate("/transaction")}>
                 Transactions
               </p>
             </li>

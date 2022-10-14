@@ -7,17 +7,26 @@ import Auth from "./context/Auth";
 import WalletState from "./context/Wallet";
 import AdminState from "./context/AdminC";
 import TrasactionState from "./context/Transaction";
+import MarketState from "./context/MarketContext";
+import CoinState from "./context/CoinsContext";
+import UserState from "./context/UserContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <TrasactionState>
-      <AdminState>
-        <WalletState>
-          <Auth>
-            <App />
-          </Auth>
-        </WalletState>
-      </AdminState>
+      <UserState>
+        <CoinState>
+          <AdminState>
+            <WalletState>
+              <MarketState>
+                <Auth>
+                  <App />
+                </Auth>
+              </MarketState>
+            </WalletState>
+          </AdminState>
+        </CoinState>
+      </UserState>
     </TrasactionState>
   </BrowserRouter>
 );

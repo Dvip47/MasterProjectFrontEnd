@@ -1,77 +1,95 @@
 import React from "react";
-import { ToastContainer } from "react-toastify";
 import { useContext } from "react";
-import Header from "../../assets/Exchange/Header/Header";
-import Bank from "../../assets/Profile/Bank/Bank";
-import Footer from "../../assets/Profile/Footer/Footer";
-import Kyc from "../../assets/Profile/Kyc/Kyc";
-import ProfileCard from "../../assets/Profile/Profile/ProfileCard";
-import Sidebar from "../../assets/Profile/Profile/Sidebar";
-import ResetPassward from "../../assets/Profile/Resetpassward/ResetPassward";
-import SettingCard from "../../assets/Profile/Setting/SettingCard";
-import Balance from "../../assets/Profile/Wallet/Balance";
-import Card from "../../assets/Profile/Wallet/Card";
-import Deposite from "../../assets/Profile/Wallet/Deposite";
-import { WallteContext } from "../../context/Wallet";
-import VerifyWallet from "../../assets/Profile/Wallet/VerifyWallet";
+import InnerHeader from "../../assets/Header/InnerHeader";
+import InnerSideBar from "../../assets/Sidebar/InnerSideBar";
+import { AuthContext } from "../../context/Auth";
+import InnerFooter from "../../assets/Footer/InnerFooter";
+import UserProfile from "../../assets/UserProfile/UserProfile";
+import { useLocation, useNavigate } from "react-router-dom";
+import UserBank from "../../assets/UserProfile/UserBank";
+import UserKyc from "../../assets/UserProfile/UserKyc";
+import UserSecurity from "../../assets/UserProfile/UserSecurity";
 
 const Profile = () => {
-  const { depositePage, verifyWallet } = useContext(WallteContext);
+  const { userData } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const subDashboard = [
+    {
+      title: "Edit Profile",
+      state: "profile",
+      icon: "mdi mdi-account-settings-variant",
+    },
+    { title: "Bank", state: "bank", icon: "mdi mdi-bank" },
+    { title: "KYC", state: "kyc", icon: "mdi mdi-lock" },
+    { title: "Security", state: "security", icon: "mdi mdi-lock" },
+  ];
   return (
-    <>
-      <Header />
-      <div className="settings mtb15">
-        <div className="container-fluid">
+    <div id="main-wrapper" className="show">
+      {/* header */}
+      <InnerHeader />
+      <InnerSideBar />
+      {/* welcome */}
+      <div className="page-title dashboard">
+        <div className="container">
           <div className="row">
-            <Sidebar />
-            <div className="col-md-12 col-lg-9">
-              <div className="tab-content" id="v-pills-tabContent">
-                <div
-                  className="tab-pane fade show active"
-                  id="settings-profile"
-                  role="tabpanel"
-                  aria-labelledby="settings-profile-tab"
-                >
-                  <ProfileCard />
-                  <ResetPassward />
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="settings-wallet"
-                  role="tabpanel"
-                  aria-labelledby="settings-wallet-tab"
-                >
-                  <div className="wallet">
-                    <div className="row">
-                      <Card />
-                      <div className="col-md-12 col-lg-8">
-                        <div className="tab-content">
-                          <div
-                            className="tab-pane fade show active"
-                            id="coinBTC"
-                            role="tabpanel"
-                          >
-                            <Balance />
-                            {depositePage.symbol !== "INR" && <Deposite />}
-                            {depositePage.symbol == "INR" && verifyWallet && (
-                              <VerifyWallet />
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <SettingCard />
-                <Kyc />
-                <Bank />
+            <div className="col-6">
+              <div className="page-title-content">
+                <p>
+                  Welcome Back,
+                  <span> {userData?.name}</span>
+                </p>
               </div>
+            </div>
+            <div className="col-6">
+              <ul className="text-right breadcrumbs list-unstyle">
+                <li>
+                  <a>Settings </a>
+                </li>
+                <li className="active">
+                  <a>Security</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+      {/* sub dashboard */}
+      <div className="content-body">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="card sub-menu">
+                <div className="card-body">
+                  <ul className="d-flex">
+                    {subDashboard.map((data, index) => {
+                      return (
+                        <li className="nav-item" key={index}>
+                          <a
+                            onClick={() =>
+                              navigate("/profile", { state: data.state })
+                            }
+                            className="nav-link"
+                          >
+                            <i class={data.icon}></i>
+                            <span>{data.title}</span>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {location.state == "profile" && <UserProfile />}
+            {location.state == "bank" && <UserBank />}
+            {location.state == "kyc" && <UserKyc />}
+            {location.state == "security" && <UserSecurity />}
+          </div>
+        </div>
+      </div>
+      <InnerFooter />
+    </div>
   );
 };
 

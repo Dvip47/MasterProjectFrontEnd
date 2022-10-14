@@ -6,48 +6,44 @@ const MarketOrder = () => {
       <div className="market-history market-order">
         <ul className="nav nav-pills" role="tablist">
           <li className="nav-item">
-            <a
+            <p
               className="nav-link active"
               data-toggle="pill"
-              href="#open-orders"
               role="tab"
               aria-selected="true"
             >
               Open Orders
-            </a>
+            </p>
           </li>
           <li className="nav-item">
-            <a
+            <p
               className="nav-link"
               data-toggle="pill"
-              href="#stop-orders"
               role="tab"
               aria-selected="false"
             >
               Closed Orders
-            </a>
+            </p>
           </li>
           <li className="nav-item">
-            <a
+            <p
               className="nav-link"
               data-toggle="pill"
-              href="#order-history"
               role="tab"
               aria-selected="false"
             >
               Order history
-            </a>
+            </p>
           </li>
           <li className="nav-item">
-            <a
+            <p
               className="nav-link"
               data-toggle="pill"
-              href="#trade-history"
               role="tab"
               aria-selected="false"
             >
               Balance
-            </a>
+            </p>
           </li>
         </ul>
         <div className="tab-content">

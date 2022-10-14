@@ -16,28 +16,26 @@ const Footer = () => {
               <script>document.write(new Date().getFullYear());</script>
               All rights reserved | This template is made with
               <i className="fa fa-heart-o" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">
-                Colorlib
-              </a>
+              <p>Colorlib</p>
             </span>
           </div>
           <div className="col-md-6 col-lg-2 offset-lg-1 footer-widget">
             <h5 className="widget-title">Resources</h5>
             <ul>
               <li>
-                <a href="#">How to Buy Coin</a>
+                <p>How to Buy Coin</p>
               </li>
               <li>
-                <a href="#">Coin Overview</a>
+                <p>Coin Overview</p>
               </li>
               <li>
-                <a href="#">Blog News</a>
+                <p>Blog News</p>
               </li>
               <li>
-                <a href="#">How to Sell Coin</a>
+                <p>How to Sell Coin</p>
               </li>
               <li>
-                <a href="#">Purchase Theme</a>
+                <p>Purchase Theme</p>
               </li>
             </ul>
           </div>
@@ -45,66 +43,66 @@ const Footer = () => {
             <h5 className="widget-title">Quick Links</h5>
             <ul>
               <li>
-                <a href="#">Network Stats</a>
+                <p>Network Stats</p>
               </li>
               <li>
-                <a href="#">Block Explorers</a>
+                <p>Block Explorers</p>
               </li>
               <li>
-                <a href="#">Governance</a>
+                <p>Governance</p>
               </li>
               <li>
-                <a href="#">Exchange Markets</a>
+                <p>Exchange Markets</p>
               </li>
               <li>
-                <a href="#">Get Theme</a>
+                <p>Get Theme</p>
               </li>
             </ul>
           </div>
           <div className="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">
             <h5 className="widget-title">Follow Us</h5>
             <div className="social">
-              <a href="" className="facebook">
+              <p className="facebook">
                 <i className="fa fa-facebook"></i>
-              </a>
-              <a href="" className="google">
+              </p>
+              <p className="google">
                 <i className="fa fa-google-plus"></i>
-              </a>
-              <a href="" className="instagram">
+              </p>
+              <p className="instagram">
                 <i className="fa fa-instagram"></i>
-              </a>
-              <a href="" className="twitter">
+              </p>
+              <p className="twitter">
                 <i className="fa fa-twitter"></i>
-              </a>
+              </p>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
           <div className="row">
             <div className="col-lg-4 store-links text-center text-lg-left pb-3 pb-lg-0">
-              <a href="">
+              <p>
                 <img src="img/appstore.png" alt="" className="mr-2" />
-              </a>
-              <a href="">
+              </p>
+              <p>
                 <img src="img/playstore.png" alt="" />
-              </a>
+              </p>
             </div>
             <div className="col-lg-8 text-center text-lg-right">
               <ul className="footer-nav">
                 <li>
-                  <a href="">DPA</a>
+                  <p>DPA</p>
                 </li>
                 <li>
-                  <a href="">Terms of Use</a>
+                  <p>Terms of Use</p>
                 </li>
                 <li>
-                  <a href="">Privacy Policy </a>
+                  <p>Privacy Policy </p>
                 </li>
                 <li>
-                  <a href="">support@company.com</a>
+                  <p>support@company.com</p>
                 </li>
                 <li>
-                  <a href="">(123) 456-7890</a>
+                  <p>(123) 456-7890</p>
                 </li>
               </ul>
             </div>

@@ -17,9 +17,7 @@ const Feature = () => {
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit anim id est laborum.
               </p>
-              <a href="" className="readmore">
-                Readmore
-              </a>
+              <p className="readmore">Readmore</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-4 feature">
@@ -30,9 +28,7 @@ const Feature = () => {
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit anim id est laborum.
               </p>
-              <a href="" className="readmore">
-                Readmore
-              </a>
+              <p className="readmore">Readmore</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-4 feature">
@@ -43,9 +39,7 @@ const Feature = () => {
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit anim id est laborum.
               </p>
-              <a href="" className="readmore">
-                Readmore
-              </a>
+              <p className="readmore">Readmore</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-4 feature">
@@ -56,9 +50,7 @@ const Feature = () => {
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit anim id est laborum.
               </p>
-              <a href="" className="readmore">
-                Readmore
-              </a>
+              <p className="readmore">Readmore</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-4 feature">
@@ -69,9 +61,7 @@ const Feature = () => {
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit anim id est laborum.
               </p>
-              <a href="" className="readmore">
-                Readmore
-              </a>
+              <p className="readmore">Readmore</p>
             </div>
           </div>
           <div className="col-md-6 col-lg-4 feature">
@@ -82,9 +72,7 @@ const Feature = () => {
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit anim id est laborum.
               </p>
-              <a href="" className="readmore">
-                Readmore
-              </a>
+              <p className="readmore">Readmore</p>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-const CardModal = ({ children, closeModal }) => {
+const CardModal = ({ children, closeModal, myStyle }) => {
   return (
     <div
       style={{
@@ -16,21 +16,18 @@ const CardModal = ({ children, closeModal }) => {
         left: 0,
       }}
     >
-      <div className="message text-center">
-        <div className="message-pop detail">
-          <a
-            href="#"
-            className="close btn-sm"
-            onClick={() =>
-              closeModal((prev) => {
-                return { ...prev, status: false };
-              })
-            }
-          >
-            <i className="fa fa-close"></i>
-          </a>
-          {children}
-        </div>
+      <p
+        className="close btn-sm"
+        onClick={() => {
+          closeModal((prev) => {
+            return { ...prev, status: false };
+          });
+        }}
+      >
+        <i className="fa fa-close"></i>
+      </p>
+      <div className="message text-center" style={{ width: "80%", ...myStyle }}>
+        <div className="message-pop detail">{children}</div>
       </div>
     </div>
   );
