@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { widget } from "../../charting_library";
 import { AuthContext } from "../../context/Auth";
 import { CoinContext } from "../../context/CoinsContext";
@@ -12,6 +12,7 @@ const getLanguageFromURL = () => {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 const TVChartContainer = () => {
+  const [vashu, setVashu] = useState(localStorage.getItem("theme"));
   const ref = React.useRef();
   // const {theme} = useContext(AuthContext)
   const { chartSymbol } = useContext(CoinContext);
@@ -32,7 +33,7 @@ const TVChartContainer = () => {
       charts_storage_api_version: "1.1",
       client_id: "tradingview.com",
       user_id: "public_user_id",
-      theme: localStorage.getItem("theme"),
+      theme: vashu,
       fullscreen: false,
       autosize: true,
       studies_overrides: {},
@@ -63,9 +64,10 @@ const TVChartContainer = () => {
         tvWidgett = null;
       }
     };
-  }, [chartSymbol]);
+  }, [chartSymbol?.title]);
+
   let tvWidgett = null;
-  return <div ref={ref} className={"TVChartContainer"} />;
+  return <div ref={ref} className="TVChartContainer" />;
 };
 
 export default TVChartContainer;

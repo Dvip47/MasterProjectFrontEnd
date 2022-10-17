@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getFetch, postFetch } from "../api/api";
-import { GETCOINBALANCE, GETCOINS } from "../constants/constants";
+import { config, GETCOINBALANCE, GETCOINS } from "../constants/constants";
 export const CoinContext = createContext({
   coinList: [],
   getAllOrder: () => {},
@@ -18,6 +20,7 @@ export const CoinContext = createContext({
   orderList: [],
 });
 const CoinState = ({ children }) => {
+  const navigate = useNavigate();
   let orderSocket = {};
   useEffect(() => {
     callCoinsList();
@@ -106,12 +109,22 @@ const CoinState = ({ children }) => {
   const [tradeHistroy, setTradeHistory] = useState([]);
   const getAllTradeHistory = async () => {
     const res = await postFetch("", "");
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res?.success) {
       setTradeHistory(res.message);
     }
   };
   const callCoinBalance = async (data) => {
     const res = await postFetch(GETCOINBALANCE, { email: data.email });
+    if (res == 401) {
+      toast.error("Session Over", config);
+      localStorage.removeItem("token");
+      navigate("/credential", { state: "login" });
+    }
     if (res.success) {
       setCoinBalance(res.message);
       setTotalUserBalance(

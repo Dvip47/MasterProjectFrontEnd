@@ -6,9 +6,19 @@ import { useNavigate } from "react-router-dom";
 import InnerHeader from "../../assets/Header/InnerHeader";
 import InnerSideBar from "../../assets/Sidebar/InnerSideBar";
 import InnerFooter from "../../assets/Footer/InnerFooter";
+import { postFetch } from "../../api/api";
+import { config, PLACE } from "../../constants/constants";
+import { toast } from "react-toastify";
+import { MarketContext } from "../../context/MarketContext";
 
 const Exchange = () => {
   const { userData } = useContext(AuthContext);
+  const {
+    getMyOrders,
+    myOrders,
+    getActiveOrderWithBalance,
+    filterSymbolDataWithBalance,
+  } = useContext(MarketContext);
   const {
     getAllOrder,
     allOrder,
@@ -24,11 +34,85 @@ const Exchange = () => {
   const navigate = useNavigate();
   useEffect(() => {
     callCoinBalance(userData);
+    getMyOrders(userData);
+    getActiveOrderWithBalance({
+      ...userData,
+      symbol: chartSymbol?.title?.replace("BTC", "INR"),
+    });
   }, [userData]);
-  const currencies = ["INR", "USDT"];
-  const [input, setInput] = useState(0);
-  const [searchCoin, setSearchCoin] = useState("");
   const [range, setRange] = useState(0);
+  useEffect(() => {
+    if (chartSymbol?.data?.closePrice !== undefined) {
+      setInput((prev) => {
+        return {
+          ...prev,
+          price: chartSymbol?.data?.closePrice,
+        };
+      });
+    }
+  }, [chartSymbol]);
+  const currencies = ["INR", "USDT"];
+  const [input, setInput] = useState({
+    price: chartSymbol?.data?.closePrice,
+    quantity: 0,
+    orderType: "",
+  });
+  const [searchCoin, setSearchCoin] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let coinBalance = 200;
+    if (
+      (input.orderType == "buy" &&
+        totalUserBalance >= input.quantity * input.price) ||
+      (input.orderType == "sell" && input.quantity <= coinBalance)
+    ) {
+      try {
+        const data = {
+          email: userData?.email,
+          symbol: chartSymbol?.title,
+          pair: chartSymbol.currency,
+          quantity: input.quantity,
+          bidPrice: input.price,
+          marketPrice: chartSymbol?.data?.closePrice,
+          total: input.quantity * input.price,
+          status: "placed",
+          orderType: input.orderType,
+        };
+        const res = await postFetch(PLACE, data);
+        if (res.success) {
+          toast.success(res.message, config);
+          setTimeout(() => {
+            getMyOrders(userData);
+          }, 400);
+        } else {
+          toast.error(res.message, config);
+        }
+      } catch (error) {
+        return error;
+      }
+    } else {
+      toast.error("Insuficient Fund", config);
+    }
+  };
+  const [orderListType, setOrderListType] = useState("open");
+  let orderListComponent = (data, index) => {
+    return (
+      <tr key={index}>
+        <th scope="row">
+          <i className="cc BTC"></i>
+        </th>
+        <td>{data?.pair}</td>
+        <td>{data?.quantity}</td>
+        <td>{data?.bidPrice}</td>
+        <td>{Number(data?.marketPrice)?.toFixed(3)}</td>
+        <td>{data?.total}</td>
+        <td>{data?.orderType?.toUpperCase()}</td>
+        <td>
+          <i className="la la-close btnDelete"></i>
+        </td>
+      </tr>
+    );
+  };
   return (
     <div id="main-wrapper" className="show">
       {/* header */}
@@ -96,27 +180,27 @@ const Exchange = () => {
                 <div className="card-header">
                   <h4 className="card-title">Your Wallet</h4>
                   <span>
-                    Update <span>10</span> minutes ago
+                    Update <span>1</span> minutes ago
                   </span>
                 </div>
                 <div className="card-body">
                   <div className="row">
                     <div className="col-xl col-lg col-md col-sm-auto col-6">
                       <p className="mb-0">Symbol</p>
-                      <h6>BNB</h6>
+                      <h6>{chartSymbol?.title}</h6>
                     </div>
                     <div className="col-xl col-lg col-md col-sm-auto col-6">
                       <p className="mb-0">Total Balance</p>
-                      <h6>50</h6>
+                      <h6>{filterSymbolDataWithBalance?.totalBalance}</h6>
                     </div>
 
                     <div className="col-xl col-lg col-md col-sm-auto col-6">
                       <p className="mb-0">Active Orders</p>
-                      <h6>25</h6>
+                      <h6>{filterSymbolDataWithBalance?.activeOrder || 0}</h6>
                     </div>
                     <div className="col-xl col-lg col-md col-sm-auto col-6">
                       <p className="mb-0">Avaliable Balance</p>
-                      <h6>25</h6>
+                      <h6>{filterSymbolDataWithBalance?.avaliableBalance}</h6>
                     </div>
                   </div>
                 </div>
@@ -231,6 +315,10 @@ const Exchange = () => {
                                           ?.replace("INR", "")
                                           ?.toLowerCase()
                                       );
+                                      getActiveOrderWithBalance({
+                                        ...userData,
+                                        symbol: data.symbol,
+                                      });
                                     }}
                                   >
                                     <td>
@@ -295,9 +383,9 @@ const Exchange = () => {
                       role="tabpanel"
                     >
                       <form
-                        method="post"
                         name="myform"
                         className="currency_limit"
+                        onSubmit={handleSubmit}
                       >
                         <div className="form-group">
                           <div className="input-group">
@@ -310,9 +398,15 @@ const Exchange = () => {
                               type="text"
                               name="currency_amount"
                               className="form-control text-right"
-                              placeholder="501458"
-                              value={chartSymbol?.data?.closePrice}
-                              disabled
+                              value={input.price}
+                              onChange={(e) =>
+                                setInput((prev) => {
+                                  return {
+                                    ...prev,
+                                    price: e.target.value,
+                                  };
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -329,8 +423,15 @@ const Exchange = () => {
                               name="currency_amount"
                               className="form-control text-right"
                               placeholder="501458"
-                              onChange={(e) => setInput(e.target.value)}
-                              value={input}
+                              onChange={(e) =>
+                                setInput((prev) => {
+                                  return {
+                                    ...prev,
+                                    quantity: e.target.value,
+                                  };
+                                })
+                              }
+                              value={input.quantity}
                             />
                           </div>
                         </div>
@@ -355,11 +456,7 @@ const Exchange = () => {
                               style={{ zIndex: 9 }}
                               value={range}
                               onChange={(e) => {
-                                setRange(e.target.value);
-                                setInput(
-                                  (Number(e.target.value) / 100) *
-                                    Number(totalUserBalance)
-                                );
+                                setRange(Number(e.target.value));
                               }}
                             />
                             {range}%
@@ -371,10 +468,7 @@ const Exchange = () => {
                           <li className="list-group-item border-0 px-0 py-1 d-flex justify-content-between align-items-center">
                             Order Value
                             <strong className="strong">
-                              {(
-                                Number(input) *
-                                (chartSymbol?.data?.closePrice || 1)
-                              )?.toFixed(3)}
+                              {(input.price * input.quantity)?.toFixed(3)}
                               {chartSymbol.currency == "INR" ? "₹" : "$"}
                             </strong>
                           </li>
@@ -392,15 +486,23 @@ const Exchange = () => {
                         <div className="btn-group btn-block mt-3">
                           <button
                             type="submit"
-                            name="submit"
                             className="btn btn-success"
+                            onClick={() =>
+                              setInput((e) => {
+                                return { ...e, orderType: "buy" };
+                              })
+                            }
                           >
                             Buy Now
                           </button>
                           <button
                             type="submit"
-                            name="submit"
                             className="btn btn-danger"
+                            onClick={() =>
+                              setInput((e) => {
+                                return { ...e, orderType: "sell" };
+                              })
+                            }
                           >
                             Sell Now
                           </button>
@@ -653,6 +755,7 @@ const Exchange = () => {
                         href="#open-orders"
                         role="tab"
                         aria-selected="true"
+                        onClick={() => setOrderListType("open")}
                       >
                         Open Orders
                       </a>
@@ -664,6 +767,7 @@ const Exchange = () => {
                         href="#active-orders"
                         role="tab"
                         aria-selected="false"
+                        onClick={() => setOrderListType("complete")}
                       >
                         Complete Orders
                       </a>
@@ -689,27 +793,22 @@ const Exchange = () => {
                                 <th scope="col">Bid Price</th>
                                 <th scope="col">Market Price</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                              {orderList?.length ? (
-                                orderList?.map((data, index) => {
-                                  return (
-                                    <tr key={index}>
-                                      <th scope="row">
-                                        <i className="cc BTC"></i>
-                                      </th>
-                                      <td>BTC</td>
-                                      <td>2</td>
-                                      <td>300</td>
-                                      <td>3000</td>
-                                      <td>600</td>
-                                      <td>
-                                        <i className="la la-close btnDelete"></i>
-                                      </td>
-                                    </tr>
-                                  );
+                              {myOrders?.length ? (
+                                myOrders?.map((data, index) => {
+                                  if (orderListType == "open") {
+                                    if (data?.status == "placed") {
+                                      return orderListComponent(data, index);
+                                    }
+                                  } else {
+                                    if (data?.status == "completed") {
+                                      return orderListComponent(data, index);
+                                    }
+                                  }
                                 })
                               ) : (
                                 <h4>No Records Found</h4>

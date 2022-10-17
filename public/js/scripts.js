@@ -97,30 +97,30 @@ jQuery(window).on("load", function () {
       document.body.classList.toggle("dark");
     });
   });
-  window.addEventListener("mousemove", () => {
-    if (!localStorage.getItem("theme")) {
-      localStorage.setItem("theme", "light");
-    }
-    const themeSelectorr = document.querySelector("#themeSelector");
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-      themeSelectorr.textContent = "☀️";
-    } else {
-      themeSelectorr.textContent = "🌙️";
-    }
+  // window.addEventListener("mousemove", () => {
+  //   if (!localStorage.getItem("theme")) {
+  //     localStorage.setItem("theme", "light");
+  //   }
+  //   const themeSelectorr = document.querySelector("#themeSelector");
+  //   if (localStorage.getItem("theme") === "dark") {
+  //     document.body.classList.add("dark");
+  //     themeSelectorr.textContent = "☀️";
+  //   } else {
+  //     themeSelectorr.textContent = "🌙️";
+  //   }
 
-    themeSelectorr.addEventListener("click", () => {
-      if (localStorage.getItem("theme") === "light") {
-        localStorage.setItem("theme", "dark");
-        themeSelectorr.textContent = "☀️";
-      } else {
-        localStorage.setItem("theme", "light");
-        themeSelectorr.textContent = "🌙️";
-      }
+  //   themeSelectorr.addEventListener("click", () => {
+  //     if (localStorage.getItem("theme") === "light") {
+  //       localStorage.setItem("theme", "dark");
+  //       themeSelectorr.textContent = "☀️";
+  //     } else {
+  //       localStorage.setItem("theme", "light");
+  //       themeSelectorr.textContent = "🌙️";
+  //     }
 
-      document.body.classList.toggle("dark");
-    });
-  });
+  //     document.body.classList.toggle("dark");
+  //   });
+  // });
 })(jQuery);
 
 // const ml = new PerfectScrollbar(".market-limit");

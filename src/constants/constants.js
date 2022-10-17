@@ -25,9 +25,14 @@ export const GETALLCOINTRANSACTION = "query/v1/getAllCoinTransaction/";
 export const GETLEDGER = "query/v1/adminLedger/";
 export const GETALLDEPOSITEDATA = "query/v1/getAllDepositeData/";
 export const GETALLLEDGERDATA = "query/v1/getAllLedgerData/";
+export const GETMYORDERS = "query/v1/getMyOrders";
+export const GETFILTERSYMBOLDATA = "query/v1/getFilterSymbolData";
+
 // kyc
 export const KYC = "kyc/v1/kyc";
 export const UPDATEKYC = "kyc/v1/updateKyc";
+// order
+export const PLACE = "order/v1/place";
 // bank
 export const BANKDETAIL = "bank/v1/bank";
 export const CREATEWALLET = "bank/v1/createWallet";
