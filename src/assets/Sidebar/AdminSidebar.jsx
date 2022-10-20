@@ -31,7 +31,7 @@ const AdminSideBar = () => {
                   title="User"
                 >
                   <span>
-                    <i className="mdi mdi-tumblr-reblog"></i>
+                    <i className="mdi mdi-face-profile"></i>
                   </span>
                 </a>
               </li>
@@ -45,7 +45,7 @@ const AdminSideBar = () => {
                   title="Transaction"
                 >
                   <span>
-                    <i className="mdi mdi-face-profile"></i>
+                    <i className="mdi mdi-database-plus"></i>
                   </span>
                 </a>
               </li>
@@ -57,7 +57,7 @@ const AdminSideBar = () => {
                   title="Bank"
                 >
                   <span>
-                    <i className="mdi mdi-face-profile"></i>
+                    <i className="mdi mdi-bank"></i>
                   </span>
                 </a>
               </li>
@@ -69,7 +69,7 @@ const AdminSideBar = () => {
                   title="Coin"
                 >
                   <span>
-                    <i className="mdi mdi-face-profile"></i>
+                    <i className="mdi mdi-bullseye"></i>
                   </span>
                 </a>
               </li>

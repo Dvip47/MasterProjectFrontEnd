@@ -36,7 +36,7 @@ const Bank = () => {
     {
       title: "Bank",
       state: "bank",
-      icon: "mdi mdi-bullseye",
+      icon: "mdi mdi-bank",
     },
     { title: "Add Bank", state: "add", icon: "mdi mdi-pentagon" },
   ];

@@ -43,7 +43,7 @@ const InnerSideBar = () => {
                   title="Setting"
                 >
                   <span>
-                    <i className="mdi mdi-face-profile"></i>
+                    <i className="mdi mdi-settings"></i>
                   </span>
                 </a>
               </li>

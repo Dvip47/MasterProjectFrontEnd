@@ -25,8 +25,7 @@ function App() {
       <div id="preloder" style={{ display: loader ? "block" : "none" }}>
         <div className="loader"></div>
       </div>
-      {userData?.role == "admin" ||
-      (location.pathname == "/" && location.state == "admin") ? (
+      {userData?.role == "admin" && (
         <>
           <ToastContainer />
           <Routes>
@@ -37,11 +36,13 @@ function App() {
             <Route exact path="/transaction" element={<AdminTransaction />} />
           </Routes>
         </>
-      ) : location.pathname == "/credential" ? (
+      )}
+      {location.pathname == "/credential" && (
         <Routes>
           <Route exact path="/credential" element={<Credentials />} />
         </Routes>
-      ) : (
+      )}
+      {userData?.role !== "admin" && (
         <>
           <ToastContainer />
           <Routes>

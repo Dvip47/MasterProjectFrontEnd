@@ -15,7 +15,7 @@ const User = () => {
     {
       title: "User",
       state: "user",
-      icon: "mdi mdi-bullseye",
+      icon: "mdi mdi-account-settings-variant",
     },
     { title: "KYC", state: "kyc", icon: "mdi mdi-pentagon" },
   ];

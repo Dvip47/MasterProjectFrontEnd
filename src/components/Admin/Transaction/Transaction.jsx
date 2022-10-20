@@ -12,10 +12,10 @@ const User = () => {
   const { userData } = useContext(AuthContext);
   const { paginationData } = useContext(TransactionContext);
   const subDashboard = [
-    { title: "Deposite", state: "deposite", icon: "mdi mdi-pentagon" },
+    { title: "Deposite", state: "deposite", icon: "mdi mdi-heart" },
     { title: "Withdraw", state: "withdraw", icon: "mdi mdi-pentagon" },
-    { title: "Order", state: "order", icon: "mdi mdi-pentagon" },
-    { title: "Ledger", state: "ledger", icon: "mdi mdi-pentagon" },
+    { title: "Order", state: "order", icon: "mdi mdi-database" },
+    { title: "Ledger", state: "ledger", icon: "mdi mdi-database-plus" },
   ];
   const depositeHeader = [
     "Wallet ID",

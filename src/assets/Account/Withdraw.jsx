@@ -13,6 +13,10 @@ const Withdraw = () => {
     callCoinBalance(userData);
   }, [userData]);
   const [withdrawType, setWithdrawType] = useState("INR");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    alert("Service will start soon !");
+  };
   return (
     <>
       <div className="col-xl-3 col-lg-3 col-md-3 col-xxl-3 ">
@@ -69,7 +73,7 @@ const Withdraw = () => {
             <div className="card-body">
               <div className="row justify-content-center">
                 <div className="col-xl-8">
-                  <form action="#" className="py-5">
+                  <form onSubmit={handleSubmit} className="py-5">
                     <div className="form-group row align-items-center">
                       <div className="col-sm-4">
                         <label for="inputEmail3" className="col-form-label">
@@ -124,7 +128,14 @@ const Withdraw = () => {
                     </div>
 
                     <div className="text-right">
-                      <button className="btn btn-primary">Withdraw Now</button>
+                      <button type="submit" className="btn btn-primary">
+                        Withdraw Now
+                      </button>
+                      {/* <input
+                        type="submit"
+                        value="Withdraw Now"
+                        className="btn btn-primary"
+                      /> */}
                     </div>
                   </form>
                 </div>
@@ -134,7 +145,7 @@ const Withdraw = () => {
             <div className="card-body">
               <div className="row justify-content-center">
                 <div className="col-xl-8">
-                  <form action="#" className="py-5">
+                  <form onSubmit={handleSubmit} className="py-5">
                     <div className="form-group row align-items-center">
                       <div className="col-sm-4">
                         <label for="inputEmail3" className="col-form-label">
@@ -203,7 +214,9 @@ const Withdraw = () => {
                       wallets are not supported.
                     </small>
                     <div className="text-right">
-                      <button className="btn btn-primary">Withdraw Now</button>
+                      <button type="submit" className="btn btn-primary">
+                        Withdraw Now
+                      </button>
                     </div>
                   </form>
                 </div>
