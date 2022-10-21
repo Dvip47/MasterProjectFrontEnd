@@ -66,9 +66,10 @@ const InnerHeader = () => {
                         </a>
 
                         <a
-                          onClick={() =>
-                            navigate("/credential", { state: "login" })
-                          }
+                          onClick={() => {
+                            localStorage.removeItem("token");
+                            navigate("/credential", { state: "login" });
+                          }}
                           className="dropdown-item logout"
                         >
                           <i className="mdi mdi-logout"></i> Logout
