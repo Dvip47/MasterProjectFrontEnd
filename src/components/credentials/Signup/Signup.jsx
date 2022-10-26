@@ -59,8 +59,8 @@ const Signup = () => {
       label: "Email address",
     },
     {
-      type: "passward",
-      name: "passward",
+      type: "password",
+      name: "password",
       placeholder: "Enter password",
       label: "Password",
     },
