@@ -75,7 +75,7 @@ const Login = () => {
       label: "Email Address",
     },
     {
-      type: "passward",
+      type: "password",
       name: "passward",
       placeholder: "Enter Password",
       label: "Password",

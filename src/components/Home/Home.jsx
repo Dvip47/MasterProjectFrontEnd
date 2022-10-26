@@ -86,14 +86,16 @@ const Home = () => {
                       <a
                         className="btn btn-primary"
                         onClick={() =>
-                          navigate("/credential", { state: "login" })
+                          navigate("/credential", {
+                            state: "login",
+                            replace: true,
+                          })
                         }
                       >
                         Sign in
                       </a>
                     </div>
                   )}
-
                   <div className="language ml-3 mr-0">
                     <button
                       className="theme-button"

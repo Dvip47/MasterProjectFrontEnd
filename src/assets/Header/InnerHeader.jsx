@@ -68,7 +68,10 @@ const InnerHeader = () => {
                         <a
                           onClick={() => {
                             localStorage.removeItem("token");
-                            navigate("/credential", { state: "login" });
+                            navigate("/credential", {
+                              state: "login",
+                              replace: true,
+                            });
                           }}
                           className="dropdown-item logout"
                         >
@@ -83,6 +86,7 @@ const InnerHeader = () => {
                     onClick={() =>
                       navigate("/credential", {
                         state: "login",
+                        replace: true,
                       })
                     }
                   >
