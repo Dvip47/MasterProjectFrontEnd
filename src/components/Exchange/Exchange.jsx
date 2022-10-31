@@ -7,7 +7,7 @@ import InnerHeader from "../../assets/Header/InnerHeader";
 import InnerSideBar from "../../assets/Sidebar/InnerSideBar";
 import InnerFooter from "../../assets/Footer/InnerFooter";
 import { postFetch } from "../../api/api";
-import { config, PLACE } from "../../constants/constants";
+import { CANCELORDER, config, PLACE } from "../../constants/constants";
 import { toast } from "react-toastify";
 import { MarketContext } from "../../context/MarketContext";
 
@@ -95,6 +95,13 @@ const Exchange = () => {
     }
   };
   const [orderListType, setOrderListType] = useState("open");
+  const cancelOrder = async (data) => {
+    const res = await postFetch(CANCELORDER, { matchId: data?.matchId });
+    if (res?.success) {
+      toast.success(res.message, config);
+      getMyOrders(userData);
+    }
+  };
   let orderListComponent = (data, index) => {
     return (
       <tr key={index}>
@@ -107,7 +114,7 @@ const Exchange = () => {
         <td>{Number(data?.marketPrice)?.toFixed(3)}</td>
         <td>{data?.total}</td>
         <td>{data?.orderType?.toUpperCase()}</td>
-        <td>
+        <td onClick={() => cancelOrder(data)}>
           <i className="la la-close btnDelete"></i>
         </td>
       </tr>
@@ -698,7 +705,6 @@ const Exchange = () => {
                 </div>
               </div>
             )}
-
             {/* market news */}
             <div className="col-xl-3 col-lg-3 col-md-3 col-xxl-3 ">
               <div className="card ps ps--active-y">
@@ -801,11 +807,17 @@ const Exchange = () => {
                               {myOrders?.length ? (
                                 myOrders?.map((data, index) => {
                                   if (orderListType == "open") {
-                                    if (data?.status == "placed") {
+                                    if (
+                                      data?.status == "placed" &&
+                                      data?.status !== "cancel"
+                                    ) {
                                       return orderListComponent(data, index);
                                     }
                                   } else {
-                                    if (data?.status == "completed") {
+                                    if (
+                                      data?.status == "completed" &&
+                                      data?.status !== "cancel"
+                                    ) {
                                       return orderListComponent(data, index);
                                     }
                                   }

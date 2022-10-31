@@ -26,6 +26,8 @@ const Bank = () => {
     ifscCode: "",
   });
   const [utr, setUtr] = useState("");
+  const [beneName, setBeneName] = useState("");
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((prev) => {
@@ -132,7 +134,6 @@ const Bank = () => {
       toast.error(res.message, config);
     }
   };
-  const [beneName, setBeneName] = useState("");
   const [disable, setDisable] = useState({ submit: false });
   return (
     <div

@@ -5,7 +5,7 @@ import { CoinContext } from "../../context/CoinsContext";
 
 const InnerHeader = () => {
   const navigate = useNavigate();
-  const { userData } = useContext(AuthContext);
+  const { userData, theme, setTheme } = useContext(AuthContext);
   const { totalUserBalance } = useContext(CoinContext);
   return (
     <div className="header dashboard">
@@ -17,7 +17,7 @@ const InnerHeader = () => {
                 <img src="images/logo.png" alt="" />
               </a>
               <div className="header-right d-flex my-2 align-items-center">
-                <div className="language">
+                <div className="language" onClick={() => setTheme(!theme)}>
                   <button className="theme-button" id="themeSelector"></button>
                 </div>
                 {userData?.email ? (

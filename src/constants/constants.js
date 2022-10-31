@@ -33,6 +33,7 @@ export const KYC = "kyc/v1/kyc";
 export const UPDATEKYC = "kyc/v1/updateKyc";
 // order
 export const PLACE = "order/v1/place";
+export const CANCELORDER = "order/v1/cancelOrder";
 // bank
 export const BANKDETAIL = "bank/v1/bank";
 export const CREATEWALLET = "bank/v1/createWallet";

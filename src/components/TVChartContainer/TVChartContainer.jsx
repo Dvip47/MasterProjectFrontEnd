@@ -12,10 +12,10 @@ const getLanguageFromURL = () => {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 const TVChartContainer = () => {
-  const [vashu, setVashu] = useState(localStorage.getItem("theme"));
   const ref = React.useRef();
-  // const {theme} = useContext(AuthContext)
   const { chartSymbol } = useContext(CoinContext);
+
+  const { theme } = useContext(AuthContext);
   React.useEffect(() => {
     const widgetOptions = {
       symbol: chartSymbol.title,
@@ -33,14 +33,17 @@ const TVChartContainer = () => {
       charts_storage_api_version: "1.1",
       client_id: "tradingview.com",
       user_id: "public_user_id",
-      theme: vashu,
+      theme: localStorage.getItem("theme"),
       fullscreen: false,
       autosize: true,
       studies_overrides: {},
     };
-    const tvWidget = new widget(widgetOptions);
+    let tvWidget = new widget(widgetOptions);
     tvWidgett = tvWidget;
     tvWidgett.onChartReady(() => {
+      tvWidget.changeTheme(
+        localStorage.getItem("theme") == "dark" ? "Dark" : "Light"
+      );
       tvWidgett.headerReady().then(() => {
         const button = tvWidgett.createButton();
         button.setAttribute("title", "Click to show a notification popup");
@@ -64,7 +67,7 @@ const TVChartContainer = () => {
         tvWidgett = null;
       }
     };
-  }, [chartSymbol?.title]);
+  }, [chartSymbol?.title, theme]);
 
   let tvWidgett = null;
   return <div ref={ref} className="TVChartContainer" />;

@@ -14,6 +14,8 @@ export const AuthContext = createContext({
   setKycPage: () => {},
   kycPage: "",
   callProfile: () => {},
+  theme: true,
+  setTheme: () => {},
 });
 const Auth = ({ children }) => {
   const navigate = useNavigate();
@@ -28,6 +30,7 @@ const Auth = ({ children }) => {
       setLogin(true);
     }
   };
+  const [theme, setTheme] = useState(true);
   const [kycPage, setKycPage] = useState("");
   const [loader, setLoader] = useState(false);
   const [login, setLogin] = useState(false);
@@ -61,6 +64,8 @@ const Auth = ({ children }) => {
         kycPage,
         setKycPage,
         callProfile,
+        theme,
+        setTheme,
       }}
     >
       {children}
